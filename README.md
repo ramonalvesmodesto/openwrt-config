@@ -1,4 +1,4 @@
-# Esse são arquivos de configurações para knot-resolver e dnscrypt para openwrt - knot-resolver subistitui o dnsmasq
+# Esse são arquivos de configurações para knot-resolver e dnscrypt para openwrt - knot-resolver substitui o dnsmasq
 ## Segue configurações de como usá-los:
 
 Obs: como dnsmasq será removido, é necessário um pacote, como o odhcpd ou kea dhcp, para realizar o papel do dhcp. Aqui uso o odhcp
