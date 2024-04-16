@@ -4,7 +4,7 @@
 - Cache com knot resolver: possui a função prefill configurada no arquivo, que baixa um arquivo [root.zone](https://www.internic.net/domain/root.zone) e popula o cache para performance
 - Knot resolver redireciona requisições dns através do dnscrypt, caso queira usar as configurações de dns do knot resolver acesse sua [documentação](https://knot-resolver.readthedocs.io/en/stable/)
 - Tráfego de internet criptografado com dnscrypt
-- 
+  
 ## Segue configurações de como usá-los:
 
 Obs: como dnsmasq será removido, é necessário um pacote, como o odhcpd ou kea dhcp, para realizar o papel do dhcp. Aqui uso o odhcp
