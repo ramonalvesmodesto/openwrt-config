@@ -22,7 +22,7 @@ service dnscrypt-proxy restart
 ```
 
 ### Knot-resolver
-As configurações padrões não funcionaram para mim, então tive que realizar algumas modificações, faço suas modificações se necessário nos arquivos desse repositório
+As configurações padrões não funcionaram para mim, então tive que realizar algumas modificações, faça suas modificações se necessário nos arquivos desse repositório
 
 ```
 wget https://raw.githubusercontent.com/ramonalvesmodesto2/openwrt-config/main/knot-resolver/kresd.config -O /etc/knot-resolver/kresd.config
