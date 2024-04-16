@@ -35,3 +35,7 @@ wget https://raw.githubusercontent.com/ramonalvesmodesto2/openwrt-config/main/kn
 wget https://raw.githubusercontent.com/ramonalvesmodesto2/openwrt-config/main/knot-resolver/kresd -O /etc/init.d/kresd 
 service kresd restart
 ```
+
+### Aplique as configurações de dns 
+127.0.0.1
+::1
