@@ -37,5 +37,5 @@ service kresd restart
 ```
 
 ### Aplique as configurações de dns 
-127.0.0.1
-::1
+- wan e/ou lan - 127.0.0.1
+- wan6 - ::1
