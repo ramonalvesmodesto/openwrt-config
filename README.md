@@ -1,4 +1,4 @@
-# Esses são arquivos de configurações para knot-resolver e dnscrypt para openwrt - knot-resolver e odhcp substitui o dnsmasq
+# Esses são arquivos de configurações de knot-resolver e dnscrypt para Openwrt - knot-resolver e odhcp substitui o dnsmasq
 
 ## Funcionalidades
 - Cache com knot resolver: possui a função prefill configurada no arquivo, que baixa um arquivo [root.zone](https://www.internic.net/domain/root.zone) e popula o cache para performance
