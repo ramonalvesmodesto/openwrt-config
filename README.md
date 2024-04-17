@@ -10,7 +10,7 @@
 
 Obs: como dnsmasq será removido, é necessário um pacote, como o odhcpd ou kea dhcp, para realizar o papel do dhcp. Aqui uso o odhcp
 
-```
+```ash
 opkg update
 opkg remove dnsmasq odhcpd-ipv6only
 opkg install odhcpd odhcp6c knot-resolver dnscrypt-proxy2
@@ -23,7 +23,7 @@ service odhcpd restart
 ### Dnscrypt
 Você pode usar as configurações do tutorial do openwrt ou use as configurações prontas para funcionar com o knot-resolver abaixo
 
-```
+```ash
 wget https://raw.githubusercontent.com/ramonalvesmodesto2/openwrt-config/main/dnscrypt/dnscrypt-proxy.toml -O /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
 service dnscrypt-proxy restart
 ```
@@ -31,7 +31,7 @@ service dnscrypt-proxy restart
 ### Knot-resolver
 As configurações padrões não funcionaram para mim, então tive que realizar algumas modificações, faça suas modificações se necessário nos arquivos desse repositório
 
-```
+```ash
 wget https://raw.githubusercontent.com/ramonalvesmodesto2/openwrt-config/main/knot-resolver/kresd.config -O /etc/knot-resolver/kresd.config
 wget https://raw.githubusercontent.com/ramonalvesmodesto2/openwrt-config/main/knot-resolver/kresd -O /etc/init.d/kresd 
 service kresd restart
