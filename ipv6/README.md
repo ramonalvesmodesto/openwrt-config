@@ -22,3 +22,5 @@ service cron restart
 - A new IPv6 is generated at each reboot
 - Checks if IPv6 is active every 5 minutes
 - Generates a random interface ID
+
+  ![IPV6](https://github.com/ramonalvesmodesto/openwrt-config/blob/main/ipv6/1583548685423.jpg)
