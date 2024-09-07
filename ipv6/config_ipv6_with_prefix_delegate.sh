@@ -42,5 +42,12 @@ uci set dhcp.wan6.ignore='1'
 uci set dhcp.wan6.ra='relay'
 uci set dhcp.wan6.dhcpv6='relay'
 
+uci set firewall.@zone[1].masq="1"
+uci set firewall.@zone[1].masq6="1"
+uci commit firewall
+service firewall restart
+
+uci set network.wan6.sourcefilter="0"
+
 uci commit
 /etc/init.d/network restart
