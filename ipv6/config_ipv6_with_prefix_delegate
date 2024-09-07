@@ -4,6 +4,6 @@ START=95
 STOP=01
 start_service() {
     procd_open_instance
-    procd_set_param command /bin/sh /var/config_ipv6_with_prefix_delegate.sh
+    procd_set_param command /bin/sh /etc/config_ipv6_with_prefix_delegate.sh
     procd_close_instance
 }
