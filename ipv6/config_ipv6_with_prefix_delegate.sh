@@ -1,5 +1,6 @@
 #!/bin/sh
 
+sleep 10
 random_ipv6=$(openssl rand -hex 8)
 random_1=${random_ipv6:0:4}
 random_2=${random_ipv6:4:4}
