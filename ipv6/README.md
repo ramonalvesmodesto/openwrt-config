@@ -17,3 +17,8 @@ chmod +x /etc/init.d/config_ipv6_with_prefix_delegate
 echo '*/5 * * * * /bin/sh /etc/verify_ipv6.sh' >> /etc/crontabs/root
 service cron restart
 ```
+
+## Functions
+- A new IPv6 is generated at each reboot
+- Checks if IPv6 is active every 5 minutes
+- Generates a random interface ID
