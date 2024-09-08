@@ -2,7 +2,7 @@
 opkg update
 
 #### Install packages ####
-opkg install jq curl openssl-util isc-dhcp-client-ipv6 bash luci-app-unbound unbound-control coreutils-nohup nano luci procps-ng-sysctl libxtables12 libelf1 luci-app-sqm ip-full bind-dig cqueues kmod-tcp-bbr kmod-tcp-hybla  openssh-sftp-client openssh-sftp-server tc-full dnscrypt-proxy2 kmod-sched-ctinfo tcpdump 
+opkg install ethtool luci jq curl openssl-util isc-dhcp-client-ipv6 bash luci-app-unbound unbound-control coreutils-nohup nano luci procps-ng-sysctl libxtables12 libelf1 luci-app-sqm ip-full bind-dig cqueues kmod-tcp-bbr kmod-tcp-hybla  openssh-sftp-client openssh-sftp-server tc-full dnscrypt-proxy2 kmod-sched-ctinfo tcpdump 
 # opkg install mcproxy irqbalance knot-resolver
 
 #### uhttpd ####
