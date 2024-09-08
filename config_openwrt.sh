@@ -108,7 +108,6 @@ service dropbear restart
 uci set network.wan.peerdns='0'
 uci add_list network.wan.dns='127.0.0.1'
 uci set network.wan6.peerdns='0'
-uci add_list network.wan6.dns='::1'
 uci add_list network.lan.dns='127.0.0.1'
 uci del network.lan.ip6class
 uci add_list network.lan.ip6class='local'
