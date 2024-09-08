@@ -1,3 +1,4 @@
+
 opkg update
 
 #### Install packages ####
@@ -47,6 +48,7 @@ service dnscrypt-proxy restart
 
 #### Unbound ####
 wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/main/unbound/unbound -O /etc/config/unbound
+wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/main/unbound/unbound.conf -O /etc/unbound/unbound.conf
 
 #### Sysctl.conf ####
 wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/main/sysctl/sysctl.conf -O /etc/sysctl.conf
@@ -61,8 +63,8 @@ chmod +x /etc/init.d/fa-fancontrol
 chmod +x /usr/bin/fa-fancontrol.sh
 chmod +x /usr/bin/fa-fancontrol-direct.sh
 
-/etc/init.d/fa-fancontrol enable
-/etc/init.d/fa-fancontrol start
+service fa-fancontrol enable
+service fa-fancontrol start
 
 #### Sqm ####
 # uci add sqm queue
@@ -112,7 +114,7 @@ uci add_list network.lan.ip6class='local'
 uci set network.globals.packet_steering='1'
 uci commit network
 service network restart
-service kresd restart
+# service kresd restart
 service dropbear disable
 
 #### ntp ####
@@ -129,7 +131,7 @@ uci add_list system.ntp.server="time3.google.com"
 uci add_list system.ntp.server="time4.google.com"
 uci add_list system.ntp.server="time.cloudflare.com"
 uci commit system
-/etc/init.d/sysntpd restart
+service sysntpd restart
 
 # Intercept DNS traffic
 uci -q del firewall.dns_int
@@ -158,7 +160,8 @@ uci set network.lan.ip4table='local'
 uci set network.lan.ip6table='local'
 
 uci commit
-/etc/init.d/network restart
+service network restart
+service unbound restart
 
 ethtool -K eth0 rx-gro-list off && ethtool -K eth1 rx-gro-list off
 ethtool -K eth0 gro off && ethtool -K eth1 gro off
