@@ -54,5 +54,7 @@ uci set network.wan6.sourcefilter="0"
 uci set network.wan6.ip4table='local'
 uci set network.wan6.ip6table='local'
 
+uci add_list network.wan6.dns='::1'
+
 uci commit
 /etc/init.d/network restart
