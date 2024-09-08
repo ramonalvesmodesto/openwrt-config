@@ -49,6 +49,7 @@ service dnscrypt-proxy restart
 #### Unbound ####
 wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/main/unbound/unbound -O /etc/config/unbound
 wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/main/unbound/unbound.conf -O /etc/unbound/unbound.conf
+wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/main/unbound/unbound.sh -O /usr/lib/unbound/unbound.sh
 
 #### Sysctl.conf ####
 wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/main/sysctl/sysctl.conf -O /etc/sysctl.conf
