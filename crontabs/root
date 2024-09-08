@@ -6,3 +6,4 @@
 05 3 * * * sleep 70 && touch /etc/banner && reboot
 */5 * * * * /bin/sh /etc/verify_ipv6.sh
 00 2 * * * curl --output /etc/unbound/root.hints https://www.internic.net/domain/named.cache
+00 2 * * * curl --output /var/lib/unbound/root.hints https://www.internic.net/domain/named.cache
