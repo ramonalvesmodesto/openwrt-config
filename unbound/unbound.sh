@@ -376,6 +376,7 @@ unbound_control() {
         echo "  control-key-file: $UB_CTLKEY_FILE"
         echo "  control-cert-file: $UB_CTLPEM_FILE"
         echo
+        echo "root-hints: /etc/unbound/root.hints"
       } >> $UB_CTRL_CONF
       ;;
 
