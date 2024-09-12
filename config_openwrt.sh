@@ -154,11 +154,6 @@ uci set dhcp.lan.ra_default="1"
 uci commit dhcp
 service odhcpd restart
 
-uci set network.wan.ip4table='local'
-uci set network.wan.ip6table='local'
-uci set network.lan.ip4table='local'
-uci set network.lan.ip6table='local'
-
 uci commit
 service network restart
 service unbound restart
