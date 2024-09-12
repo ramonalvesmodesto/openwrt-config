@@ -6,5 +6,6 @@ echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 ethtool -K eth0 rx-gro-list off && ethtool -K eth1 rx-gro-list off
 ethtool -K eth0 gro off && ethtool -K eth1 gro off
 ethtool -K eth0 rx-udp-gro-forwarding on && ethtool -K eth1 rx-udp-gro-forwarding on
+ethtool --offload eth0 rx off tx off && ethtool --offload eth1 rx off tx off
 
 exit 0
