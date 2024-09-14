@@ -1,5 +1,4 @@
-  GNU nano 8.1                                                                            verify_ipv6.sh                                                                                         
-#!/bin/sh
+#!/bin/bash
 
 status_code=$(curl -6 -I --connect-timeout 15 http://www.google.com.br 2>/dev/null | head -n 1 | cut -d$' ' -f2)
 
