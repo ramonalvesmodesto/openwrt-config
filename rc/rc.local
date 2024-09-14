@@ -1,5 +1,6 @@
 # Put your custom commands here that should be executed once \n
 # the system init finished. By default this file does nothing.
+/etc/jool/setupjool.sh
 sleep 60
 echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 # tc qdisc add dev eth1 root fq_codel interval 300ms
