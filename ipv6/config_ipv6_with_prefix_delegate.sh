@@ -35,7 +35,7 @@ uci del network.wan6.ip6gw
 
 # uci add_list network.wan6.ip6addr="$IPV6_128"
 uci add_list network.wan6.ip6addr="$IPV6_64"
-uci set network.wan6.ip6prefix="$IPV6_SUFIX::/56"
+uci set network.wan6.ip6prefix="$IPV6_SUFIX::/64"
 uci set network.wan6.ip6gw='fe80::1'
 
 uci set dhcp.wan6=dhcp
