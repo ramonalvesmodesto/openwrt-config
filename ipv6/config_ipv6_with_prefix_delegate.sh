@@ -3,6 +3,8 @@
 sleep 10
 kill $(cat /var/run/dhclient6.pid)
 
+interface=$(uci get network.wan.device)
+
 random_ipv6=$(openssl rand -hex 8)
 random_1=${random_ipv6:0:4}
 random_2=${random_ipv6:4:4}
@@ -11,7 +13,7 @@ random_4=${random_ipv6:12:4}
 
 rm /var/dhcpv6.leases
 touch /var/dhcpv6.leases
-dhclient -6 -cf /etc/dhclient6.conf  -sf /usr/sbin/dhclient-script -lf /var/dhcpv6.leases -pf /var/run/dhclient6.pid eth0 # usa ics-dhcp6-client para obter ipv6 do isp
+dhclient -6 -cf /etc/dhclient6.conf  -sf /usr/sbin/dhclient-script -lf /var/dhcpv6.leases -pf /var/run/dhclient6.pid $interface # usa ics-dhcp6-client para obter ipv6 do isp
 
 IPV6_128="$(cat /var/dhcpv6.leases | grep iaaddr | cut -d ' ' -f 6- | cut -d '{' -f 1 | cut -d ' ' -f 1)/128"
 IPV6_SUFIX="$(cat /var/dhcpv6.leases | grep iaaddr | cut -d ' ' -f 6- | cut -d '{' -f 1 | sed 's/::/\//' | cut -d '/' -f 1)"
@@ -27,7 +29,7 @@ uci add_list firewall.@zone[1].network='wan6'
 # /etc/config/network
 uci set network.wan6=interface
 uci set network.wan6.proto='static'
-uci set network.wan6.device='eth0'
+uci set network.wan6.device="$interface"
 
 uci del network.wan6.ip6addr
 uci del network.wan6.ip6prefix
