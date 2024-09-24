@@ -5,6 +5,6 @@
 # 05 3 * * * eval "echo admin; sleep 1; echo admin123; sleep 1; echo reboot; sleep 5;" | telnet 192.168.2.1
 05 3 * * * sleep 70 && touch /etc/banner && reboot
 */5 * * * * /bin/sh /etc/verify_ipv6.sh
-00 2 * * * curl --output /etc/unbound/root.hints https://www.internic.net/domain/named.cache
-00 2 * * * curl --output /var/lib/unbound/root.hints https://www.internic.net/domain/named.cache
+00 4 * * * curl --output /etc/unbound/root.hints https://www.internic.net/domain/named.cache
+00 4 * * * curl --output /var/lib/unbound/root.hints https://www.internic.net/domain/named.cache
 
