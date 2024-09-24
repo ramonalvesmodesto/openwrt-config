@@ -11,6 +11,8 @@ random_2=${random_ipv6:4:4}
 random_3=${random_ipv6:8:4}
 random_4=${random_ipv6:12:4}
 
+# echo "obase=16; ibase=2; 1110" | bc # converte hexadeximal para binário ou vice-versa
+
 # MAC_1=$(uci get network.@device[2].macaddr | cut -d':' -f'1,2' | sed 's/://')
 # MAC_2=$(uci get network.@device[2].macaddr | cut -d':' -f'3')
 # MAC_3=$(uci get network.@device[2].macaddr | cut -d':' -f'4')
