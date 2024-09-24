@@ -5,11 +5,18 @@ kill $(cat /var/run/dhclient6.pid)
 
 interface=$(uci get network.wan.device)
 
-random_ipv6=$(openssl rand -hex 8)
-random_1=${random_ipv6:0:4}
-random_2=${random_ipv6:4:4}
-random_3=${random_ipv6:8:4}
-random_4=${random_ipv6:12:4}
+# random_ipv6=$(openssl rand -hex 8)
+# random_1=${random_ipv6:0:4}
+# random_2=${random_ipv6:4:4}
+# random_3=${random_ipv6:8:4}
+# random_4=${random_ipv6:12:4}
+
+MAC_1=$(uci get network.@device[2].macaddr | cut -d':' -f'1,2' | sed 's/://')
+MAC_2=$(uci get network.@device[2].macaddr | cut -d':' -f'3')
+MAC_3=$(uci get network.@device[2].macaddr | cut -d':' -f'4')
+MAC_4=$(uci get network.@device[2].macaddr | cut -d':' -f'5,6' | sed 's/://')
+
+EUI_64="$MAC_1:"$MAC_2"ff:fe$MAC_3:$MAC_4"
 
 rm /var/dhcpv6.leases
 touch /var/dhcpv6.leases
@@ -17,8 +24,8 @@ dhclient -6 -cf /etc/dhclient6.conf  -sf /usr/sbin/dhclient-script -lf /var/dhcp
 
 IPV6_128="$(cat /var/dhcpv6.leases | grep iaaddr | cut -d ' ' -f 6- | cut -d '{' -f 1 | cut -d ' ' -f 1)/128"
 IPV6_SUFIX="$(cat /var/dhcpv6.leases | grep iaaddr | cut -d ' ' -f 6- | cut -d '{' -f 1 | sed 's/::/\//' | cut -d '/' -f 1)"
-IPV6_RANDOM="$random_1:$random_2:$random_3:$random_4"
-IPV6_64="$IPV6_SUFIX:$IPV6_RANDOM/64"
+# IPV6_RANDOM="$random_1:$random_2:$random_3:$random_4"
+IPV6_64="$IPV6_SUFIX:$EUI_64"
 
 uci del dhcp.wan6
 uci del network.wan6
