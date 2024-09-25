@@ -28,9 +28,9 @@
 ##
 ## Remove the leading # first to enable this; lines starting with # are ignored.
 
-server_names = ['quad9-dnscrypt-ip4-nofilter-ecs-pri']
+# server_names = ['quad9-dnscrypt-ip4-nofilter-ecs-pri']
 # server_names = ['quad9-doh-ip4-port5053-nofilter-pri', 'quad9-doh-ip4-port5053-nofilter-alt', 'quad9-doh-ip6-port5053-nofilter-pri', 'quad9-doh-ip6-port5053-nofilter-alt']
-# server_names = ['dnscry.pt-valdivia-ipv4']
+server_names = ['adguard-dns-unfiltered']
 
 ## List of local addresses and ports to listen to. Can be IPv4 and/or IPv6.
 ## Example with both IPv4 and IPv6:
@@ -546,12 +546,12 @@ format = 'tsv'
 
 ## Path to the file of blocking rules (absolute, or relative to the same directory as the config file)
 
-# blocked_names_file = 'blocked-names.txt'
+blocked_names_file = 'blocked-names.txt'
 
 
 ## Optional path to a file logging blocked queries
 
-# log_file = 'blocked-names.log'
+log_file = 'blocked-names.log'
 
 
 ## Optional log format: tsv or ltsv (default: tsv)
