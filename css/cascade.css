@@ -1725,11 +1725,7 @@ th[data-sort-direction="desc"]::after {
 }
 
 [data-darkmode="true"] .zonebadge[style],[data-darkmode="true"] .ifacebox-head[style] {
-}
-
-div .ifacebox .ifacebox-head {
-    color: #0d0c0c;
-    !important;
+    background: linear-gradient(rgba(var(--zone-color-rgb),0.8),rgba(var(--zone-color-rgb),.0))!important;
 }
 
 .ifacebox .ifacebox-body {
