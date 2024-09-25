@@ -98,6 +98,12 @@ abbr[title],acronym[title] {
     cursor: help
 }
 
+#cbi-editing-1-data textarea {
+  background-color: #202020;
+  font-family: monospace;
+  !important
+}
+
 table {
     border-collapse: collapse;
     border-spacing: 0
