@@ -29,7 +29,7 @@
     --border-color-high-hsl: var(--border-color-h),var(--border-color-s),calc(var(--border-color-l) + var(--border-color-delta-l-sign) * calc(51 / 255 * 100%));
     --border-color-high: hsl(var(--border-color-high-hsl));
     --border-color-medium-hsl: var(--border-color-h),var(--border-color-s),calc(var(--border-color-l) + var(--border-color-delta-l-sign) * calc(34 / 255 * 100%));
-    --border-color-medium: hsl(var(--border-color-medium-hsl));
+    --border-color-medium: #1d1b1c96;
     --border-color-low-hsl: var(--border-color-h),var(--border-color-s),calc(var(--border-color-l) + var(--border-color-delta-l-sign) * calc(17 / 255 * 100%));
     --border-color-low: hsl(var(--border-color-low-hsl));
     --primary-color-high: #1976d2;
