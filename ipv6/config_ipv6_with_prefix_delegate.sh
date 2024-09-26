@@ -11,14 +11,39 @@ random_2=${random_ipv6:4:4}
 random_3=${random_ipv6:8:4}
 random_4=${random_ipv6:12:4}
 
-# echo "obase=16; ibase=2; 1110" | bc # converte hexadeximal para binário ou vice-versa
+######### EUI-64 ############
+num_1=$(uci get network.@device[2].macaddr | cut -d':' -f'1' | sed 's/://'  | tr '[a-z]' '[A-Z]')
 
-# MAC_1=$(uci get network.@device[2].macaddr | cut -d':' -f'1,2' | sed 's/://')
-# MAC_2=$(uci get network.@device[2].macaddr | cut -d':' -f'3')
-# MAC_3=$(uci get network.@device[2].macaddr | cut -d':' -f'4')
-# MAC_4=$(uci get network.@device[2].macaddr | cut -d':' -f'5,6' | sed 's/://')
+bin=$(echo "obase=2; ibase=16; $num_1" | bc)
+numcaracter=$(echo "${#bin}")
+numzero=$(echo $((8-$numcaracter)))
 
-# EUI_64="$MAC_1:"$MAC_2"ff:fe$MAC_3:$MAC_4"
+if [[ $numzero -ne 0 ]]; then
+    numformatado=$(printf "%0"$numzero"d$bin\n")
+    bin=$numformatado
+fi
+
+primeiraparte=$(echo $bin | cut -c -6)
+partefinal=$( echo $bin | cut -c 8-)
+setimocaracter=$(echo $bin | cut -c 7)
+
+if [[ $setimocaracter -eq 1 ]]; then
+    setimocaracter=0
+else 
+    setimocaracter=1
+fi
+
+binreverce=$(echo "$primeiraparte$setimocaracter$partefinal")
+
+num_reverce=$(echo "obase=16; ibase=2; $binreverce" | bc)
+
+MAC_1="$num_reverce$(uci get network.@device[2].macaddr | cut -d':' -f'2' | sed 's/://')"
+MAC_2=$(uci get network.@device[2].macaddr | cut -d':' -f'3')
+MAC_3=$(uci get network.@device[2].macaddr | cut -d':' -f'4')
+MAC_4=$(uci get network.@device[2].macaddr | cut -d':' -f'5,6' | sed 's/://')
+
+EUI_64="$MAC_1:"$MAC_2"ff:fe$MAC_3:$MAC_4"
+#########################################################################
 
 rm /var/dhcpv6.leases
 touch /var/dhcpv6.leases
@@ -27,7 +52,7 @@ dhclient -6 -cf /etc/dhclient6.conf  -sf /usr/sbin/dhclient-script -lf /var/dhcp
 IPV6_128="$(cat /var/dhcpv6.leases | grep iaaddr | cut -d ' ' -f 6- | cut -d '{' -f 1 | cut -d ' ' -f 1)/128"
 IPV6_SUFIX="$(cat /var/dhcpv6.leases | grep iaaddr | cut -d ' ' -f 6- | cut -d '{' -f 1 | sed 's/::/\//' | cut -d '/' -f 1)"
 IPV6_RANDOM="$random_1:$random_2:$random_3:$random_4"
-IPV6_64="$IPV6_SUFIX:$IPV6_RANDOM"
+IPV6_64="$IPV6_SUFIX:$EUI_64"
 
 uci del dhcp.wan6
 uci del network.wan6
@@ -44,7 +69,7 @@ uci del network.wan6.ip6addr
 uci del network.wan6.ip6prefix
 uci del network.wan6.ip6gw
 
-# uci add_list network.wan6.ip6addr="$IPV6_128"
+#uci add_list network.wan6.ip6addr="$IPV6_128"
 uci add_list network.wan6.ip6addr="$IPV6_64"
 uci set network.wan6.ip6prefix="$IPV6_SUFIX::/64"
 uci set network.wan6.ip6gw='fe80::1'
