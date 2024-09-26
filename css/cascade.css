@@ -2047,8 +2047,9 @@ div.cbi-value var.cbi-tooltip-container,.td.cbi-value-field var.cbi-tooltip-cont
 
 .fade-in {
     animation: fade-in .4s ease;
-    padding: 3em;
-    margin: 2em 1em;
+    padding: 1em 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
     border-radius: 1em;
     background-color: var( --background-color-new);
 }
@@ -2178,8 +2179,9 @@ li.menu,.dropdown,.cbi-dropdown[open] {
     opacity: 1;
     overflow: visible;
     transition: opacity .25s ease-in;
-    padding: 3em;
-    margin: 2em 1em;
+    padding: 1em 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
     border-radius: 1em;
     background-color: var( --background-color-new);
 }
