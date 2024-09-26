@@ -27,7 +27,7 @@
     --border-color-s: var(--background-color-s);
     --border-color-l: var(--background-color-l);
     --border-color-high-hsl: var(--border-color-h),var(--border-color-s),calc(var(--border-color-l) + var(--border-color-delta-l-sign) * calc(51 / 255 * 100%));
-    --border-color-high: hsl(var(--border-color-high-hsl));
+    --border-color-high: #272526;
     --border-color-medium-hsl: var(--border-color-h),var(--border-color-s),calc(var(--border-color-l) + var(--border-color-delta-l-sign) * calc(34 / 255 * 100%));
     --border-color-medium: #1d1b1c96;
     --border-color-low-hsl: var(--border-color-h),var(--border-color-s),calc(var(--border-color-l) + var(--border-color-delta-l-sign) * calc(17 / 255 * 100%));
@@ -624,7 +624,7 @@ input[type="checkbox"].cbi-input-invalid,input[type="radio"].cbi-input-invalid {
 
 .item::after,.btn,.cbi-button,.cbi-select,.cbi-dropdown,.cbi-dynlist > .item,input[type="checkbox"]::before,input[type="radio"]::before,input,button,textarea,select {
     transition: border linear 0.2s,box-shadow linear 0.2s;
-    box-shadow: inset 0 1px 3px hsla(var(--border-color-low-hsl),.01)
+    box-shadow: inset 0 1px 3px hsla(var(--border-color-low-hsl),.01);
 }
 
 .item:hover::after,.btn:hover,.btn:focus,.cbi-button:hover,.cbi-button:focus,.cbi-select.focus,.cbi-dropdown:focus,.cbi-dropdown[open],.cbi-dynlist > .item:focus,input[type="checkbox"]:focus::before,input[type="radio"]:focus::before,input:focus,button:hover,textarea:focus,select:focus {
