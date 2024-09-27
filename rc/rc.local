@@ -4,7 +4,7 @@
 sleep 60
 echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 # tc qdisc add dev eth1 root fq_codel interval 300ms
-tc qdisc add dev eth1 root cake rtt 300ms diffserv4 dual-dsthost noatm overhead 44
+tc qdisc add dev eth1 root cake rtt 50ms diffserv8 dual-dsthost noatm overhead 44
 
 # ethtool -K eth0 rx-gro-list off && ethtool -K eth1 rx-gro-list off
 # ethtool -K eth0 gro off && ethtool -K eth1 gro off
