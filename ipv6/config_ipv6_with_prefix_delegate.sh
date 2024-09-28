@@ -87,7 +87,7 @@ service firewall restart
 
 uci set network.wan6.sourcefilter="0"
 
-uci add_list network.wan6.dns='::1'
+uci add_list network.wan6.dns='::53'
 
 uci commit
 /etc/init.d/network restart
