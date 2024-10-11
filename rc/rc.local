@@ -1,10 +1,15 @@
 # Put your custom commands here that should be executed once \n
 # the system init finished. By default this file does nothing.
-#/etc/jool/setupjool.sh
+
 sleep 60
 echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
-tc qdisc add dev eth1 root cake rtt 50ms diffserv8 dual-dsthost noatm overhead 26
-# tc qdisc add dev eth1 root noqueue
+
+# tc qdisc add dev eth0 root noqueue
+# tc qdisc add dev eth0 clsact
+# tc filter add dev eth0 ingress bpf da obj /etc/tc_le_ipv4_forward.o sec ipv4_forward
+tc qdisc add dev eth1 root fq
+
+
 
 ethtool -s eth1 mdix auto
 ethtool -s eth0 mdix auto
@@ -12,7 +17,3 @@ ethtool -K eth0 rx-gro-list off && ethtool -K eth1 rx-gro-list off
 # ethtool -K eth0 gro off && ethtool -K eth1 gro off
 # ethtool -K eth0 rx-udp-gro-forwarding on && ethtool -K eth1 rx-udp-gro-forwarding on
 # ethtool --offload eth0 rx off tx off && ethtool --offload eth1 rx off tx off
-
-wget https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/doh-vpn-proxy-bypass-onlydomains.txt -O /etc/dnscrypt-proxy2/blocked-names.txt 
-
-exit 0
