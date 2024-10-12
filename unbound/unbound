@@ -66,7 +66,7 @@ config zone 'fwd_google'
 	list zone_name '.'
 
 config zone
-	option enabled '0'
+	option enabled '1'
 	option fallback '0'
 	option zone_type 'forward_zone'
 	list zone_name '.'
@@ -76,7 +76,7 @@ config zone
 	list server '::53'
 
 config zone 'fwd_cloudflare'
-	option enabled '1'
+	option enabled '0'
 	option fallback '0'
 	option tls_index 'cloudflare-dns.com'
 	option tls_upstream '1'
@@ -86,4 +86,3 @@ config zone 'fwd_cloudflare'
 	list server '2606:4700:4700::1111'
 	list server '2606:4700:4700::1001'
 	list zone_name '.'
-
