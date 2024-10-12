@@ -14,7 +14,6 @@ random_4=${random_ipv6:12:4}
 ######### EUI-64 ############
 GET_LINK=$(ip a show wan || ip a show eth0)
 GET_MAC=$(echo $GET_LINK | grep link/ether | cut -d'/' -f2 | cut -d' ' -f2)
-echo $GET_MAC
 
 num_1=$(echo $GET_MAC | cut -d':' -f'1' | sed 's/://'  | tr '[a-z]' '[A-Z]')
 
