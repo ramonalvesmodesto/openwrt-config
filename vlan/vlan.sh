@@ -1,7 +1,7 @@
 #!/bin/bash
 
-NET_ULA="$(uci get network.globals.ula_prefix)"
-uci set network.globals.ula_prefix="d${NET_ULA:1}"
+#NET_ULA="$(uci get network.globals.ula_prefix)"
+#uci set network.globals.ula_prefix="d${NET_ULA:1}"
 
 uci set network.lan.ip6class="local"
 uci set dhcp.lan.ra_default="1"
