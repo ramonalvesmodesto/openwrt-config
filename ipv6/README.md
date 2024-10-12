@@ -1,7 +1,7 @@
 ## Package dependencies 
 ```bash
 opkg update
-opkg install jq curl openssl-util isc-dhcp-client-ipv6
+opkg install jq curl openssl-util isc-dhcp-client-ipv6 bc
 ```
 
 ## Config
