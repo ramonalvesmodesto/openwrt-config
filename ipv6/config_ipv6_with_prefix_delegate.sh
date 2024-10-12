@@ -12,7 +12,11 @@ random_3=${random_ipv6:8:4}
 random_4=${random_ipv6:12:4}
 
 ######### EUI-64 ############
-num_1=$(uci get network.@device[2].macaddr | cut -d':' -f'1' | sed 's/://'  | tr '[a-z]' '[A-Z]')
+GET_LINK=$(ip a show wan || ip a show eth0)
+GET_MAC=$(echo $GET_LINK | grep link/ether | cut -d'/' -f2 | cut -d' ' -f2)
+echo $GET_MAC
+
+num_1=$(echo $GET_MAC | cut -d':' -f'1' | sed 's/://'  | tr '[a-z]' '[A-Z]')
 
 bin=$(echo "obase=2; ibase=16; $num_1" | bc)
 numcaracter=$(echo "${#bin}")
@@ -38,9 +42,9 @@ binreverce=$(echo "$primeiraparte$setimocaracter$partefinal")
 num_reverce=$(echo "obase=16; ibase=2; $binreverce" | bc)
 
 MAC_1="$num_reverce$(uci get network.@device[2].macaddr | cut -d':' -f'2' | sed 's/://')"
-MAC_2=$(uci get network.@device[2].macaddr | cut -d':' -f'3')
-MAC_3=$(uci get network.@device[2].macaddr | cut -d':' -f'4')
-MAC_4=$(uci get network.@device[2].macaddr | cut -d':' -f'5,6' | sed 's/://')
+MAC_2=$(echo $GET_MAC | cut -d':' -f'3')
+MAC_3=$(echo $GET_MAC | cut -d':' -f'4')
+MAC_4=$(echo $GET_MAC | cut -d':' -f'5,6' | sed 's/://')
 
 EUI_64="$MAC_1:"$MAC_2"ff:fe$MAC_3:$MAC_4"
 #########################################################################
