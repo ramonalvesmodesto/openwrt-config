@@ -1,4 +1,5 @@
-``` bash
+#!/bin/sh
+
 opkg update
 opkg install kmod-veth ip-full kmod-jool-netfilter jool-tools-netfilter
 
@@ -107,4 +108,3 @@ uci set unbound.ub_main.dns64_prefix='64:ff9b::/96'
 uci commit
 /etc/init.d/firewall  restart
 /etc/init.d/network  restart
-```
