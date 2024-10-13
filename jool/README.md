@@ -1,5 +1,22 @@
 ``` bash
-#### Config NAT64 ####
+opkg update
+opkg install kmod-veth ip-full kmod-jool-netfilter jool-tools-netfilter
+
+#### Config NAT64 for IPV6####
+uci set firewall.@zone[1].masq="1"
+uci set firewall.@zone[1].masq6="1"
+
+uci set dhcp.wan6=dhcp
+uci set dhcp.wan6.interface='wan6'
+uci set dhcp.wan6.ignore='1'
+uci set dhcp.wan6.ra='relay'
+uci set dhcp.wan6.dhcpv6='relay'
+
+uci set network.wan6.reqaddress='try'
+uci set network.wan6.reqprefix='auto'
+uci set network.wan6.sourcefilter="0"
+
+
 uci del dhcp.lan.ra
 uci del dhcp.lan.ra_default
 uci del dhcp.lan.ra_flags
