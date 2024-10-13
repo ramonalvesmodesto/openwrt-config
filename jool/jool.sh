@@ -4,6 +4,11 @@ opkg update
 opkg install kmod-veth ip-full kmod-jool-netfilter jool-tools-netfilter
 
 #### Config NAT64 for IPV6####
+sed -i 's/exit 0//' /etc/rc.local
+echo '/etc/jool/setupjool.sh' >> /etc/rc.local
+echo '' >> /etc/rc.local
+echo 'exit 0' >> /etc/rc.local
+
 uci set firewall.@zone[1].masq="1"
 uci set firewall.@zone[1].masq6="1"
 
