@@ -10,11 +10,7 @@ chmod +x /etc/init.d/config_ipv6_with_prefix_delegate
 /etc/init.d/config_ipv6_with_prefix_delegate enable
 /etc/init.d/config_ipv6_with_prefix_delegate start
 
-sed -i 's/exit 0//' /etc/crontabs/root
-echo '' >> /etc/crontabs/root
 echo '*/5 * * * * /bin/sh /etc/verify_ipv6.sh' >> /etc/crontabs/root
-echo '' >> /etc/crontabs/root
-echo 'exit 0' >> /etc/crontabs/root
 
 service cron restart
 ```
