@@ -3,11 +3,6 @@
 sleep 60
 echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 
-# tc qdisc add dev eth0 root noqueue
-# tc qdisc add dev eth0 clsact
-# tc filter add dev eth0 ingress bpf da obj /etc/tc_le_ipv4_forward.o sec ipv4_forward
-tc qdisc add dev eth1 root fq
-
 ethtool -s eth1 mdix auto
 ethtool -s eth0 mdix auto
 ethtool -K eth0 rx-gro-list off && ethtool -K eth1 rx-gro-list off
