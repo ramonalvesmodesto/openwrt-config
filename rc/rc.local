@@ -11,3 +11,5 @@ ethtool -K eth0 rx-gro-list off && ethtool -K eth1 rx-gro-list off
 # ethtool --offload eth0 rx off tx off && ethtool --offload eth1 rx off tx off
 
 wget https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/doh-vpn-proxy-bypass-onlydomains.txt -O /etc/dnscrypt-proxy2/blocked-names.txt
+
+exit 0
