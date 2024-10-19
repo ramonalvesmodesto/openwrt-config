@@ -81,7 +81,8 @@ uci set dhcp.wan6=dhcp
 uci set dhcp.wan6.interface='wan6'
 uci set dhcp.wan6.ignore='1'
 uci set dhcp.wan6.ra='relay'
-uci set dhcp.wan6.dhcpv6='relay'
+# uci set dhcp.wan6.dhcpv6='relay'
+uci set dhcp.wan6.master='1'
 
 uci set firewall.@zone[1].masq="1"
 uci set firewall.@zone[1].masq6="1"
