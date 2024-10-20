@@ -6,7 +6,9 @@ wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/refs/hea
 uci set firewall.@zone[1].masq="1"
 uci set firewall.@zone[1].masq6="1"
 uci set network.wan6.sourcefilter="0"
-uci commit firewall
+uci set network.wan6.reqprefix='64'
+uci commit
+service network restart
 service firewall restart
 ```
 ## Configuração via interface
