@@ -5,5 +5,6 @@ wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/refs/hea
 ```
 ## Configuração via interface
 Escolha o tamanho do prefixo na interface wan6 na opção "Request IPv6-prefix of length"
+A opção automático é o comportamento padrão do openwrt
 
 ![IPV6](https://github.com/ramonalvesmodesto/openwrt-config/blob/main/ipv6_odhcp/Captura%20de%20tela%20de%202024-10-20%2013-32-18.png)
