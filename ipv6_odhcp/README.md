@@ -2,6 +2,12 @@
 ``` bash
 wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/refs/heads/main/ipv6_odhcp/dhcpv6.script -O /lib/netifd/dhcpv6.script
 wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/refs/heads/main/ipv6_odhcp/dhcpv6.sh -O /lib/netifd/proto/dhcpv6.sh
+
+uci set firewall.@zone[1].masq="1"
+uci set firewall.@zone[1].masq6="1"
+uci set network.wan6.sourcefilter="0"
+uci commit firewall
+service firewall restart
 ```
 ## Configuração via interface
 Escolha o tamanho do prefixo na interface wan6 na opção "Request IPv6-prefix of length". A opção automático é o comportamento padrão do openwrt
