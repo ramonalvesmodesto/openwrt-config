@@ -1,4 +1,4 @@
-## Correção ipv6-pd odhcp
+## Correção dhcpv6 client ipv6-pd odhcp
 ``` bash
 wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/refs/heads/main/ipv6_odhcp/dhcpv6.script -O /lib/netifd/dhcpv6.script
 wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/refs/heads/main/ipv6_odhcp/dhcpv6.sh -O /lib/netifd/proto/dhcpv6.sh
