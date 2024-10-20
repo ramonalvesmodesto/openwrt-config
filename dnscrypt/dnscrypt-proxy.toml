@@ -39,7 +39,7 @@ server_names = ['quad9-dnscrypt-ip4-nofilter-pri', 'quad9-dnscrypt-ip4-nofilter-
 ## To listen to all IPv4 addresses, use `listen_addresses = ['0.0.0.0:53']`
 ## To listen to all IPv4+IPv6 addresses, use `listen_addresses = ['[::]:53']`
 
-listen_addresses = ['127.0.0.53:53000']
+listen_addresses = ['127.0.0.53:53000','[::53]:53000']
 
 
 ## Maximum number of simultaneous client connections to accept
