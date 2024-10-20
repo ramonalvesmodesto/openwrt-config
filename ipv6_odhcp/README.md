@@ -7,6 +7,7 @@ uci set firewall.@zone[1].masq="1"
 uci set firewall.@zone[1].masq6="1"
 uci set network.wan6.sourcefilter="0"
 uci set network.wan6.reqprefix='64'
+uci set dhcp.lan.ra_slaac='1'
 uci commit
 service firewall restart
 service network restart
