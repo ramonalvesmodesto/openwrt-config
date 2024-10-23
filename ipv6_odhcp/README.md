@@ -1,5 +1,8 @@
 ## Correção dhcpv6 client ipv6-pd odhcp
 ``` bash
+opkg update
+opkg install 
+
 wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/refs/heads/main/ipv6_odhcp/dhcpv6.script -O /lib/netifd/dhcpv6.script
 wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/refs/heads/main/ipv6_odhcp/dhcpv6.sh -O /lib/netifd/proto/dhcpv6.sh
 
@@ -9,6 +12,13 @@ uci set network.wan6.sourcefilter="0"
 uci set network.wan6.reqprefix='64'
 uci set dhcp.lan.ra_slaac='1'
 uci commit
+
+echo 'net.ipv6.conf.default.forwarding=2' >> /etc/sysctl.conf
+echo 'net.ipv6.conf.all.forwarding=2' >> /etc/sysctl.conf
+echo 'net.ipv6.conf.default.accept_ra=2' >> /etc/sysctl.conf
+echo 'net.ipv6.conf.all.accept_ra=2' >> /etc/sysctl.conf
+sysctl -p
+
 service firewall restart
 service network restart
 ```
