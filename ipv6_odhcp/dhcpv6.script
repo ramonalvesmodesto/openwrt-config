@@ -80,9 +80,15 @@ setup_interface () {
 		local valid="${entry%%,*}"
 		local inicioIp="${addr:0:2}"
 
-		if [ $inicioIp == "fd"  ]; then
+		if [ $inicioIp == "fd" ]; then
 			continue
 		fi
+
+		if [ $mask -eq "128" ];then
+			continue
+		fi
+
+		logger "$mask"
 
 		proto_add_ipv6_address "$addr" "$mask" "$preferred" "$valid" 1
 		addrsig="$addrsig $addr/$mask"
