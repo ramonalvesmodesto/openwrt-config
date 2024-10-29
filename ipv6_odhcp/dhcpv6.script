@@ -78,6 +78,11 @@ setup_interface () {
 		local preferred="${entry%%,*}"
 		entry="${entry#*,}"
 		local valid="${entry%%,*}"
+		local inicioIp="${addr:0:2}"
+
+		if [ $inicioIp == "fd"  ]; then
+			continue
+		fi
 
 		proto_add_ipv6_address "$addr" "$mask" "$preferred" "$valid" 1
 		addrsig="$addrsig $addr/$mask"
