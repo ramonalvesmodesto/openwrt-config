@@ -88,8 +88,6 @@ setup_interface () {
 			continue
 		fi
 
-		logger "$mask"
-
 		proto_add_ipv6_address "$addr" "$mask" "$preferred" "$valid" 1
 		addrsig="$addrsig $addr/$mask"
 	
