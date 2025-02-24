@@ -19,7 +19,7 @@
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2 as
 # published by the Free Software Foundation.
-#
+#sqm
 #  Copyright (C) 2012-2017
 #    Michael D. Taht, Toke Høiland-Jørgensen, Sebastian Moeller
 #
@@ -56,7 +56,7 @@ ingress() {
 
     $TC qdisc add dev $DEV root handle 1: $(get_stab_string) tbf \
         rate ${DOWNLINK}kbit burst $BURST latency 300ms $(get_htb_adsll_string)
-    $TC qdisc add dev $DEV parent 1: handle 110: fq 
+    $TC qdisc add dev $DEV parent 1: handle 110: fq_codel
 
     $IP link set dev $DEV up
 
@@ -74,7 +74,7 @@ sqm_prepare_script() {
     case $QDISC in
         cake*)
             sqm_warn "Cake is not supported with this script; falling back to FQ-CoDel"
-            QDISC=fq;
+            QDISC=fq_codel;
     esac
 }
 
