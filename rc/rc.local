@@ -1,6 +1,6 @@
 # Put your custom commands here that should be executed once \n
 # the system init finished. By default this file does nothing.
-sleep 60
-echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+#sleep 60
+#echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 
 exit 0
