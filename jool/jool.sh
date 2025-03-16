@@ -23,34 +23,25 @@ uci set network.wan6.reqprefix='auto'
 uci set network.wan6.sourcefilter="0"
 
 
-uci del dhcp.lan.ra
-uci del dhcp.lan.ra_default
-uci del dhcp.lan.ra_flags
-uci del dhcp.lan.dhcpv6
-# /etc/config/network
-uci del network.lan.ip6assign
-uci del network.lan.ip6class
 
-uci set network.lan6=interface
-uci set network.lan6.proto='static'
-uci set network.lan6.device='br-lan'
-uci set network.lan6.ip6assign='64'
-uci set network.lan6.ip6hint='64'
+uci set network.lan=interface
+uci set network.lan.proto='static'
+uci set network.lan.device='br-lan'
+uci set network.lan.ip6assign='64'
+uci set network.lan.ip6hint='64'
 
-uci set dhcp.lan6=dhcp
-uci set dhcp.lan6.interface='lan6'
-uci set dhcp.lan6.start='100'
-uci set dhcp.lan6.limit='150'
-uci set dhcp.lan6.leasetime='12h'
-uci set dhcp.lan6.ignore='1'
-uci set dhcp.lan6.ra='server'
-uci set dhcp.lan6.ra_default='1'
-uci add_list dhcp.lan6.ra_flags='managed-config'
-uci add_list dhcp.lan6.ra_flags='other-config'
-uci set dhcp.lan6.dhcpv6='server'
-uci add_list network.lan6.ip6class='local'
-uci add_list firewall.@zone[0].network='lan6'
-uci add_list network.lan6.dns='::1'
+uci set dhcp.lan=dhcp
+uci set dhcp.lan.interface='lan'
+uci set dhcp.lan.start='100'
+uci set dhcp.lan.limit='150'
+uci set dhcp.lan.leasetime='12h'
+uci set dhcp.lan.ignore='1'
+uci set dhcp.lan.ra='server'
+uci set dhcp.lan.ra_default='1'
+uci set dhcp.lan.dhcpv6='server'
+uci add_list network.lan.ip6class='local'
+uci add_list firewall.@zone[0].network='lan'
+uci add_list network.lan.dns='::1'
 
 wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/main/jool/setupjool.sh -O /etc/jool/setupjool.sh
 chmod +x /etc/jool/setupjool.sh
@@ -101,11 +92,11 @@ uci add firewall forwarding # =cfg11ad58
 uci set firewall.@forwarding[-1].src='lan'
 uci set firewall.@forwarding[-1].dest='jool'
 
-uci set dhcp.lan6.ra_pref64='64:ff9b::/96'
+uci set dhcp.lan.ra_pref64='64:ff9b::/96'
 
 uci add_list dhcp.lan.dhcp_option='108,0:0:7:8'
-uci add_list dhcp.lan6.dhcp_option='108,0:0:7:8'
-uci add_list network.lan6.dns='::1'
+uci add_list dhcp.lan.dhcp_option='108,0:0:7:8'
+uci add_list network.lan.dns='::1'
 
 uci set unbound.ub_main.dns64='1'
 uci set unbound.ub_main.dns64_prefix='64:ff9b::/96'
