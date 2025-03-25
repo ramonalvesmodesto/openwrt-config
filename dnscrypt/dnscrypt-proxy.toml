@@ -28,8 +28,7 @@
 ##
 ## Remove the leading # first to enable this; lines starting with # are ignored.
 
-#server_names = ['dnscry.pt-saopaulo-ipv4']
-server_names = ['NextDNS-3f5c3d']
+server_names = ['dnscry.pt-saopaulo-ipv4']
 # server_names = ['quad9-doh-ip4-port5053-nofilter-pri', 'quad9-doh-ip4-port5053-nofilter-alt', 'quad9-doh-ip6-port5053-nofilter-pri', 'quad9-doh-ip6-port5053-nofilter-alt']
 # server_names = ['quad9-dnscrypt-ip6-nofilter-pri', 'quad9-dnscrypt-ip6-nofilter-alt']
 
@@ -898,6 +897,3 @@ skip_incompatible = false
 
   # [static.myserver]
   #   stamp = 'sdns://AQcAAAAAAAAAAAAQMi5kbnNjcnlwdC1jZXJ0Lg'
-
-  [static.'NextDNS-3f5c3d']
-  stamp = 'sdns://AgEAAAAAAAAAAAAOZG5zLm5leHRkbnMuaW8HLzNmNWMzZA'
