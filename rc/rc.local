@@ -2,5 +2,7 @@
 # the system init finished. By default this file does nothing.
 sleep 60
 echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+tc qdisc add dev pppoe-wan root noqueue
+tc qdisc add dev br-lan root noqueue
 
 exit 0
