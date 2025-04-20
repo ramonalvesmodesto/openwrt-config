@@ -5,5 +5,6 @@ echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 tc qdisc add dev pppoe-wan root noqueue
 tc qdisc add dev br-lan root noqueue
 tc qdisc add dev eth1 root noqueue
+tc qdisc add dev pppoe-wan root noqueue
 
 exit 0
