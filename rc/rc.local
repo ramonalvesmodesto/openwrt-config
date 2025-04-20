@@ -7,4 +7,7 @@ tc qdisc add dev br-lan root noqueue
 tc qdisc add dev eth1 root noqueue
 tc qdisc add dev pppoe-wan root noqueue
 
+ethtool -A eth1 rx on tx on
+ethtool -A eth0 rx on tx on
+
 exit 0
