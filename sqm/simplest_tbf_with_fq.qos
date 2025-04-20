@@ -39,7 +39,7 @@ egress() {
 
     $TC qdisc add dev $IFACE root handle 1: $(get_stab_string) tbf \
         rate ${UPLINK}kbit burst $BURST latency 300ms $(get_htb_adsll_string)
-    $TC qdisc add dev $IFACE parent 1: handle 110: fq_codel target 1ms memory_limit 64Mb
+    $TC qdisc add dev $IFACE parent 1: handle 110: fq_codel target 400us memory_limit 64Mb
 
 }
 
@@ -56,7 +56,7 @@ ingress() {
 
     $TC qdisc add dev $DEV root handle 1: $(get_stab_string) tbf \
         rate ${DOWNLINK}kbit burst $BURST latency 300ms $(get_htb_adsll_string)
-    $TC qdisc add dev $DEV parent 1: handle 110: fq_codel target 1ms memory_limit 64Mb
+    $TC qdisc add dev $DEV parent 1: handle 110: fq_codel target 400us memory_limit 64Mb
 
     $IP link set dev $DEV up
 
