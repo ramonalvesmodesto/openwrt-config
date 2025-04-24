@@ -28,9 +28,9 @@
 ##
 ## Remove the leading # first to enable this; lines starting with # are ignored.
 
-#server_names = ['dnscry.pt-saopaulo-ipv4']
+server_names = ['dnscry.pt-saopaulo-ipv4']
 # server_names = ['quad9-doh-ip4-port5053-nofilter-pri', 'quad9-doh-ip4-port5053-nofilter-alt', 'quad9-doh-ip6-port5053-nofilter-pri', 'quad9-doh-ip6-port5053-nofilter-alt']
-server_names = ['adguard-dns-unfiltered-doh']
+#server_names = ['adguard-dns-unfiltered']
 
 ## List of local addresses and ports to listen to. Can be IPv4 and/or IPv6.
 ## Example with both IPv4 and IPv6:
@@ -61,7 +61,7 @@ max_clients = 250
 ipv4_servers = true
 
 # Use servers reachable over IPv6 -- Do not enable if you don't have IPv6 connectivity
-ipv6_servers = true
+ipv6_servers = false
 
 # Use servers implementing the DNSCrypt protocol
 dnscrypt_servers = true
@@ -122,7 +122,7 @@ http3 = true
 ## increase this. Startup may be slower if you do so.
 ## Don't increase it too much. 10000 is the highest reasonable value.
 
-timeout = 300
+timeout = 1000
 
 
 ## Keepalive for HTTP (HTTPS, HTTP/2, HTTP/3) queries, in seconds
@@ -344,7 +344,7 @@ log_files_max_backups = 1
 ## This makes things faster when there is no IPv6 connectivity, but can
 ## also cause reliability issues with some stub resolvers.
 
-block_ipv6 = false
+block_ipv6 = true
 
 
 ## Immediately respond to A and AAAA queries for host names without a domain name
