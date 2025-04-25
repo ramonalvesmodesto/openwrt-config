@@ -28,9 +28,9 @@
 ##
 ## Remove the leading # first to enable this; lines starting with # are ignored.
 
-server_names = ['dnscry.pt-saopaulo-ipv4']
-# server_names = ['quad9-doh-ip4-port5053-nofilter-pri', 'quad9-doh-ip4-port5053-nofilter-alt', 'quad9-doh-ip6-port5053-nofilter-pri', 'quad9-doh-ip6-port5053-nofilter-alt']
-#server_names = ['adguard-dns-unfiltered']
+server_names = ['dnscry.pt-saopaulo-ipv4', 'cs-brazil', 'adguard-dns-unfiltered', 'nextdns']
+#server_names = ['quad9-doh-ip4-port5053-nofilter-pri', 'quad9-doh-ip4-port5053-nofilter-alt']
+#server_names = ['googgle', 'cloudflare']
 
 ## List of local addresses and ports to listen to. Can be IPv4 and/or IPv6.
 ## Example with both IPv4 and IPv6:
@@ -61,7 +61,7 @@ max_clients = 250
 ipv4_servers = true
 
 # Use servers reachable over IPv6 -- Do not enable if you don't have IPv6 connectivity
-ipv6_servers = false
+ipv6_servers = true
 
 # Use servers implementing the DNSCrypt protocol
 dnscrypt_servers = true
@@ -150,7 +150,7 @@ keepalive = 30
 ## Randomly choose 1 of the fastest 2, half, n, 1 or all live servers by latency.
 ## The response quality still depends on the server itself.
 
-# lb_strategy = 'p2'
+# lb_strategy = 'p4'
 
 ## Set to `true` to constantly try to estimate the latency of all the resolvers
 ## and adjust the load-balancing parameters accordingly, or to `false` to disable.
@@ -344,7 +344,7 @@ log_files_max_backups = 1
 ## This makes things faster when there is no IPv6 connectivity, but can
 ## also cause reliability issues with some stub resolvers.
 
-block_ipv6 = true
+block_ipv6 = false
 
 
 ## Immediately respond to A and AAAA queries for host names without a domain name
