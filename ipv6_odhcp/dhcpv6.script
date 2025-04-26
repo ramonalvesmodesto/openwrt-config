@@ -84,7 +84,7 @@ setup_interface () {
 			continue
 		fi
 
-		if [ $mask -eq "128" ];then
+		if [ $mask -eq "128" ] || [ $mask -eq "56" ];then
 			continue
 		fi
 
