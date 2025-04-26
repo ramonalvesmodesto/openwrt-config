@@ -84,7 +84,7 @@ setup_interface () {
 			continue
 		fi
 
-		if [ $mask -eq "128" ] || [ $mask -eq "56" ];then
+		if [ $mask -eq "128" ];then
 			continue
 		fi
 
@@ -118,7 +118,7 @@ setup_interface () {
                         done
                         RA_ROUTES="$raroutes"
 
-		elif [ "$mask" -eq 64 -a -z "$PREFIXES" -a -n "$EXTENDPREFIX" ]; then
+		elif [ "$mask" -eq 56 -a -z "$PREFIXES" -a -n "$EXTENDPREFIX" ]; then
 			proto_add_ipv6_prefix "$addr/$mask,$preferred,$valid"
 
 			local raroutes=""
