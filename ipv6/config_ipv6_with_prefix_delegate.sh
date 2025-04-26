@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 sleep 10
 kill $(cat /var/run/dhclient6.pid)
