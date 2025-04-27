@@ -1,16 +1,12 @@
 # Put your custom commands here that should be executed once \n
 # the system init finished. By default this file does nothing.
 /etc/jool/setupjool.sh
-sleep 60
+sleep 30
 echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
-tc qdisc add dev pppoe-wan root noqueue
+tc qdisc add dev eth0 root noqueue
 tc qdisc add dev br-lan root noqueue
 tc qdisc add dev eth1 root noqueue
 ethtool -A eth1 rx on tx on
 ethtool -A eth0 rx on tx on
-
-sleep 60
-tc qdisc add dev pppoe-wan root noqueue
-/etc/init.d/unbound start
 
 exit 0
