@@ -11,5 +11,6 @@ ethtool -A eth0 rx on tx on
 
 sleep 60
 tc qdisc add dev pppoe-wan root noqueue
+/etc/init.d/unbound start
 
 exit 0
