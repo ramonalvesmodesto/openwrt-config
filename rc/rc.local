@@ -8,5 +8,6 @@ tc qdisc add dev br-lan root noqueue
 tc qdisc add dev eth1 root noqueue
 ethtool -A eth1 rx on tx on
 ethtool -A eth0 rx on tx on
+ethtool -K eth0 rx-gro-list off && ethtool -K eth1 rx-gro-list off && ethtool -K eth0 lro off && ethtool -K eth1 lro off
 
 exit 0
