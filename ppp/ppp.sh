@@ -160,8 +160,8 @@ ppp_generic_setup() {
 		${ipv6:+ipv6-up-script /lib/netifd/ppp6-up} \
 		ip-down-script /lib/netifd/ppp-down \
 		${ipv6:+ipv6-down-script /lib/netifd/ppp-down} \
-		mtu 1412 \
-    mru 1412 \
+		mtu 1500 \
+    		mru 1500 \
 		deflate 15,15 \
 		bsdcomp 15,15 \
 		vj-max-slots 16 \
