@@ -1,6 +1,5 @@
 # Put your custom commands here that should be executed once \n
 # the system init finished. By default this file does nothing.
-/etc/jool/setupjool.sh
 sleep 30
 echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 tc qdisc add dev eth0 root noqueue
@@ -9,5 +8,6 @@ tc qdisc add dev eth1 root noqueue
 ethtool -A eth1 rx on tx on
 ethtool -A eth0 rx on tx on
 ethtool -K eth0 rx-gro-list off && ethtool -K eth1 rx-gro-list off && ethtool -K eth0 lro off && ethtool -K eth1 lro off
+/etc/jool/setupjool.sh
 
 exit 0
