@@ -31,7 +31,8 @@
 
 egress() {
 
-    MTU=$(get_mtu $IFACE)
+    #MTU=$(get_mtu $IFACE)
+    MTU=1412
     BURST="$(get_burst ${MTU:-1514} ${UPLINK} ${ESHAPER_BURST_DUR_US})"
     BURST=${BURST:-1514}
 
