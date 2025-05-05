@@ -65,6 +65,9 @@ ingress() {
     $TC filter add dev $IFACE parent ffff: protocol all prio 10 u32 \
         match u32 0 0 flowid 1:1 action mirred egress redirect dev $DEV
 
+    ip link set dev ifb-pppoe-wan qlen 50000
+    ip link set dev lo qlen 50000
+
 }
 
 sqm_prepare_script() {
