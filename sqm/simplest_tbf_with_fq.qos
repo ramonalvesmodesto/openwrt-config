@@ -48,7 +48,8 @@ ingress() {
     SILENT=1 $TC qdisc del dev $IFACE handle ffff: ingress
     $TC qdisc add dev $IFACE handle ffff: ingress
 
-    MTU=$(get_mtu $IFACE)
+    #MTU=$(get_mtu $IFACE)
+    MTU=1412
     BURST="$(get_burst ${MTU:-1514} ${DOWNLINK} ${ISHAPER_BURST_DUR_US})"
     BURST=${BURST:-1514}
 
