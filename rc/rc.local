@@ -11,6 +11,8 @@ ethtool -A eth0 rx on tx on
 ethtool -G eth0 rx 1024 tx 1024
 ethtool -G eth1 rx 4096
 ethtool -K eth0 rx-gro-list off && ethtool -K eth1 rx-gro-list off && ethtool -K eth0 lro off && ethtool -K eth1 lro off
+ethtool -K eth0 tso off
+ethtool -K eth1 tso off
 /etc/jool/setupjool.sh
 
 exit 0
