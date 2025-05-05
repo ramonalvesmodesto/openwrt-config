@@ -66,7 +66,9 @@ ingress() {
         match u32 0 0 flowid 1:1 action mirred egress redirect dev $DEV
 
     ip link set dev ifb4pppoe-wan qlen 50000
+    ip link set dev ifb4pppoe-wan up
     ip link set dev lo qlen 50000
+    ip link set dev lo up
 
 }
 
