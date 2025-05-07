@@ -13,7 +13,7 @@ ethtool -G eth0 rx 1024 tx 1024
 ethtool -G eth1 rx 1492
 ethtool -K eth0 tso off
 ethtool -K eth1 tso off
-ethtool -C eth0 rx-usecs 0 tx-usecs 0
-ethtool -C eth1 rx-usecs 0 tx-usecs 0
+#ethtool -C eth0 rx-usecs 0 tx-usecs 0
+#ethtool -C eth1 rx-usecs 0 tx-usecs 0
 
 exit 0
