@@ -31,16 +31,18 @@
 
 egress() {
 
-    #MTU=$(get_mtu $IFACE)
-    MTU=1412
-    BURST="$(get_burst ${MTU:-1514} ${UPLINK} ${ESHAPER_BURST_DUR_US})"
-    BURST=${BURST:-1514}
+    MTU=$(get_mtu $IFACE)
+    BURST="$(get_burst ${MTU:-1500} ${UPLINK} ${ESHAPER_BURST_DUR_US})"
+    BURST=${BURST:-1500}
 
     SILENT=1 $TC qdisc del dev $IFACE root
 
     $TC qdisc add dev $IFACE root handle 1: $(get_stab_string) tbf \
-        rate ${UPLINK}kbit burst $BURST latency 400ms $(get_htb_adsll_string)
-    $TC qdisc add dev $IFACE parent 1: handle 110: fq_codel target 400us memory_limit 64Mb
+        rate ${UPLINK}kbit burst $BURST latency 300ms $(get_htb_adsll_string)
+    $TC qdisc add dev $IFACE parent 1: handle 110: fq_codel target 100ms memory_limit 64Mb
+
+    ip link set dev $IFACE qlen 50000
+    ip link set dev $IFACE up
 
 }
 
@@ -49,16 +51,15 @@ ingress() {
     SILENT=1 $TC qdisc del dev $IFACE handle ffff: ingress
     $TC qdisc add dev $IFACE handle ffff: ingress
 
-    #MTU=$(get_mtu $IFACE)
-    MTU=1412
-    BURST="$(get_burst ${MTU:-1514} ${DOWNLINK} ${ISHAPER_BURST_DUR_US})"
-    BURST=${BURST:-1514}
+    MTU=$(get_mtu $IFACE)
+    BURST="$(get_burst ${MTU:-1500} ${DOWNLINK} ${ISHAPER_BURST_DUR_US})"
+    BURST=${BURST:-1500}
 
     SILENT=1 $TC qdisc del dev $DEV root
 
     $TC qdisc add dev $DEV root handle 1: $(get_stab_string) tbf \
-        rate ${DOWNLINK}kbit burst $BURST latency 400ms $(get_htb_adsll_string)
-    $TC qdisc add dev $DEV parent 1: handle 110: fq_codel target 400us memory_limit 64Mb
+        rate ${DOWNLINK}kbit burst $BURST latency 300ms $(get_htb_adsll_string)
+    $TC qdisc add dev $DEV parent 1: handle 110: fq_codel target 100ms memory_limit 64Mb
 
     $IP link set dev $DEV up
 
@@ -67,8 +68,8 @@ ingress() {
     $TC filter add dev $IFACE parent ffff: protocol all prio 10 u32 \
         match u32 0 0 flowid 1:1 action mirred egress redirect dev $DEV
 
-    ip link set dev ifb4pppoe-wan qlen 50000
-    ip link set dev ifb4pppoe-wan up
+    ip link set dev $DEV qlen 50000
+    ip link set dev $DEV up
     ip link set dev lo qlen 50000
     ip link set dev lo up
 
