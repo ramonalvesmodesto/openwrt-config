@@ -888,7 +888,7 @@ skip_incompatible = false
 
 ## Static prefix(es) as Pref64::/n CIDRs
 
-# prefix = ['64:ff9b::/96']
+prefix = ['64:ff9b::/96']
 
 ## DNS64-enabled resolver(s) to discover Pref64::/n CIDRs
 ## These resolvers are used to query for Well-Known IPv4-only Name (WKN) "ipv4only.arpa." to discover only.
