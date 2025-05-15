@@ -149,7 +149,7 @@ ppp_generic_setup() {
                 ${peerdns:+set PEERDNS=9.9.9.10} \
                 ${sourcefilter:+set NOSOURCEFILTER=1} \
                 ${delegate:+set DELEGATE=0} \
-                nodefaultroute \
+                defaultroute \
                 $demand $persist maxfail $maxfail \
                 ${holdoff:+holdoff "$holdoff"} \
                 ${username:+user "$username" password "$password"} \
@@ -159,12 +159,6 @@ ppp_generic_setup() {
                 ${ipv6:+ipv6-up-script /lib/netifd/ppp6-up} \
                 ip-down-script /lib/netifd/ppp-down \
                 ${ipv6:+ipv6-down-script /lib/netifd/ppp-down} \
-                mtu 1492 \
-                mru 1492 \
-                deflate 15,15 \
-                bsdcomp 15,15 \
-                vj-max-slots 16 \
-                predictor1 \
                 "$@" $pppd_options
 }
 
