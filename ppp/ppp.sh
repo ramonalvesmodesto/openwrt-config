@@ -149,7 +149,7 @@ ppp_generic_setup() {
                 ${peerdns:+set PEERDNS=9.9.9.10} \
                 ${sourcefilter:+set NOSOURCEFILTER=1} \
                 ${delegate:+set DELEGATE=0} \
-                defaultroute \
+                nodefaultroute \
                 $demand $persist maxfail $maxfail \
                 ${holdoff:+holdoff "$holdoff"} \
                 ${username:+user "$username" password "$password"} \
