@@ -6,6 +6,7 @@ tc qdisc add dev eth0 root noqueue
 tc qdisc add dev br-lan root noqueue
 tc qdisc add dev eth1 root noqueue
 tc qdisc add dev eth0 root noqueue
+tc qdisc add dev pppoe-wan root noqueue
 
 ethtool -s eth1 mdix auto
 ethtool -s eth0 mdix off
@@ -21,5 +22,4 @@ ethtool -s lan4 mdix off
 
 ethtool -s eth1 speed 2500 autoneg off
 
-/etc/jool/setupjool.sh
 exit 0
