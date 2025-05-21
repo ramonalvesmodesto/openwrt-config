@@ -6,14 +6,20 @@ tc qdisc add dev eth0 root noqueue
 tc qdisc add dev br-lan root noqueue
 tc qdisc add dev eth1 root noqueue
 tc qdisc add dev eth0 root noqueue
-ethtool -A eth1 rx on tx on
-ethtool -A eth0 rx on tx on
-ethtool -K eth0 rx-gro-list off && ethtool -K eth1 rx-gro-list off && ethtool -K eth0 lro off && ethtool -K eth1 lro off
-ethtool -G eth0 rx 1024 tx 1024
-ethtool -G eth1 rx 1492
-ethtool -K eth0 tso off
-ethtool -K eth1 tso off
-#ethtool -C eth0 rx-usecs 0 tx-usecs 0
-#ethtool -C eth1 rx-usecs 0 tx-usecs 0
 
+ethtool -s eth1 mdix auto
+ethtool -s eth0 mdix off
+ethtool -s lan1 mdix off
+ethtool -s lan2 mdix off
+ethtool -s lan3 mdix off
+ethtool -s lan4 mdix off
+
+#ethtool --pause lan1 tx off rx off
+#ethtool --pause lan2 tx off rx off
+#ethtool --pause lan3 tx off rx off
+#ethtool --pause lan4 tx off rx off
+
+ethtool -s eth1 speed 2500 autoneg off
+
+/etc/jool/setupjool.sh
 exit 0
