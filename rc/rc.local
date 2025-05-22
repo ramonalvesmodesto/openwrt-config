@@ -20,7 +20,7 @@ ethtool -s lan4 mdix off
 #ethtool --pause lan3 tx off rx off
 #ethtool --pause lan4 tx off rx off
 
-ethtool -K eth1 tso off
+ethtool -K eth1 tso on
 
 ethtool -s eth1 speed 2500 autoneg off
 
