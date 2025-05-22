@@ -24,4 +24,6 @@ ethtool -s eth1 speed 2500 autoneg off
 sleep 120
 tc qdisc add dev pppoe-wan root noqueue
 
+eval "echo root; sleep 3; echo root; echo 'ip link set dev ep0 qlen 10000'; echo 'ip link set dev ep0  up'; echo 'ip link set dev pon0 qlen 10000'; echo 'ip link set dev pon0 up'; echo 'ip link set dev eth0 qlen 10000'; echo 'ip link set dev eth0 up'; echo 'ip link set dev br0 qlen 10000'; echo 'ip link set dev br0 up'; echo 'ip link set dev eth0.0 qlen 10000'; echo 'ip link set dev eth0.0 up'; echo 'ip link set dev pon0.0 qlen 10000'; echo 'ip link set dev pon0.0 up'; sleep 5;" | telnet 192.168.8.1 
+
 exit 0
