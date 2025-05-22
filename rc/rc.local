@@ -4,9 +4,7 @@ sleep 10
 #echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 tc qdisc add dev eth0 root noqueue
 tc qdisc add dev br-lan root noqueue
-tc qdisc add dev eth1 root noqueue
 tc qdisc add dev eth0 root noqueue
-tc qdisc add dev pppoe-wan root noqueue
 
 ethtool -s eth1 mdix auto
 ethtool -s eth0 mdix off
@@ -21,8 +19,9 @@ ethtool -s lan4 mdix off
 #ethtool --pause lan4 tx off rx off
 
 ethtool -K eth1 tso off
-
 ethtool -s eth1 speed 2500 autoneg off
 
-/etc/jool/setupjool.sh
+sleep 120
+tc qdisc add dev pppoe-wan root noqueue
+
 exit 0
