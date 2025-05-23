@@ -2,9 +2,6 @@
 # the system init finished. By default this file does nothing.
 sleep 10
 #echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
-tc qdisc add dev eth0 root noqueue
-tc qdisc add dev br-lan root noqueue
-tc qdisc add dev eth0 root noqueue
 
 ethtool -s eth1 mdix auto
 ethtool -s eth0 mdix off
@@ -22,7 +19,6 @@ ethtool -K eth1 tso off
 ethtool -s eth1 speed 2500 autoneg off
 
 sleep 120
-tc qdisc add dev pppoe-wan root noqueue
 
 eval "echo root; sleep 3; echo root; echo 'ip link set dev ep0 qlen 10000'; echo 'ip link set dev ep0  up'; echo 'ip link set dev pon0 qlen 10000'; echo 'ip link set dev pon0 up'; echo 'ip link set dev eth0 qlen 10000'; echo 'ip link set dev eth0 up'; echo 'ip link set dev br0 qlen 10000'; echo 'ip link set dev br0 up'; echo 'ip link set dev eth0.0 qlen 10000'; echo 'ip link set dev eth0.0 up'; echo 'ip link set dev pon0.0 qlen 10000'; echo 'ip link set dev pon0.0 up'; sleep 5;" | telnet 192.168.8.1 
 
