@@ -132,7 +132,7 @@ egress() {
     $TC qdisc add dev $IFACE parent 1:14 handle 140: $QDISC \
         `get_limit ${ELIMIT}` `get_target "${ETARGET}" ${UPLINK}` `get_ecn ${EECN}` `get_quantum 300` `get_flows ${BK_RATE}` ${EQDISC_OPTS} memory_limit 2000Mbit ce_threshold 241us limit 100000000
 
-    $TC qdisc add dev $IFACE parent 1:15 handle 160: $QDISC \
+    $TC qdisc add dev $IFACE parent 1:15 handle 150: $QDISC \
         `get_limit ${ELIMIT}` `get_target "${ETARGET}" ${UPLINK}` `get_ecn ${EECN}` `get_quantum 300` `get_flows ${BK_RATE}` ${EQDISC_OPTS} memory_limit 2000Mbit ce_threshold 241us limit 100000000
 
     $TC qdisc add dev $IFACE parent 1:16 handle 160: $QDISC \
