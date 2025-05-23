@@ -120,11 +120,11 @@ egress() {
     $TC class add dev $IFACE parent 1:1 classid 1:13 htb $LQ rate ${BK_RATE}kbit ceil ${BE_CEIL}kbit $BURST prio 3 `get_htb_adsll_string`
 
     $TC qdisc add dev $IFACE parent 1:11 handle 110: $QDISC \
-        `get_limit ${ELIMIT}` `get_target "${ETARGET}" ${UPLINK}` `get_ecn ${EECN}` `get_quantum 300` `get_flows ${PRIO_RATE}` ${EQDISC_OPTS} drop_batch 20000 memory_limit 2000Mbit ce_threshold 241us limit 30000
+        `get_limit ${ELIMIT}` `get_target "${ETARGET}" ${UPLINK}` `get_ecn ${EECN}` `get_quantum 300` `get_flows ${PRIO_RATE}` ${EQDISC_OPTS} memory_limit 2000Mbit ce_threshold 241us
     $TC qdisc add dev $IFACE parent 1:12 handle 120: $QDISC \
-        `get_limit ${ELIMIT}` `get_target "${ETARGET}" ${UPLINK}` `get_ecn ${EECN}` `get_quantum 300` `get_flows ${BE_RATE}` ${EQDISC_OPTS} drop_batch 20000 memory_limit 2000Mbit ce_threshold 241us limit 30000
+        `get_limit ${ELIMIT}` `get_target "${ETARGET}" ${UPLINK}` `get_ecn ${EECN}` `get_quantum 300` `get_flows ${BE_RATE}` ${EQDISC_OPTS} memory_limit 2000Mbit ce_threshold 241us
     $TC qdisc add dev $IFACE parent 1:13 handle 130: $QDISC \
-        `get_limit ${ELIMIT}` `get_target "${ETARGET}" ${UPLINK}` `get_ecn ${EECN}` `get_quantum 300` `get_flows ${BK_RATE}` ${EQDISC_OPTS} drop_batch 20000 memory_limit 2000Mbit ce_threshold 241us limit 30000
+        `get_limit ${ELIMIT}` `get_target "${ETARGET}" ${UPLINK}` `get_ecn ${EECN}` `get_quantum 300` `get_flows ${BK_RATE}` ${EQDISC_OPTS} memory_limit 2000Mbit ce_threshold 241us
 
     # Need a catchall rule
 
@@ -199,7 +199,7 @@ ingress() {
         $TC class add dev $DEV parent 1: classid 1:1 htb $LQ rate ${DOWNLINK}kbit ceil ${DOWNLINK}kbit $BURST `get_htb_adsll_string`
         $TC class add dev $DEV parent 1:1 classid 1:10 htb $LQ rate ${DOWNLINK}kbit ceil ${DOWNLINK}kbit $BURST prio 0 `get_htb_adsll_string`
         $TC qdisc add dev $DEV parent 1:10 handle 110: $QDISC \
-            `get_limit ${ILIMIT}` `get_target "${ITARGET}" ${DOWNLINK}` `get_ecn ${IECN}` `get_flows ${DOWNLINK}` ${IQDISC_OPTS} drop_batch 20000 memory_limit 2000Mbit ce_threshold 241us limit 30000
+            `get_limit ${ILIMIT}` `get_target "${ITARGET}" ${DOWNLINK}` `get_ecn ${IECN}` `get_flows ${DOWNLINK}` ${IQDISC_OPTS} memory_limit 2000Mbit ce_threshold 241us
     else
         sqm_debug "Perform DSCP based filtering on ingress. (3-tier classification)"
         $TC qdisc add dev $DEV root handle 1: `get_stab_string` htb default 12
