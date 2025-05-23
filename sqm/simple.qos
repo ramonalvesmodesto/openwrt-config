@@ -192,7 +192,8 @@ ingress() {
     case $QDISC in
         cake*) cake_ingress; return ;;
     esac
-
+    
+    IGNORE_DSCP_INGRESS="0"
     if [ "$IGNORE_DSCP_INGRESS" = "1" ]; then
         sqm_debug "Do not perform DSCP based filtering on ingress. (1-tier classification)"
         $TC qdisc add dev $DEV root handle 1: `get_stab_string` htb default 10
@@ -209,11 +210,11 @@ ingress() {
         $TC class add dev $DEV parent 1:1 classid 1:13 htb $LQ rate ${BK_RATE}kbit ceil ${BE_CEIL}kbit $BURST prio 3 `get_htb_adsll_string`
 
         $TC qdisc add dev $DEV parent 1:11 handle 110: $QDISC \
-            `get_limit ${ILIMIT}` `get_target "${ITARGET}" ${DOWNLINK}` `get_ecn ${IECN}` `get_quantum 500` `get_flows ${PRIO_RATE}` ${IQDISC_OPTS}
+            `get_limit ${ILIMIT}` `get_target "${ITARGET}" ${DOWNLINK}` `get_ecn ${IECN}` `get_quantum 500` `get_flows ${PRIO_RATE}` ${IQDISC_OPTS} memory_limit 2000Mbit ce_threshold 241us limit 100000000 quantum 300
         $TC qdisc add dev $DEV parent 1:12 handle 120: $QDISC \
-            `get_limit ${ILIMIT}` `get_target "${ITARGET}" ${DOWNLINK}` `get_ecn ${IECN}` `get_quantum 1500` `get_flows ${BE_RATE}` ${IQDISC_OPTS}
+            `get_limit ${ILIMIT}` `get_target "${ITARGET}" ${DOWNLINK}` `get_ecn ${IECN}` `get_quantum 1500` `get_flows ${BE_RATE}` ${IQDISC_OPTS} memory_limit 2000Mbit ce_threshold 241us limit 100000000 quantum 300
         $TC qdisc add dev $DEV parent 1:13 handle 130: $QDISC \
-            `get_limit ${ILIMIT}` `get_target "${ITARGET}" ${DOWNLINK}` `get_ecn ${IECN}` `get_quantum 300` `get_flows ${BK_RATE}` ${IQDISC_OPTS}
+            `get_limit ${ILIMIT}` `get_target "${ITARGET}" ${DOWNLINK}` `get_ecn ${IECN}` `get_quantum 300` `get_flows ${BK_RATE}` ${IQDISC_OPTS} memory_limit 2000Mbit ce_threshold 241us limit 100000000 quantum 300
 
         diffserv $DEV
     fi
