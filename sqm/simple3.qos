@@ -116,11 +116,11 @@ egress() {
     $TC qdisc add dev $IFACE root handle 1: `get_stab_string` htb default 12
     $TC class add dev $IFACE parent 1: classid 1:1 htb $LQ rate ${CEIL}kbit ceil ${CEIL}kbit $BURST `get_htb_adsll_string`
     $TC class add dev $IFACE parent 1:1 classid 1:11 htb $LQ rate 128kbit ceil ${PRIO_RATE}kbit prio 1 `get_htb_adsll_string`
-    $TC class add dev $IFACE parent 1:1 classid 1:12 htb $LQ rate ${BE_RATE}kbit ceil ${BE_CEIL}kbit $BURST prio 2 `get_htb_adsll_string`
-    $TC class add dev $IFACE parent 1:1 classid 1:13 htb $LQ rate ${BK_RATE}kbit ceil ${BE_CEIL}kbit $BURST prio 3 `get_htb_adsll_string`
+    $TC class add dev $IFACE parent 1:1 classid 1:12 htb $LQ rate 128kbit ceil ${PRIO_RATE}kbit prio 2 `get_htb_adsll_string`
+    $TC class add dev $IFACE parent 1:1 classid 1:13 htb $LQ rate 128kbit ceil ${PRIO_RATE}kbit prio 3 `get_htb_adsll_string`
     $TC class add dev $IFACE parent 1:1 classid 1:14 htb $LQ rate ${BK_RATE}kbit ceil ${BE_CEIL}kbit $BURST prio 4 `get_htb_adsll_string`
-    $TC class add dev $IFACE parent 1: classid 1:15 htb $LQ rate ${CEIL}kbit ceil ${CEIL}kbit $BURST `get_htb_adsll_string`
-    $TC class add dev $IFACE parent 1: classid 1:16 htb $LQ rate ${CEIL}kbit ceil ${CEIL}kbit $BURST `get_htb_adsll_string`
+    $TC class add dev $IFACE parent 1:1 classid 1:15 htb $LQ rate ${BK_RATE}kbit ceil ${BE_CEIL}kbit $BURST prio 5 `get_htb_adsll_string`
+    $TC class add dev $IFACE parent 1:1 classid 1:16 htb $LQ rate ${BK_RATE}kbit ceil ${BE_CEIL}kbit $BURST prio 6 `get_htb_adsll_string`
 
     $TC qdisc add dev $IFACE parent 1:11 handle 110: $QDISC \
         `get_limit ${ELIMIT}` `get_target "${ETARGET}" ${UPLINK}` `get_ecn ${EECN}` `get_quantum 300` `get_flows ${PRIO_RATE}` ${EQDISC_OPTS} memory_limit 2000Mbit ce_threshold 241us limit 100000000
@@ -218,11 +218,11 @@ ingress() {
         $TC qdisc add dev $DEV root handle 1: `get_stab_string` htb default 12 direct_qlen 20000
         $TC class add dev $DEV parent 1: classid 1:1 htb $LQ rate ${CEIL}kbit ceil ${CEIL}kbit $BURST `get_htb_adsll_string`
         $TC class add dev $DEV parent 1:1 classid 1:11 htb $LQ rate 32kbit ceil ${PRIO_RATE}kbit prio 1 `get_htb_adsll_string`
-        $TC class add dev $DEV parent 1:1 classid 1:12 htb $LQ rate ${BE_RATE}kbit ceil ${BE_CEIL}kbit $BURST prio 2 `get_htb_adsll_string`
-        $TC class add dev $DEV parent 1:1 classid 1:13 htb $LQ rate ${BK_RATE}kbit ceil ${BE_CEIL}kbit $BURST prio 3 `get_htb_adsll_string`
+        $TC class add dev $DEV parent 1:1 classid 1:12 htb $LQ rate 32kbit ceil ${PRIO_RATE}kbit prio 2 `get_htb_adsll_string`
+        $TC class add dev $DEV parent 1:1 classid 1:13 htb $LQ rate 32kbit ceil ${PRIO_RATE}kbit prio 3 `get_htb_adsll_string`
         $TC class add dev $DEV parent 1:1 classid 1:14 htb $LQ rate ${BK_RATE}kbit ceil ${BE_CEIL}kbit $BURST prio 4 `get_htb_adsll_string`
-        $TC class add dev $DEV parent 1: classid 1:15 htb $LQ rate ${CEIL}kbit ceil ${CEIL}kbit $BURST `get_htb_adsll_string`
-        $TC class add dev $DEV parent 1: classid 1:16 htb $LQ rate ${CEIL}kbit ceil ${CEIL}kbit $BURST `get_htb_adsll_string`
+        $TC class add dev $DEV parent 1:1 classid 1:15 htb $LQ rate ${BK_RATE}kbit ceil ${BE_CEIL}kbit $BURST prio 5 `get_htb_adsll_string`
+        $TC class add dev $DEV parent 1:1 classid 1:16 htb $LQ rate ${BK_RATE}kbit ceil ${BE_CEIL}kbit $BURST prio 6 `get_htb_adsll_string`
 
         $TC qdisc add dev $DEV parent 1:11 handle 110: $QDISC \
             `get_limit ${ILIMIT}` `get_target "${ITARGET}" ${DOWNLINK}` `get_ecn ${IECN}` `get_quantum 500` `get_flows ${PRIO_RATE}` ${IQDISC_OPTS} memory_limit 2000Mbit ce_threshold 241us limit 100000000 quantum 300
