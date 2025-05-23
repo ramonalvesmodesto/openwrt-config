@@ -203,7 +203,7 @@ ingress() {
             `get_limit ${ILIMIT}` `get_target "${ITARGET}" ${DOWNLINK}` `get_ecn ${IECN}` `get_flows ${DOWNLINK}` ${IQDISC_OPTS} memory_limit 2000Mbit ce_threshold 241us limit 100000000
     else
         sqm_debug "Perform DSCP based filtering on ingress. (3-tier classification)"
-        $TC qdisc add dev $DEV root handle 1: `get_stab_string` htb default 12
+        $TC qdisc add dev $DEV root handle 1: `get_stab_string` htb default 12 direct_qlen 20000
         $TC class add dev $DEV parent 1: classid 1:1 htb $LQ rate ${CEIL}kbit ceil ${CEIL}kbit $BURST `get_htb_adsll_string`
         $TC class add dev $DEV parent 1:1 classid 1:11 htb $LQ rate 32kbit ceil ${PRIO_RATE}kbit prio 1 `get_htb_adsll_string`
         $TC class add dev $DEV parent 1:1 classid 1:12 htb $LQ rate ${BE_RATE}kbit ceil ${BE_CEIL}kbit $BURST prio 2 `get_htb_adsll_string`
