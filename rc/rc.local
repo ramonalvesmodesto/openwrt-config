@@ -3,6 +3,9 @@
 sleep 10
 #echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 
+rmmod  sfp.ko
+insmod sfp.ko
+
 ethtool -s eth1 mdix auto
 ethtool -s eth0 mdix off
 ethtool -s lan1 mdix off
