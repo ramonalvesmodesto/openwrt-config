@@ -3,10 +3,10 @@ config irqbalance 'irqbalance'
 
         # Level at which irqbalance partitions cache domains.
         # Default is 2 (L2$).
-        1option deepestcache '1'
+        #option deepestcache '1'
 
         # The default value is 10 seconds
-        option interval '1'
+        #option interval '1'
 
         # Specify excluded cpulist
         #option banned_cpulist '0'
