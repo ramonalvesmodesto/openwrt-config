@@ -23,4 +23,12 @@ sleep 120
 
 eval "echo root; sleep 3; echo root; echo 'ip link set dev ep0 qlen 20000'; echo 'ip link set dev ep0  up'; echo 'ip link set dev pon0 qlen 20000'; echo 'ip link set dev pon0 up'; echo 'ip link set dev eth0 qlen 20000'; echo 'ip link set dev eth0 up'; echo 'ip link set dev br0 qlen 20000'; echo 'ip link set dev br0 up'; echo 'ip link set dev eth0.0 qlen 20000'; echo 'ip link set dev eth0.0 up'; echo 'ip link set dev pon0.0 qlen 20000'; echo 'ip link set dev pon0.0 up'; sleep 5;" | telnet 192.168.8.1 
 
+aql_txq_limit_l=2500
+aql_txq_limit_h=8500
+for ac in 0 1 2 3; do echo $ac $aql_txq_limit_l $aql_txq_limit_h > /sys/kernel/debug/ieee80211/phy0/aql_txq_limit; done
+for ac in 0 1 2 3; do echo $ac $aql_txq_limit_l $aql_txq_limit_h > /sys/kernel/debug/ieee80211/phy1/aql_txq_limit; done
+
+ip a show pppoe-wan | grep inet | awk -F"peer" '{print $1}' | awk -F"inet " '{print $2}' > /etc/dnscrypt-proxy2/blocked-ips.txt
+/etc/init.d/dnscrypt-proxy restart
+
 exit 0
