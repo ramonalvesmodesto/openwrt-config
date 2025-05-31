@@ -28,7 +28,7 @@
 ##
 ## Remove the leading # first to enable this; lines starting with # are ignored.
 
-server_names = ['quad9-dnscrypt-ip4-filter-pri', 'quad9-dnscrypt-ip6-filter-pri']
+server_names = ['quad9-dnscrypt-ip4-filter-pri']
 #server_names = ['dnscry.pt-saopaulo-ipv4', 'cs-brazil', 'adguard-dns-unfiltered', 'nextdns']
 #server_names = ['quad9-doh-ip4-port5053-nofilter-pri', 'quad9-doh-ip4-port5053-nofilter-alt']
 #server_names = ['googgle', 'cloudflare']
@@ -41,7 +41,7 @@ server_names = ['quad9-dnscrypt-ip4-filter-pri', 'quad9-dnscrypt-ip6-filter-pri'
 ## To listen to all IPv4 addresses, use `listen_addresses = ['0.0.0.0:53']`
 ## To listen to all IPv4+IPv6 addresses, use `listen_addresses = ['[::]:53']`
 
-listen_addresses = ['127.0.0.53:53','[::53]:53']
+listen_addresses = ['127.0.0.53:53000','[::53]:53000']
 
 
 ## Maximum number of simultaneous client connections to accept
@@ -354,7 +354,7 @@ log_files_max_backups = 1
 ## This makes things faster when there is no IPv6 connectivity, but can
 ## also cause reliability issues with some stub resolvers.
 
-block_ipv6 = false
+block_ipv6 = true
 
 
 ## Immediately respond to A and AAAA queries for host names without a domain name
@@ -584,7 +584,7 @@ blocked_names_file = 'blocked-names.txt'
 
 ## Path to the file of blocking rules (absolute, or relative to the same directory as the config file)
 
-# blocked_ips_file = 'blocked-ips.txt'
+blocked_ips_file = 'blocked-ips.txt'
 
 
 ## Optional path to a file logging blocked queries
