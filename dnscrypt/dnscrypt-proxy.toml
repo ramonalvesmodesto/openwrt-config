@@ -28,8 +28,8 @@
 ##
 ## Remove the leading # first to enable this; lines starting with # are ignored.
 
-server_names = ['quad9-dnscrypt-ip4-filter-pri']
-#server_names = ['cs-dc']
+#server_names = ['quad9-dnscrypt-ip4-filter-pri']
+server_names = ['cloudflare']
 #server_names = ['dnscry.pt-saopaulo-ipv4', 'cs-brazil', 'adguard-dns-unfiltered', 'nextdns']
 #server_names = ['quad9-doh-ip4-port5053-nofilter-pri', 'quad9-doh-ip4-port5053-nofilter-alt']
 #server_names = ['googgle', 'cloudflare']
