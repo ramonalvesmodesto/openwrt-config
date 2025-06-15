@@ -29,6 +29,7 @@
 ## Remove the leading # first to enable this; lines starting with # are ignored.
 
 server_names = ['quad9-dnscrypt-ip4-filter-pri']
+#server_names = ['cs-dc']
 #server_names = ['dnscry.pt-saopaulo-ipv4', 'cs-brazil', 'adguard-dns-unfiltered', 'nextdns']
 #server_names = ['quad9-doh-ip4-port5053-nofilter-pri', 'quad9-doh-ip4-port5053-nofilter-alt']
 #server_names = ['googgle', 'cloudflare']
@@ -125,7 +126,7 @@ http3 = false
 ## Don't increase it too much. 10000 is the highest reasonable value.
 ## A timeout below 5000 is not recommended.
 
-timeout = 5000
+timeout = 1000
 
 
 ## Keepalive for HTTP (HTTPS, HTTP/2, HTTP/3) queries, in seconds
