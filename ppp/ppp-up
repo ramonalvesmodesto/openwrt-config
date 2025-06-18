@@ -10,12 +10,12 @@ proto_set_keep 1
 	[ -n "$DNS1" ] && proto_add_dns_server "$DNS1"
 	[ -n "$DNS2" -a "$DNS1" != "$DNS2" ] && proto_add_dns_server "$DNS2"
 
-	mount -o remount,ro /overlay
+	mount -o remount,rw /overlay
 	uci set firewall.@nat[0].snat_ip=$IPLOCAL
 	uci commit
 	/etc/init.d/firewall restart
 	/etc/init.d/dnscrypt-proxy restart
-	mount -o remount,rw /overlay
+	mount -o remount,ro /overlay
 }
 proto_send_update "$PPP_IPPARAM"
 
