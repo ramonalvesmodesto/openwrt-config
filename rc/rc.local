@@ -14,7 +14,7 @@ ethtool -s lan4 mdix off
 
 #eval "echo root; sleep 3; echo root; echo 'ip link set dev ep0 qlen 20000'; echo 'ip link set dev ep0 mtu 9000'; echo 'ip link set dev ep0  up'; echo 'ip link set dev pon0 qlen 20000'; echo 'ip link set dev pon0 mtu 9000'; echo 'ip link set dev pon0 up'; echo 'ip link set dev eth0 qlen 20000'; echo 'ip link set dev eth0 mtu 9000'; echo 'ip link set dev eth0 up'; echo 'ip link set dev br0 qlen 20000'; echo 'ip link set dev br0 mtu 9000';echo 'ip link set dev br0 up'; echo 'ip link set dev eth0.0 qlen 20000'; echo 'ip link set dev eth0.0 mtu 9000';  echo 'ip link set dev eth0.0 up'; echo 'ip link set dev pon0.0 qlen 20000'; echo 'ip link set dev pon0.0 mtu 9000'; echo 'ip link set dev pon0.0 up'; sleep 5;" | telnet 192.168.8.1 
 
-ip link set pppoe-wan qlen 20000
-mount -o remount,ro /overlay
+#ip link set pppoe-wan qlen 20000
+#mount -o remount,ro /overlay
 
 exit 0
