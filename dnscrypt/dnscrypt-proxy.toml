@@ -64,7 +64,7 @@ max_clients = 250
 ipv4_servers = true
 
 # Use servers reachable over IPv6 -- Do not enable if you don't have IPv6 connectivity
-ipv6_servers = false
+ipv6_servers = true
 
 # Use servers implementing the DNSCrypt protocol
 dnscrypt_servers = true
@@ -97,7 +97,7 @@ disabled_server_names = []
 ## (dnscrypt-proxy will always encrypt everything even using UDP), and can
 ## only increase latency.
 
-force_tcp = false
+force_tcp = true
 
 
 ## Enable *experimental* support for HTTP/3 (DoH3, HTTP over QUIC)
@@ -126,12 +126,12 @@ http3 = false
 ## Don't increase it too much. 10000 is the highest reasonable value.
 ## A timeout below 5000 is not recommended.
 
-timeout = 1000
+timeout = 10000
 
 
 ## Keepalive for HTTP (HTTPS, HTTP/2, HTTP/3) queries, in seconds
 
-keepalive = 30
+keepalive = 90
 
 
 ## Add EDNS-client-subnet information to outgoing queries
@@ -231,7 +231,7 @@ cert_refresh_delay = 240
 ##
 ## Keep tls_cipher_suite undefined to let the app automatically choose secure parameters.
 
-# tls_cipher_suite = [52392, 49199]
+tls_cipher_suite = [52392]
 
 
 ## Log TLS key material to a file, for debugging purposes only.
@@ -355,7 +355,7 @@ log_files_max_backups = 1
 ## This makes things faster when there is no IPv6 connectivity, but can
 ## also cause reliability issues with some stub resolvers.
 
-block_ipv6 = true
+block_ipv6 = false
 
 
 ## Immediately respond to A and AAAA queries for host names without a domain name
@@ -889,7 +889,7 @@ skip_incompatible = false
 
 ## Static prefix(es) as Pref64::/n CIDRs
 
-prefix = ['64:ff9b::/96']
+#prefix = ['64:ff9b::/96']
 
 ## DNS64-enabled resolver(s) to discover Pref64::/n CIDRs
 ## These resolvers are used to query for Well-Known IPv4-only Name (WKN) "ipv4only.arpa." to discover only.
