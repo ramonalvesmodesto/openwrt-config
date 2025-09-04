@@ -16,4 +16,12 @@ ethtool -s lan4 mdix off
 
 #mount -o remount,ro /overlay
 
+sleep 120
+
+NEW_IP=$(curl 'https://api.ipify.org?format=text')
+HEKEY=9QyUDJzoeW59SIGh
+HEUSER=ramonalvesmodesto
+HETUNNEL=989247
+curl -k -s "https://ipv4.tunnelbroker.net/nic/update?username=$HEUSER&password=$HEKEY&hostname=$HETUNNEL&myip=$NEW_IP"
+
 exit 0
