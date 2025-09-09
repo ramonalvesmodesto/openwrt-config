@@ -28,12 +28,8 @@
 ##
 ## Remove the leading # first to enable this; lines starting with # are ignored.
 
-#server_names = ['quad9-dnscrypt-ip4-filter-pri']
-server_names = ['cloudflare']
-#server_names = ['dnscry.pt-saopaulo-ipv4', 'cs-brazil', 'adguard-dns-unfiltered', 'nextdns']
-#server_names = ['quad9-doh-ip4-port5053-nofilter-pri', 'quad9-doh-ip4-port5053-nofilter-alt']
-#server_names = ['googgle', 'cloudflare']
-
+# server_names = ['scaleway-fr', 'google', 'yandex', 'cloudflare']
+server_names = ['quad9-dnscrypt-ip4-filter-pri']
 
 ## List of local addresses and ports to listen to. Can be IPv4 and/or IPv6.
 ## Example with both IPv4 and IPv6:
@@ -42,7 +38,7 @@ server_names = ['cloudflare']
 ## To listen to all IPv4 addresses, use `listen_addresses = ['0.0.0.0:53']`
 ## To listen to all IPv4+IPv6 addresses, use `listen_addresses = ['[::]:53']`
 
-listen_addresses = ['127.0.0.53:53000','[::53]:53000']
+listen_addresses = ['127.0.0.53:53000']
 
 
 ## Maximum number of simultaneous client connections to accept
@@ -64,7 +60,7 @@ max_clients = 250
 ipv4_servers = true
 
 # Use servers reachable over IPv6 -- Do not enable if you don't have IPv6 connectivity
-ipv6_servers = true
+ipv6_servers = false
 
 # Use servers implementing the DNSCrypt protocol
 dnscrypt_servers = true
@@ -97,7 +93,7 @@ disabled_server_names = []
 ## (dnscrypt-proxy will always encrypt everything even using UDP), and can
 ## only increase latency.
 
-force_tcp = true
+force_tcp = false
 
 
 ## Enable *experimental* support for HTTP/3 (DoH3, HTTP over QUIC)
@@ -124,14 +120,13 @@ http3 = false
 ## If you have a network with *a lot* of latency, you may need to
 ## increase this. Startup may be slower if you do so.
 ## Don't increase it too much. 10000 is the highest reasonable value.
-## A timeout below 5000 is not recommended.
 
-timeout = 10000
+timeout = 5000
 
 
 ## Keepalive for HTTP (HTTPS, HTTP/2, HTTP/3) queries, in seconds
 
-keepalive = 90
+keepalive = 30
 
 
 ## Add EDNS-client-subnet information to outgoing queries
@@ -154,13 +149,13 @@ keepalive = 90
 ## Randomly choose 1 of the fastest 2, half, n, 1 or all live servers by latency.
 ## The response quality still depends on the server itself.
 
-lb_strategy = 'p2'
+# lb_strategy = 'p2'
 
 ## Set to `true` to constantly try to estimate the latency of all the resolvers
 ## and adjust the load-balancing parameters accordingly, or to `false` to disable.
 ## Default is `true` that makes 'p2' `lb_strategy` work well.
 
-lb_estimator = true
+# lb_estimator = true
 
 
 ## Log level (0-6, default: 2 - 0 is very verbose, 6 only contains fatal errors)
@@ -185,12 +180,6 @@ lb_estimator = true
 ## Use the system logger (syslog on Unix, Event Log on Windows)
 
 # use_syslog = true
-
-
-## The maximum concurrency to reload certificates from the resolvers.
-## Default is 10.
-
-# cert_refresh_concurrency = 10
 
 
 ## Delay, in minutes, after which certificates are reloaded
@@ -224,14 +213,13 @@ cert_refresh_delay = 240
 ## 52393 = TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
 ##
 ## On non-Intel CPUs such as MIPS routers and ARM systems (Android, Raspberry Pi...),
-## uncommenting the following line may improve performance.
+## the following suite improves performance.
 ## This may also help on Intel CPUs running 32-bit operating systems.
-## However, this can cause issues fetching sources or connecting to some HTTP servers,
-## and should not be set on regular CPUs.
 ##
-## Keep tls_cipher_suite undefined to let the app automatically choose secure parameters.
+## Keep tls_cipher_suite empty if you have issues fetching sources or
+## connecting to some DoH servers.
 
-tls_cipher_suite = [52392]
+# tls_cipher_suite = [52392, 49199]
 
 
 ## Log TLS key material to a file, for debugging purposes only.
@@ -355,7 +343,7 @@ log_files_max_backups = 1
 ## This makes things faster when there is no IPv6 connectivity, but can
 ## also cause reliability issues with some stub resolvers.
 
-block_ipv6 = false
+block_ipv6 = true
 
 
 ## Immediately respond to A and AAAA queries for host names without a domain name
@@ -414,12 +402,12 @@ reject_ttl = 10
 
 ## Enable a DNS cache to reduce latency and outgoing traffic
 
-cache = false
+cache = true
 
 
 ## Cache size
 
-cache_size = 409600
+cache_size = 40960
 
 
 ## Minimum TTL for cached entries
@@ -429,7 +417,7 @@ cache_min_ttl = 2400
 
 ## Maximum TTL for cached entries
 
-cache_max_ttl = 86400
+cache_max_ttl = 172800
 
 
 ## Minimum TTL for negatively cached entries
@@ -439,7 +427,7 @@ cache_neg_min_ttl = 60
 
 ## Maximum TTL for negatively cached entries
 
-cache_neg_max_ttl = 600
+cache_neg_max_ttl = 1000
 
 
 
@@ -557,7 +545,7 @@ format = 'tsv'
 
 ## Path to the file of blocking rules (absolute, or relative to the same directory as the config file)
 
-blocked_names_file = 'blocked-names.txt'
+# blocked_names_file = 'blocked-names.txt'
 
 
 ## Optional path to a file logging blocked queries
@@ -585,7 +573,7 @@ blocked_names_file = 'blocked-names.txt'
 
 ## Path to the file of blocking rules (absolute, or relative to the same directory as the config file)
 
-#blocked_ips_file = 'blocked-ips.txt'
+# blocked_ips_file = 'blocked-ips.txt'
 
 
 ## Optional path to a file logging blocked queries
@@ -719,7 +707,7 @@ blocked_names_file = 'blocked-names.txt'
     urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md', 'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md']
     cache_file = 'public-resolvers.md'
     minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
-    refresh_delay = 73
+    refresh_delay = 72
     prefix = ''
 
   ### Anonymized DNS relays
@@ -728,7 +716,7 @@ blocked_names_file = 'blocked-names.txt'
     urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/relays.md', 'https://download.dnscrypt.info/resolvers-list/v3/relays.md']
     cache_file = 'relays.md'
     minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
-    refresh_delay = 73
+    refresh_delay = 72
     prefix = ''
 
   ### ODoH (Oblivious DoH) servers and relays
@@ -737,13 +725,13 @@ blocked_names_file = 'blocked-names.txt'
   #   urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/odoh-servers.md', 'https://download.dnscrypt.info/resolvers-list/v3/odoh-servers.md']
   #   cache_file = 'odoh-servers.md'
   #   minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
-  #   refresh_delay = 73
+  #   refresh_delay = 24
   #   prefix = ''
   # [sources.odoh-relays]
   #   urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/odoh-relays.md', 'https://download.dnscrypt.info/resolvers-list/v3/odoh-relays.md']
   #   cache_file = 'odoh-relays.md'
   #   minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
-  #   refresh_delay = 73
+  #   refresh_delay = 24
   #   prefix = ''
 
   ### Quad9
@@ -762,14 +750,6 @@ blocked_names_file = 'blocked-names.txt'
   #   cache_file = 'parental-control.md'
   #   minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
 
-  ### dnscry.pt servers - See https://www.dnscry.pt
-
-  #  [sources.dnscry-pt-resolvers]
-  #    urls = ["https://www.dnscry.pt/resolvers.md"]
-  #    minisign_key = "RWQM31Nwkqh01x88SvrBL8djp1NH56Rb4mKLHz16K7qsXgEomnDv6ziQ"
-  #    cache_file = "dnscry.pt-resolvers.md"
-  #    refresh_delay = 73
-  #    prefix = "dnscry.pt-"
 
 
 #########################################
@@ -789,7 +769,7 @@ blocked_names_file = 'blocked-names.txt'
 ## The list below enables workarounds to make non-relayed usage more reliable
 ## until the servers are fixed.
 
-fragments_blocked = ['cisco', 'cisco-ipv6', 'cisco-familyshield', 'cisco-familyshield-ipv6', 'cisco-sandbox', 'cleanbrowsing-adult', 'cleanbrowsing-adult-ipv6', 'cleanbrowsing-family', 'cleanbrowsing-family-ipv6', 'cleanbrowsing-security', 'cleanbrowsing-security-ipv6']
+fragments_blocked = ['cisco', 'cisco-ipv6', 'cisco-familyshield', 'cisco-familyshield-ipv6', 'cleanbrowsing-adult', 'cleanbrowsing-adult-ipv6', 'cleanbrowsing-family', 'cleanbrowsing-family-ipv6', 'cleanbrowsing-security', 'cleanbrowsing-security-ipv6']
 
 
 
@@ -846,10 +826,9 @@ fragments_blocked = ['cisco', 'cisco-ipv6', 'cisco-familyshield', 'cisco-familys
 ## select (relay,server) pairs that work well and fit your own criteria (close by or
 ## in different countries, operated by different entities, on distinct ISPs...)
 
-# routes = [
-#    { server_name='example-server-1', via=['anon-example-1', 'anon-example-2'] },
-#    { server_name='example-server-2', via=['sdns://gRIxMzcuNzQuMjIzLjIzNDo0NDM'] }
-# ]
+ routes = [
+    { server_name='*', via=['anon-cs-brazil'] }
+ ]
 
 
 ## Skip resolvers incompatible with anonymization instead of using them directly
@@ -889,7 +868,7 @@ skip_incompatible = false
 
 ## Static prefix(es) as Pref64::/n CIDRs
 
-#prefix = ['64:ff9b::/96']
+# prefix = ['64:ff9b::/96']
 
 ## DNS64-enabled resolver(s) to discover Pref64::/n CIDRs
 ## These resolvers are used to query for Well-Known IPv4-only Name (WKN) "ipv4only.arpa." to discover only.
@@ -911,3 +890,4 @@ skip_incompatible = false
 
   # [static.myserver]
   #   stamp = 'sdns://AQcAAAAAAAAAAAAQMi5kbnNjcnlwdC1jZXJ0Lg'
+
