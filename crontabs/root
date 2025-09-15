@@ -3,6 +3,7 @@
 # and touch a file in /etc so clock will be set
 # properly to 4:31 on reboot before cron starts.
 #30 3 * * * eval "echo root; sleep 3; echo root; sleep 3; echo reboot; sleep 5;" | telnet 192.168.8.1
-05 3 * * * sleep 70 && touch /etc/banner && reboot
+#05 3 * * * sleep 70 && touch /etc/banner && reboot
+5 * * * * sh -c 'echo 1 > /proc/sys/vm/drop_caches'
 00 4 * * * curl --output /etc/unbound/root.hints https://www.internic.net/domain/named.cache
 00 4 * * * curl --output /var/lib/unbound/root.hints https://www.internic.net/domain/named.cache
