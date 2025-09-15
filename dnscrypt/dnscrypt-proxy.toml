@@ -126,7 +126,7 @@ timeout = 5000
 
 ## Keepalive for HTTP (HTTPS, HTTP/2, HTTP/3) queries, in seconds
 
-keepalive = 30
+keepalive = 120
 
 
 ## Add EDNS-client-subnet information to outgoing queries
@@ -890,4 +890,3 @@ skip_incompatible = false
 
   # [static.myserver]
   #   stamp = 'sdns://AQcAAAAAAAAAAAAQMi5kbnNjcnlwdC1jZXJ0Lg'
-
