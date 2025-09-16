@@ -18,5 +18,6 @@ ethtool -K lan1 rx-udp-gro-forwarding on
 ethtool -K lan2 rx-udp-gro-forwarding on
 ethtool -K lan3 rx-udp-gro-forwarding on
 ethtool -K lan4 rx-udp-gro-forwarding on
+ethtool -K eth1 rx-gro-list off
 
 exit 0
