@@ -66,7 +66,7 @@ ipv6_servers = false
 dnscrypt_servers = true
 
 # Use servers implementing the DNS-over-HTTPS protocol
-doh_servers = true
+doh_servers = false
 
 # Use servers implementing the Oblivious DoH protocol
 odoh_servers = false
@@ -126,7 +126,7 @@ timeout = 5000
 
 ## Keepalive for HTTP (HTTPS, HTTP/2, HTTP/3) queries, in seconds
 
-keepalive = 120
+keepalive = 5
 
 
 ## Add EDNS-client-subnet information to outgoing queries
