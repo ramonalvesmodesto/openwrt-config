@@ -11,6 +11,7 @@
 #sleep 120
 #eval "echo root; sleep 3; echo root; echo 'ip link set dev ep0 qlen 20000'; echo 'ip link set dev ep0 mtu 9000'; echo 'ip link set dev ep0  up'; echo 'ip link set dev pon0 qlen 20000'; echo 'ip link set dev pon0 mtu 9000'; echo 'ip link set dev pon0 up'; echo 'ip link set dev eth0 qlen 20000'; echo 'ip link set dev eth0 mtu 9000'; echo 'ip link set dev eth0 up'; echo 'ip link set dev br0 qlen 20000'; echo 'ip link set dev br0 mtu 9000';echo 'ip link set dev br0 up'; echo 'ip link set dev eth0.0 qlen 20000'; echo 'ip link set dev eth0.0 mtu 9000';  echo 'ip link set dev eth0.0 up'; echo 'ip link set dev pon0.0 qlen 20000'; echo 'ip link set dev pon0.0 mtu 9000'; echo 'ip link set dev pon0.0 up'; sleep 5;" | telnet 192.168.8.1 
 #mount -o remount,ro /overlay
+
 ethtool -K eth1 rx-udp-gro-forwarding on
 ethtool -K phy0-ap0 rx-udp-gro-forwarding on
 ethtool -K phy1-ap0 rx-udp-gro-forwarding on
@@ -19,5 +20,9 @@ ethtool -K lan2 rx-udp-gro-forwarding on
 ethtool -K lan3 rx-udp-gro-forwarding on
 ethtool -K lan4 rx-udp-gro-forwarding on
 ethtool -K eth1 rx-gro-list off
+
+ethtool -K eth1 tcp-segmentation-offload off
+ethtool -K eth1 generic-segmentation-offload off
+ethtool -K eth1 generic-receive-offload off
 
 exit 0
