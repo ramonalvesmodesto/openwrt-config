@@ -29,3 +29,5 @@ service firewall restart
 uci del firewall.@zone[1].masq='1'
 ```
 O ppp-up acima já possui modificações para ip dinâmico, então a variável WAN_PFX será atualizado com o ip de sua interface pppoe cada vez que ela reiniciar
+
+![imagem](https://github.com/ramonmodesto99999/openwrt-config/blob/main/ntp/Captura%20de%20tela%20de%202025-09-19%2010-13-30.png)
