@@ -2,7 +2,7 @@ Fonte [https://openwrt.org/docs/guide-user/firewall/fw3_configurations/fw3_nat#n
 
 Caso de uso: pppoe com CGNAT, é necessário modificar o arquivo ppp-up para ips dinâmicos
 
-:warning: Realize backup para recuperação em caso em configuração não funcione em seu roteador
+:warning: Realize backup para recuperação em caso a configuração não funcione em seu roteador
 
 #### NTP
 ```bash
