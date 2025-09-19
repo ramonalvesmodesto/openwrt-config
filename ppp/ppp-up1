@@ -10,7 +10,7 @@ proto_set_keep 1
 	[ -n "$DNS1" ] && proto_add_dns_server "$DNS1"
 	[ -n "$DNS2" -a "$DNS1" != "$DNS2" ] && proto_add_dns_server "$DNS2"
 
-	sed -i '2s/.*/WAN_PFX="$IPLOCAL"/' /etc/nftables.d/npt.sh
+	sed -i "2s/.*/WAN_PFX=\"$IPLOCAL\"/" /etc/nftables.d/npt.sh
 	uci commit
 	/etc/init.d/firewall restart
 }
