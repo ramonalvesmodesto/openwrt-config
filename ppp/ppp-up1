@@ -13,6 +13,10 @@ proto_set_keep 1
 	sed -i "2s/.*/WAN_PFX=\"$IPLOCAL\"/" /etc/nftables.d/npt.sh
 	uci commit
 	/etc/init.d/firewall restart
+
+    /etc/init.d/cloud stop 
+    /etc/init.d/cloud start
+
 }
 proto_send_update "$PPP_IPPARAM"
 
