@@ -41,4 +41,7 @@ ethtool -K lan4 tcp-segmentation-offload off
 ethtool -K lan4 generic-segmentation-offload off
 ethtool -K lan4 generic-receive-offload off
 
+sleep 15
+/etc/init.d/cloud start
+
 exit 0
