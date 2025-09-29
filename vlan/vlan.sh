@@ -26,11 +26,6 @@ do
         uci set dhcp."vlan$increment".start='100'
         uci set dhcp."vlan$increment".limit='150'
         uci set dhcp."vlan$increment".leasetime='12h'
-        uci set dhcp."vlan$increment".ra='server'
-        uci set dhcp."vlan$increment".ra_default='1'
-        uci add_list dhcp."vlan$increment".ra_flags='managed-config'
-        uci add_list dhcp."vlan$increment".ra_flags='other-config'
-        uci set dhcp."vlan$increment".dhcpv6='server'
         #### Firewall ####
         uci add firewall zone # =cfg0fdc81
         uci set firewall.@zone[-1].name="vlan$increment"
@@ -51,9 +46,6 @@ do
         uci set network."vlan$increment".device="br-lan.$increment"
         uci set network."vlan$increment".ipaddr="192.168.$increment.1"
         uci set network."vlan$increment".netmask='255.255.255.0'
-        uci add_list network."vlan$increment".dns='8.8.8.8'
-        uci set network."vlan$increment".ip6assign='60'
-        uci add_list network."vlan$increment".ip6class='local'
     fi
 
     echo $portlan
