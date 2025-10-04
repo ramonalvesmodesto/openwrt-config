@@ -1,4 +1,4 @@
-# Configurações opnwrt
+# Configurações openwrt
 
 ```bash
 uci set wireless.radio0.country='BR'
