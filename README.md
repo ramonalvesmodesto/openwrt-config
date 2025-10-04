@@ -50,13 +50,6 @@ apk add parted lsblk resize2fs cfdisk fdisc
 
 uci set irqbalance.irqbalance.enabled='1'
 
-#### Cloudflared instancia ####
-wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/refs/heads/main/cloud/cloud -O /etc/init.d/cloud
-sed -i "7s/.*/    procd_set_param command \/usr\/bin\/cloudflared --no-autoupdate --protocol http2 tunnel run --token eyJhIjoiMjJlMjVlM2M0OTliZTcwMmRlNTg0MTM0N2MwZTNmNzAiLCJ0IjoiYWY2MTJjNDEtMjA1OS00MWIzLWE1MmQtODNjMjFhMjI5YjQ1IiwicyI6Ik5tSTRZemcxTm1RdE5XUm1NaTAwTnpCbExXRmpNVEF0TlRReU5Ea3lZVFkxWlRJMiJ9/" /etc/init.d/cloud
-chmod +x /etc/init.d/cloud
-service cloud enable
-service cloud start
-
 cp /www/luci-static/bootstrap/cascade.css /www/luci-static/bootstrap/cascade.css.bk
 wget https://raw.githubusercontent.com/ramonmodesto18/openwrt-config/refs/heads/main/css/cascade.css -O /www/luci-static/bootstrap/cascade.css
 
