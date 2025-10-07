@@ -1,8 +1,4 @@
 # Put your custom commands here that should be executed once \n
 # the system init finished. By default this file does nothing.
 
-/bin/sh -c "echo 65000 > /sys/module/tcp_cubic/parameters/initial_ssthresh"
-/bin/sh -c "echo 1500 > /sys/module/tcp_cubic/parameters/beta"
-/etc/init.d/sysctl restart
-
 exit 0
