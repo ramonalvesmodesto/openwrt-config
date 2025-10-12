@@ -5,7 +5,7 @@ NUMBER=1
 
 if [ $DIA -gt 0 ] && [ $DIA -le 20 ]; then
     NUMBER=$DIA
-elif [ $DIA -gt 21 ] && [ $DIA -le 30 ]; then
+elif [ $DIA -gt 21 ] && [ $DIA -le 29 ]; then
     A=$(echo "$DIA" | grep -o .)
     NUMBER=$(echo "$A" | tail -n 1)
 else
