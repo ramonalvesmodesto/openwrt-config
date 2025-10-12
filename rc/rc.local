@@ -11,5 +11,6 @@ echo 400 > /sys/kernel/slab/PING/cpu_partial
 echo 400 > /sys/kernel/slab/PINGv6/cpu_partial
 echo 400 > /sys/kernel/slab/wg_peer/cpu_partial
 echo "nameserver 172.64.36.1" > /etc/resolv.conf
+echo "nameserver 2a06:98c1:54::1f:8122" >> /etc/resolv.conf
 
 exit 0
