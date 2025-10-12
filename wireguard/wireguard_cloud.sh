@@ -7,9 +7,9 @@ NUMBER1=$(uci get network.@wireguard_cloud[0].endpoint_host | cut -d'.' -f4)
 if [ $DIA -eq $NUMBER1 ]; then
     logger 'Script exit wireguard_cloud.sh'
     exit 0
-elif [ $DIA -gt 0 ] && [ $DIA -le 20 ]; then
+elif [ $DIA -ge 1 ] && [ $DIA -le 20 ]; then
     NUMBER=$DIA
-elif [ $DIA -gt 21 ] && [ $DIA -le 29 ]; then
+elif [ $DIA -ge 21 ] && [ $DIA -le 29 ]; then
     A=$(echo "$DIA" | grep -o .)
     NUMBER=$(echo "$A" | tail -n 1)
 else
