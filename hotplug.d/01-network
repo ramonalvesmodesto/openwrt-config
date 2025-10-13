@@ -1,5 +1,6 @@
 #!/bin/sh
 
+sleep 60
 echo '1600' > /sys/kernel/slab/fq_flow_cache/cpu_partial
 echo 400 > /sys/kernel/slab/TCP/cpu_partial
 echo 400 > /sys/kernel/slab/TCPv6/cpu_partial
