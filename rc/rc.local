@@ -16,4 +16,7 @@ echo "nameserver 2a06:98c1:54::1f:8122" >> /etc/resolv.conf
 echo '4' > /proc/irq/119/smp_affinity
 echo '4' > /proc/irq/139/smp_affinity
 
+echo 256 | tee /sys/class/net/*/queues/rx-0/rps_flow_cnt
+echo f | tee /sys/class/net/*/queues/rx-0/rps_cpus
+
 exit 0
