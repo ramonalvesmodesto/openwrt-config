@@ -6,6 +6,6 @@ echo 25000 > /sys/class/thermal/thermal_zone0/trip_point_4_temp
 # cpu temperature in [25..32] Celsius degrees, normal rotation speed
 echo 32000 > /sys/class/thermal/thermal_zone0/trip_point_3_temp
 # cpu temperature above 50 Celsius degrees, max rotation speed
-echo 40000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
+echo 50000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
 
 exit 0
