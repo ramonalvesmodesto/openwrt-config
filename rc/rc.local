@@ -1,4 +1,7 @@
 # Put your custom commands here that should be executed once \n
 # the system init finished. By default this file does nothing.
 
+echo 05000 > /sys/class/thermal/thermal_zone0/trip_point_1_temp
+echo 90000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
+
 exit 0
