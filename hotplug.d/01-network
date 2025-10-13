@@ -1,0 +1,19 @@
+echo '1600' > /sys/kernel/slab/fq_flow_cache/cpu_partial
+echo 400 > /sys/kernel/slab/TCP/cpu_partial
+echo 400 > /sys/kernel/slab/TCPv6/cpu_partial
+echo 400 > /sys/kernel/slab/UDP/cpu_partial
+echo 400 > /sys/kernel/slab/UDPv6/cpu_partial
+echo 400 > /sys/kernel/slab/UDPLITEv6/cpu_partial
+echo 400 > /sys/kernel/slab/PING/cpu_partial
+echo 400 > /sys/kernel/slab/PINGv6/cpu_partial
+echo 400 > /sys/kernel/slab/wg_peer/cpu_partial
+echo "nameserver 172.64.36.1" > /etc/resolv.conf
+echo "nameserver 2a06:98c1:54::1f:8122" >> /etc/resolv.conf
+
+echo '4' > /proc/irq/119/smp_affinity
+echo '4' > /proc/irq/139/smp_affinity
+echo '2' > /proc/irq/124/smp_affinity
+echo '8' > /proc/irq/125/smp_affinity
+
+echo 256 | tee /sys/class/net/*/queues/rx-0/rps_flow_cnt
+echo f | tee /sys/class/net/*/queues/rx-0/rps_cpus
