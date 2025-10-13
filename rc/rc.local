@@ -1,7 +1,11 @@
 # Put your custom commands here that should be executed once \n
 # the system init finished. By default this file does nothing.
 
-echo 05000 > /sys/class/thermal/thermal_zone0/trip_point_1_temp
-echo 90000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
+# cpu temterature below 25 Celsius degrees, no rotation
+echo 25000 > /sys/class/thermal/thermal_zone0/trip_point_4_temp
+# cpu temperature in [25..32] Celsius degrees, normal rotation speed
+echo 32000 > /sys/class/thermal/thermal_zone0/trip_point_3_temp
+# cpu temperature above 50 Celsius degrees, max rotation speed
+echo 50000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
 
 exit 0
