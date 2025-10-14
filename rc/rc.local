@@ -1,4 +1,4 @@
-# Put your custom commands here that should be executed once
+# Put your custom commands here that should be executed once \n
 # the system init finished. By default this file does nothing.
 
 # cpu temterature below 25 Celsius degrees, no rotation
@@ -7,5 +7,22 @@ echo 25000 > /sys/class/thermal/thermal_zone0/trip_point_4_temp
 echo 32000 > /sys/class/thermal/thermal_zone0/trip_point_3_temp
 # cpu temperature above 50 Celsius degrees, max rotation speed
 echo 50000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
+
+ethtool -K sfp1 rx-udp-gro-forwarding on
+ethtool -K sfp1 rx-gro-list on
+ethtool -K lan1 rx-udp-gro-forwarding on
+ethtool -K lan1 rx-gro-list on
+ethtool -K lan2 rx-udp-gro-forwarding on
+ethtool -K lan2 rx-gro-list on
+ethtool -K lan3 rx-udp-gro-forwarding on
+ethtool -K lan3 rx-gro-list on
+ethtool -K lan4 rx-udp-gro-forwarding on
+ethtool -K lan4 rx-gro-list on
+ethtool -K phy0-ap0 rx-udp-gro-forwarding on
+ethtool -K phy0-ap0 rx-gro-list on
+ethtool -K cloud rx-udp-gro-forwarding on
+ethtool -K cloud rx-gro-list on
+ethtool -K pppoe-wan rx-udp-gro-forwarding on
+ethtool -K pppoe-wan rx-gro-list on
 
 exit 0
