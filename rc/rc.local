@@ -8,14 +8,26 @@ echo 32000 > /sys/class/thermal/thermal_zone0/trip_point_3_temp
 # cpu temperature above 50 Celsius degrees, max rotation speed
 echo 50000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
 
-ethtool -K sfp1 rx-udp-gro-forwarding on rx-gro-list on gro on 
-ethtool -K lan1 rx-udp-gro-forwarding on rx-gro-list on gro on
-ethtool -K lan2 rx-udp-gro-forwarding on rx-gro-list on gro on
-ethtool -K lan3 rx-udp-gro-forwarding on rx-gro-list on gro on
-ethtool -K lan4 rx-udp-gro-forwarding on rx-gro-list on gro on
-ethtool -K phy0-ap0 rx-udp-gro-forwarding on rx-gro-list on gro on
-ethtool -K cloud rx-udp-gro-forwarding on rx-gro-list on gro on
-ethtool -K pppoe-wan rx-udp-gro-forwarding on rx-gro-list on gro on
+ethtool -K sfp1 rx-udp-gro-forwarding on rx-gro-list on gro on generic-receive-offload off tx-vlan-offload off hw-tc-offload off
+ethtool -K lan1 rx-udp-gro-forwarding on rx-gro-list on gro on generic-receive-offload off tx-vlan-offload off hw-tc-offload off
+ethtool -K lan2 rx-udp-gro-forwarding on rx-gro-list on gro on generic-receive-offload off tx-vlan-offload off hw-tc-offload off
+ethtool -K lan3 rx-udp-gro-forwarding on rx-gro-list on gro on generic-receive-offload off tx-vlan-offload off hw-tc-offload off
+ethtool -K lan4 rx-udp-gro-forwarding on rx-gro-list on gro on generic-receive-offload off tx-vlan-offload off hw-tc-offload off
+ethtool -K phy0-ap0 rx-udp-gro-forwarding on rx-gro-list on gro on generic-receive-offload off tx-vlan-offload off hw-tc-offload off
+ethtool -K phy1-ap0 rx-udp-gro-forwarding on rx-gro-list on gro on generic-receive-offload off tx-vlan-offload off hw-tc-offload off
+ethtool -K cloud rx-udp-gro-forwarding on rx-gro-list on gro on generic-receive-offload off tx-vlan-offload off hw-tc-offload off
+ethtool -K pppoe-wan rx-udp-gro-forwarding on rx-gro-list on gro on generic-receive-offload off tx-vlan-offload off hw-tc-offload off
+
+ethtool --offload sfp1 tso on
+ethtool --offload lan1 tso on
+ethtool --offload lan2 tso on
+ethtool --offload lan3 tso on
+ethtool --offload lan4 tso on
+ethtool --offload phy0-ap0 tso on
+ethtool --offload phy1-ap0 tso on
+ethtool --offload cloud tso on
+ethtool --offload pppoe-wan tso on
+
 echo '2000000000' > /proc/sys/kernel/shmall
 echo '2000000000' > /proc/sys/kernel/shmmax
 
