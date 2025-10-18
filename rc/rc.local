@@ -31,6 +31,4 @@ ethtool --offload pppoe-wan tso on
 echo '2000000000' > /proc/sys/kernel/shmall
 echo '2000000000' > /proc/sys/kernel/shmmax
 
-sync && echo '3' > /proc/sys/vm/drop_caches
-
 exit 0
