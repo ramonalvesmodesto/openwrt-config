@@ -44,6 +44,6 @@ echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit
 echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_max
 echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_min
 
-echo '104' > /proc/sys/net/ipv4/tcp_limit_output_bytes
+echo '500' > /proc/sys/net/ipv4/tcp_limit_output_bytes
 
 exit 0
