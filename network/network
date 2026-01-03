@@ -52,7 +52,7 @@ config interface 'wan'
 config interface 'cloud'
 	option proto 'wireguard'
 	option private_key 'uKNY+9CwNdZXwulq5caZ5AJho97dbnTd4wyf/0v8J2Q='
-	list addresses '172.16.0.2/32'
+	list addresses '172.16.0.100/32'
 	option force_link '1'
 	option sourcefilter '1'
 
