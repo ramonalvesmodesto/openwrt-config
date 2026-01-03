@@ -31,11 +31,11 @@ config device
 
 config device
 	option name 'sfp1'
-	option macaddr 'f2:10:09:78:ac:2f'
+	option macaddr 'f2:13:09:78:ac:2f'
 
 config device
 	option name 'wan'
-	option macaddr 'f2:10:09:78:ac:2f'
+	option macaddr 'f2:13:09:78:ac:2f'
 
 config interface 'wan'
 	option device 'sfp1'
