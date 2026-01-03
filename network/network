@@ -20,9 +20,8 @@ config interface 'lan'
 	option device 'br-lan'
 	option proto 'static'
 	list ipaddr '192.168.1.1/29'
-	option ip6assign '60'
-	option ip6hint '60'
 	list dns '127.0.0.53'
+	option delegate '0'
 
 config device
 	option name 'br-wan'
@@ -52,9 +51,9 @@ config interface 'wan'
 config interface 'cloud'
 	option proto 'wireguard'
 	option private_key 'uKNY+9CwNdZXwulq5caZ5AJho97dbnTd4wyf/0v8J2Q='
-	list addresses '172.16.0.100/32'
 	option force_link '1'
 	option sourcefilter '1'
+	option addresses '172.16.1.206/32'
 
 config wireguard_cloud
 	option description 'Imported peer configuration'
