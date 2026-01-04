@@ -6,7 +6,7 @@
 NUMBERRAMDOM=$(echo $((RANDOM % 254)))
 NUMBERRAMDOMOTHER=$(echo $((RANDOM % 254)))
 NUMBERRAMDOMSIXTEEN=$(echo $((RANDOM % (127 - 16 + 1)+  16)))
-NUMBERRAMDOMDOMAIN=$(echo $((RANDOM % 3)))
+NUMBERRAMDOMDOMAIN=$(echo $((RANDOM % 5)))
 NUMBERRAMDOMNUMBER=$(echo $((RANDOM % 1)))
 NUMBERRAMDOMPORT=$(echo $((RANDOM % (5999 - 5000 + 1) + 5000)))
 
@@ -31,6 +31,8 @@ list=("server_names = ['quad9-dnscrypt-ip4-filter-pri']"
         "server_names = ['quad9-dnscrypt-ip4-nofilter-ecs-pri']" 
         "server_names = ['adguard-dns-unfiltered']"
         "server_names = ['dnscry.pt-valdivia-ipv4']"
+        "server_names = ['glogle']"
+        "server_names = ['cloudflare']"
      )
 
 listnumber=(100 172)
