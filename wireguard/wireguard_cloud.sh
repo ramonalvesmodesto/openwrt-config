@@ -31,7 +31,7 @@ list=("server_names = ['quad9-dnscrypt-ip4-filter-pri']"
         "server_names = ['quad9-dnscrypt-ip4-nofilter-ecs-pri']" 
         "server_names = ['adguard-dns-unfiltered']"
         "server_names = ['dnscry.pt-valdivia-ipv4']"
-        "server_names = ['glogle']"
+        "server_names = ['google']"
         "server_names = ['cloudflare']"
      )
 
