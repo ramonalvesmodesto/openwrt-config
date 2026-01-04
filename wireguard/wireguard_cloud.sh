@@ -5,10 +5,10 @@
 #NUMBER1=$(uci get network.@wireguard_cloud[0].endpoint_host | cut -d'.' -f4)
 NUMBERRAMDOM=$(echo $((RANDOM % 254)))
 NUMBERRAMDOMOTHER=$(echo $((RANDOM % 254)))
-NUMBERRAMDOMSIXTEEN=$(echo $((16 + RANDOM % 127)))
+NUMBERRAMDOMSIXTEEN=$(echo $((RANDOM % (127 - 16 + 1)+  16)))
 NUMBERRAMDOMDOMAIN=$(echo $((RANDOM % 3)))
 NUMBERRAMDOMNUMBER=$(echo $((RANDOM % 1)))
-NUMBERRAMDOMPORT=$(echo $((5000 + RANDOM % 5999)))
+NUMBERRAMDOMPORT=$(echo $((RANDOM % (5999 - 5000 + 1) + 5000)))
 
 
 
