@@ -8,6 +8,8 @@ NUMBERRAMDOMOTHER=$(echo $((RANDOM % 254)))
 NUMBERRAMDOMSIXTEEN=$(echo $((16 + RANDOM % 127)))
 NUMBERRAMDOMDOMAIN=$(echo $((RANDOM % 3)))
 NUMBERRAMDOMNUMBER=$(echo $((RANDOM % 1)))
+NUMBERRAMDOMPORT=$(echo $((5000 + RANDOM % 5999)))
+
 
 
 
@@ -39,6 +41,7 @@ sed -i "32 s/.*/${list[$NUMBERRAMDOMDOMAIN]}/" /etc/dnscrypt-proxy2/*.toml
 
 IPCGNAT=$NUMBER.$NUMBERRAMDOMSIXTEEN.$NUMBERRAMDOMOTHER.$NUMBERRAMDOM/32
 uci set network.cloud.addresses="$IPCGNAT"
+uci set network.cloud.listen_port="$NUMBERRAMDOMPORT"
 #uci set network.@wireguard_cloud[0].endpoint_host="$IP"
 uci commit
 service dnscrypt-proxy restart
