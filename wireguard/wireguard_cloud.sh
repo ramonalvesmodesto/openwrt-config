@@ -4,6 +4,8 @@
 #NUMBER=1
 #NUMBER1=$(uci get network.@wireguard_cloud[0].endpoint_host | cut -d'.' -f4)
 NUMBERRAMDOM=$(echo $((RANDOM % 254)))
+NUMBERRAMDOMDOMAIN=$(echo $((RANDOM % 3)))
+
 
 #if [ $DIA -eq $NUMBER1 ]; then
 #    logger 'Script exit wireguard_cloud.sh'
@@ -18,8 +20,18 @@ NUMBERRAMDOM=$(echo $((RANDOM % 254)))
 #fi
 
 #IP=162.159.192.$NUMBER
+
+list=("server_names = ['quad9-dnscrypt-ip4-filter-pri']" 
+        "server_names = ['quad9-dnscrypt-ip4-nofilter-ecs-pri']" 
+        "server_names = ['adguard-dns-unfiltered']"
+        "server_names = ['dnscry.pt-valdivia-ipv4']"
+     )
+
+sed -i "32 s/.*/${list[$NUMBERRAMDOMDOMAIN]}/" /etc/dnscrypt-proxy2/*.toml
+
 IPCGNAT=172.16.1.$NUMBERRAMDOM/32
 uci set network.cloud.addresses="$IPCGNAT"
 #uci set network.@wireguard_cloud[0].endpoint_host="$IP"
 uci commit
+service dnscrypt-proxy restart
 service network restart
