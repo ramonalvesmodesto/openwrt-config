@@ -39,7 +39,7 @@ NUMBER=${listnumber[$NUMBERRAMDOMNUMBER]}
 
 sed -i "32 s/.*/${list[$NUMBERRAMDOMDOMAIN]}/" /etc/dnscrypt-proxy2/*.toml
 
-IPCGNAT=$NUMBER.$NUMBERRAMDOMSIXTEEN.$NUMBERRAMDOMOTHER.$NUMBERRAMDOM/32
+IPCGNAT=172.$NUMBERRAMDOMSIXTEEN.$NUMBERRAMDOMOTHER.$NUMBERRAMDOM/32
 uci set network.cloud.addresses="$IPCGNAT"
 uci set network.cloud.listen_port="$NUMBERRAMDOMPORT"
 #uci set network.@wireguard_cloud[0].endpoint_host="$IP"
