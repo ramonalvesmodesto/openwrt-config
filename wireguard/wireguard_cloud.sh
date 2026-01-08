@@ -6,8 +6,7 @@
 NUMBERRAMDOM=$(echo $((RANDOM % 254)))
 NUMBERRAMDOMOTHER=$(echo $((RANDOM % 254)))
 NUMBERRAMDOMSIXTEEN=$(echo $((RANDOM % (127 - 16 + 1)+  16)))
-NUMBERRAMDOMDOMAIN=$(echo $((RANDOM % 5)))
-NUMBERRAMDOMNUMBER=$(echo $((RANDOM % 1)))
+NUMBERRAMDOMDOMAIN=$(echo $((RANDOM % 4)))
 NUMBERRAMDOMPORT=$(echo $((RANDOM % (5999 - 5000 + 1) + 5000)))
 
 
@@ -19,7 +18,7 @@ NUMBERRAMDOMPORT=$(echo $((RANDOM % (5999 - 5000 + 1) + 5000)))
 #elif [ $DIA -ge 4 ] && [ $DIA -le 20 ]; then
 #    NUMBER=$DIA
 #elif [ $DIA -ge 25 ] && [ $DIA -le 29 ]; then
-#    A=$(echo "$DIA" | grep -o .)
+#    A=$(echo "$DIA" | grep -o .)   
 #    NUMBER=$(echo "$A" | tail -n 1)
 #else
 #    NUMBER=16
@@ -27,17 +26,12 @@ NUMBERRAMDOMPORT=$(echo $((RANDOM % (5999 - 5000 + 1) + 5000)))
 
 #IP=162.159.192.$NUMBER
 
-list=("server_names = ['quad9-dnscrypt-ip4-filter-pri']" 
-        "server_names = ['quad9-dnscrypt-ip4-nofilter-ecs-pri']" 
+list=("server_names = ['quad9-dnscrypt-ip4-filter-pri']"
         "server_names = ['adguard-dns-unfiltered']"
         "server_names = ['dnscry.pt-valdivia-ipv4']"
         "server_names = ['google']"
         "server_names = ['cloudflare']"
      )
-
-listnumber=(100 172)
-
-NUMBER=${listnumber[$NUMBERRAMDOMNUMBER]}
 
 sed -i "32 s/.*/${list[$NUMBERRAMDOMDOMAIN]}/" /etc/dnscrypt-proxy2/*.toml
 
