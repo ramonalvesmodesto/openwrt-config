@@ -47,5 +47,9 @@ echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_min
 echo '500' > /proc/sys/net/ipv4/tcp_limit_output_bytes
 
 ethtool -A sfp1 autoneg off
+ethtool -A lan1 autoneg off
+ethtool -A lan2 autoneg off
+ethtool -A lan3 autoneg off
+ethtool -A lan4 autoneg off
 
 exit 0
