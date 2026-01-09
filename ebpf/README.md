@@ -1,6 +1,6 @@
 ```bash
 mkdir /etc/ebpf
 
-wget -O /etc/hotplug.d/iface/00-netstate
+wget https://raw.githubusercontent.com/ramonalvesmodesto/openwrt-config/refs/heads/main/ebpf/00-netstate -O /etc/hotplug.d/iface/00-netstate
 
 ```
