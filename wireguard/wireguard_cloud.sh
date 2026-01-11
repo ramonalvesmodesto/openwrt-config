@@ -1,4 +1,5 @@
 #!/bin/bash
+
 sleep 10
 NUMBERRAMDOM=$(echo $((RANDOM % 254)))
 NUMBERRAMDOMOTHER=$(echo $((RANDOM % 254)))
