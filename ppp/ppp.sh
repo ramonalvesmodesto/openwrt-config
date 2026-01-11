@@ -159,10 +159,8 @@ ppp_generic_setup() {
                 ${ipv6:+ipv6-up-script /lib/netifd/ppp6-up} \
                 ip-down-script /lib/netifd/ppp-down \
                 ${ipv6:+ipv6-down-script /lib/netifd/ppp-down} \
-                bsdcomp 0 \
-                deflate 0 \
-                novj \
-                novjccomp \
+                bsdcomp 15,15 \
+                deflate 15,15 \
                 "$@" $pppd_options
 }
 
