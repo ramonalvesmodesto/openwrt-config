@@ -160,6 +160,7 @@ ppp_generic_setup() {
                 ${ipv6:+ipv6-down-script /lib/netifd/ppp-down} \
                 bsdcomp 15,15 \
                 deflate 15,15 \
+                persist \
                 "$@" $pppd_options
 }
 
