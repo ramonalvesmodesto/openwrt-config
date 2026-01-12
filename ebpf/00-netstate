@@ -5,9 +5,11 @@
         }
 }
 
+
+
+sleep 10
 ip link set sfp1 xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
 ip link set wan xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
 ip link set cloud xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
 ip link set ifb4cloud xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
 ip link set pppoe-wan xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
-
