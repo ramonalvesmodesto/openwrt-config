@@ -1725,12 +1725,12 @@ th[data-sort-direction="desc"]::after {
     text-shadow: 0 1px 1px hsla(var(--background-color-high-hsl),0.75);
 }
 
-.ifacebox .ifacebox-head.active {
+.ifacebox /*.ifacebox-head.active*/ {
     background: var(--primary-color-high);
     color: var(--on-primary-color);
 }
 
-[data-darkmode="true"] .zonebadge[style],[data-darkmode="true"] .ifacebox-head[style] {
+[data-darkmode="true"] .zonebadge[style],[data-darkmode="true"] /*.ifacebox-head[style]*/ {
     background: linear-gradient(rgba(var(--zone-color-rgb),0.4),rgba(var(--zone-color-rgb),.3))!important;
 }
 
