@@ -1,1 +1,68 @@
 
+config interface 'loopback'
+        option device 'lo'
+        option proto 'static'
+        list ipaddr '127.0.0.1/8'
+
+config globals 'globals'
+        option packet_steering '0'
+
+config device
+        option name 'br-lan'
+        option type 'bridge'
+        list ports 'lan1'
+        list ports 'lan2'
+        list ports 'lan3'
+        list ports 'lan4'
+        list ports 'sfp2'
+
+config interface 'lan'
+        option device 'br-lan'
+        option proto 'static'
+        list ipaddr '192.168.1.1/29'
+        option delegate '0'
+        option ip6hint '60'
+        list dns '127.0.0.53'
+
+config device
+        option name 'br-wan'
+        option type 'bridge'
+        list ports 'sfp1'
+        list ports 'wan'
+
+config device
+        option name 'sfp1'
+        option macaddr '1C:EF:03:B5:70:CA'
+
+config device
+        option name 'wan'
+        option macaddr '1C:EF:03:B5:70:CA'
+
+config interface 'wan'
+        option device 'sfp1'
+        option proto 'pppoe'
+        option username 'ramonamodesto96'
+        option password '120426'
+        option ipv6 '0'
+        option keepalive '2 5'
+        option mtu '1420'
+        option peerdns '0'
+        option force_link '1'
+        option delegate '0'
+
+config interface 'cloud'
+        option proto 'wireguard'
+        option private_key 'uKNY+9CwNdZXwulq5caZ5AJho97dbnTd4wyf/0v8J2Q='
+        list addresses '172.16.1.100/32'
+        option force_link '1'
+        option sourcefilter '1'
+
+config wireguard_cloud
+        option description 'Imported peer configuration'
+        option public_key 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
+        list allowed_ips '0.0.0.0/0'
+        option endpoint_host '162.159.192.18'
+        option endpoint_port '4500'
+        option persistent_keepalive '25'
+        option route_allowed_ips '1'
+
