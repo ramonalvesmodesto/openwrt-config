@@ -1,0 +1,27 @@
+#!/bin/bash
+
+logger "the button was ${BUTTON} and the action was ${ACTION}"
+
+NUMBER="$(uci get system.@system[0].cronloglevel)"
+
+if [[ "$ACTION" == "released"  ]] ; then
+        exit
+fi
+
+if [[ $NUMBER -eq 5 ]] ; then
+        bash /etc/script_network_wireguard_cloud_change.sh 1
+
+        sleep 20
+        uci set system.@system[0].cronloglevel=6
+        uci commit
+        service system restart
+
+else
+        bash /etc/script_network_wireguard_cloud_change.sh 2
+        /etc/init.d/wireguard_cloud restart
+
+        sleep 20
+        uci set system.@system[0].cronloglevel=5
+        uci commit
+        service system restart
+fi
