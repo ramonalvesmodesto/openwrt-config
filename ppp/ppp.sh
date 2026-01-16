@@ -148,7 +148,7 @@ ppp_generic_setup() {
                 ${ip6table:+set IP6TABLE=$ip6table} \
                 ${sourcefilter:+set NOSOURCEFILTER=1} \
                 ${delegate:+set DELEGATE=0} \
-                nodefaultroute \
+                defaultroute \
                 $demand $persist maxfail $maxfail \
                 ${holdoff:+holdoff "$holdoff"} \
                 ${username:+user "$username" password "$password"} \
@@ -167,6 +167,7 @@ ppp_generic_setup() {
                 crtscts \
                 noproxyarp \
                 noremoteip \
+                replacedefaultroute \
                 "$@" $pppd_options
 }
 
