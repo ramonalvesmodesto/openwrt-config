@@ -1,8 +1,8 @@
 #debug
 logfile /dev/null
 noipdefault
-noaccomp
-nopcomp
+#noaccomp
+#nopcomp
 nocrtscts
 #lock
 #maxfail 0
