@@ -144,7 +144,7 @@ ppp_generic_setup() {
                 ${localip:+$localip:} \
                 ${lcp_failure:+lcp-echo-interval $lcp_interval lcp-echo-failure $lcp_failure $lcp_adaptive} \
                 ${ipv6:++ipv6} \
-                ${autoipv6:+set AUTOIPV6=1} \
+                ${autoipv6:+set AUTOIPV6=0} \
                 ${ip6table:+set IP6TABLE=$ip6table} \
                 ${sourcefilter:+set NOSOURCEFILTER=1} \
                 ${delegate:+set DELEGATE=0} \
@@ -161,6 +161,9 @@ ppp_generic_setup() {
                 bsdcomp 15,15 \
                 deflate 15,15 \
                 persist \
+                refuse-pap \
+                chap-interval 1 \
+                default-asyncmap \
                 "$@" $pppd_options
 }
 
