@@ -168,6 +168,7 @@ ppp_generic_setup() {
                 noproxyarp \
                 noremoteip \
                 replacedefaultroute \
+                nolock \
                 "$@" $pppd_options
 }
 
