@@ -164,6 +164,7 @@ ppp_generic_setup() {
                 refuse-pap \
                 chap-interval 1 \
                 default-asyncmap \
+                crtscts \
                 "$@" $pppd_options
 }
 
