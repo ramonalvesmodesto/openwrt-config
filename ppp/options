@@ -3,6 +3,6 @@ logfile /dev/null
 noipdefault
 #noaccomp
 #nopcomp
-nocrtscts
+crtscts
 #lock
 #maxfail 0
