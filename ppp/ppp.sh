@@ -165,6 +165,8 @@ ppp_generic_setup() {
                 chap-interval 1 \
                 default-asyncmap \
                 crtscts \
+                noproxyarp \
+                noremoteip \
                 "$@" $pppd_options
 }
 
