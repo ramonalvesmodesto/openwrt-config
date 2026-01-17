@@ -14,16 +14,7 @@ sleep 50
 #ip link set ifb4cloud xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
 #ip link set pppoe-wan xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
 
-ip link set cloud xdp obj /etc/objXdp/wg_le.o program xdp_wg
+#ip link set cloud xdp obj /etc/objXdp/wg_le.o program xdp_wg
 nohup bpfw -a /etc/objXdp/bpfw_le.o sfp1 >& nohup.out &
 
 NUMBER="$(uci get system.@system[0].cronloglevel)"
-
-
-if [[ $NUMBER -eq 5 ]] ; then
-        kill $(ps  | grep einat | cut -d " " -f 2)
-        nohup  einat -i pppoe-wan --hairpin-if lo br-lan >& nohup.out &
-else
-        kill $(ps  | grep einat | cut -d " " -f 2)
-        nohup  einat -i cloud --hairpin-if lo br-lan >& nohup.out &
-fi
