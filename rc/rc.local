@@ -51,5 +51,7 @@ ethtool -A lan1 autoneg off
 ethtool -A lan2 autoneg off
 ethtool -A lan3 autoneg off
 ethtool -A lan4 autoneg off
+
 nohup bpfw -a /etc/objXdp/bpfw_le.o sfp1 & exit 0
+
 exit 0
