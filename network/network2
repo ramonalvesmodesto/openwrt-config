@@ -64,5 +64,5 @@ config wireguard_cloud
         list allowed_ips '0.0.0.0/0'
         option endpoint_host 'engage.cloudflareclient.com'
         option endpoint_port '4500'
-        option persistent_keepalive '25'
+        option persistent_keepalive '20'
         option route_allowed_ips '1'
