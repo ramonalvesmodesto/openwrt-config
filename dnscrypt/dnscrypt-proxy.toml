@@ -259,7 +259,7 @@ cert_refresh_delay = 240
 ## If more than one resolver is specified, they will be tried in sequence.
 ##
 ## TL;DR: put valid standard resolver addresses here. Your actual queries will
-## not be sent there. If you're using DNSCrypt or Anonymized DNS and your
+## not be sent there. If you're using DNSCrypt or ymized DNS and your
 ## lists are up to date, these resolvers will not even be used.
 
 bootstrap_resolvers = ['9.9.9.11:53', '8.8.8.8:53']
@@ -712,7 +712,7 @@ format = 'tsv'
     refresh_delay = 72
     prefix = ''
 
-  ### Anonymized DNS relays
+  ### ymized DNS relays
 
   [sources.relays]
     urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/relays.md', 'https://download.dnscrypt.info/resolvers-list/v3/relays.md']
@@ -828,9 +828,9 @@ fragments_blocked = ['cisco', 'cisco-ipv6', 'cisco-familyshield', 'cisco-familys
 ## select (relay,server) pairs that work well and fit your own criteria (close by or
 ## in different countries, operated by different entities, on distinct ISPs...)
 
- routes = [
-    { server_name='*', via=['anon-cs-brazil'] }
- ]
+# routes = [
+#    { server_name='*', via=['anon-cs-brazil'] }
+# ]
 
 
 ## Skip resolvers incompatible with anonymization instead of using them directly
