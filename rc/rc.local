@@ -52,4 +52,14 @@ ethtool -A lan2 autoneg off
 ethtool -A lan3 autoneg off
 ethtool -A lan4 autoneg off
 
+# Block Google's STUN servers
+iptables -A OUTPUT -p udp --dport 19302 -j DROP
+
+# Block alternative STUN ports
+iptables -A OUTPUT -p udp --dport 19303:19309 -j DROP
+
+# Block TURNS (TLS) port
+iptables -A OUTPUT -p udp --dport 5349 -j DROP
+iptables -A OUTPUT -p tcp --dport 5349 -j DROP
+
 exit 0
