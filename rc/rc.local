@@ -62,4 +62,7 @@ iptables -A OUTPUT -p udp --dport 19303:19309 -j DROP
 iptables -A OUTPUT -p udp --dport 5349 -j DROP
 iptables -A OUTPUT -p tcp --dport 5349 -j DROP
 
+# Drop fragmentation
+iptables -A INPUT -f -j DROP
+
 exit 0
