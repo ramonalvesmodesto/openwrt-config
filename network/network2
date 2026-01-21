@@ -62,7 +62,7 @@ config wireguard_cloud
         option description 'Imported peer configuration'
         option public_key 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
         list allowed_ips '0.0.0.0/0'
-        option endpoint_host 'engage.cloudflareclient.com'
+        option endpoint_host '162.159.192.20'
         option endpoint_port '4500'
         option persistent_keepalive '20'
         option route_allowed_ips '1'
