@@ -21,4 +21,7 @@ iptables -A OUTPUT -p tcp --dport 5349 -j DROP
 # Drop fragmentation
 iptables -A INPUT -f -j DROP
 
+echo 'BPI-R3' > /tmp/sysinfo/model
+echo 'bpi-r3' > /tmp/sysinfo/board_name
+
 exit 0
