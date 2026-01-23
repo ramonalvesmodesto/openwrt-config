@@ -1,3 +1,9 @@
+dhcp-get-server.sh  hostapd.sh          netifd-wireless.sh  ppp6-up             utils.uc            wireless/
+dhcp.script         main.uc             ppp-down            proto/              wireless-device.uc
+dhcpv6.script       netifd-proto.sh     ppp-up              utils.sh            wireless.uc
+root@OpenWrt:~# cat /lib/netifd/proto/
+dhcp.sh       dhcpv6.sh     ppp.sh        wireguard.sh
+root@OpenWrt:~# cat /lib/netifd/proto/ppp.sh 
 #!/bin/sh
 
 [ -x /usr/sbin/pppd ] || exit 0
@@ -143,7 +149,7 @@ ppp_generic_setup() {
                 ifname "$pppname" \
                 ${localip:+$localip:} \
                 ${lcp_failure:+lcp-echo-interval $lcp_interval lcp-echo-failure $lcp_failure $lcp_adaptive} \
-                ${peerdns:+set PEERDNS=8.8.4.4} \
+                ${peerdns:+set PEERDNS=0} \
                 ${ipv6:++ipv6} \
                 ${autoipv6:+set AUTOIPV6=0} \
                 ${ip6table:+set IP6TABLE=$ip6table} \
@@ -159,17 +165,9 @@ ppp_generic_setup() {
                 ${ipv6:+ipv6-up-script /lib/netifd/ppp6-up} \
                 ip-down-script /lib/netifd/ppp-down \
                 ${ipv6:+ipv6-down-script /lib/netifd/ppp-down} \
-                bsdcomp 15,15 \
-                deflate 15,15 \
-                persist \
                 refuse-pap \
-                chap-interval 1 \
                 default-asyncmap \
-                crtscts \
-                noproxyarp \
-                noremoteip \
-                replacedefaultroute \
-                nolock \
+		holdoff 4 \
                 "$@" $pppd_options
 }
 
