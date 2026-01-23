@@ -167,7 +167,7 @@ ppp_generic_setup() {
                 ${ipv6:+ipv6-down-script /lib/netifd/ppp-down} \
                 refuse-pap \
                 default-asyncmap \
-		holdoff 4 \
+				holdoff 4 \
                 "$@" $pppd_options
 }
 
