@@ -23,6 +23,7 @@ ethtool -K phy0-ap0 rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-of
 ethtool -K phy1-ap0 rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off
 ethtool -K cloud rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off
 ethtool -K pppoe-wan rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off
+ethtool -K wan rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off
 
 ethtool --offload sfp1 tso off
 ethtool --offload lan1 tso off
