@@ -58,3 +58,6 @@ ethtool -A lan1 autoneg off
 ethtool -A lan2 autoneg off
 ethtool -A lan3 autoneg off
 ethtool -A lan4 autoneg off
+
+echo f | tee /sys/class/net/*/queues/rx-0/rps_cpus
+
