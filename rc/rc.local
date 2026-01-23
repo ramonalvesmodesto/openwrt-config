@@ -8,50 +8,6 @@ echo 32000 > /sys/class/thermal/thermal_zone0/trip_point_3_temp
 # cpu temperature above 50 Celsius degrees, max rotation speed
 echo 50000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
 
-ethtool -K sfp1 rx-udp-gro-forwarding on rx-gro-list on gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K lan1 rx-udp-gro-forwarding on rx-gro-list on gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K lan2 rx-udp-gro-forwarding on rx-gro-list on gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K lan3 rx-udp-gro-forwarding on rx-gro-list on gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K lan4 rx-udp-gro-forwarding on rx-gro-list on gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K phy0-ap0 rx-udp-gro-forwarding on rx-gro-list on gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K phy1-ap0 rx-udp-gro-forwarding on rx-gro-list on gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K cloud rx-udp-gro-forwarding on rx-gro-list on gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K pppoe-wan rx-udp-gro-forwarding on rx-gro-list on gro off tx-vlan-offload off hw-tc-offload off
-
-ethtool --offload sfp1 tso off
-ethtool --offload lan1 tso off
-ethtool --offload lan2 tso off
-ethtool --offload lan3 tso off
-ethtool --offload lan4 tso off
-ethtool --offload phy0-ap0 tso off
-ethtool --offload phy1-ap0 tso off
-ethtool --offload cloud tso off
-ethtool --offload pppoe-wan tso off
-
-echo '2000000000' > /proc/sys/kernel/shmall
-echo '2000000000' > /proc/sys/kernel/shmmax
-
-echo 0 > /proc/sys/vm/vfs_cache_pressure
-
-alias apk="apk --allow-untrusted"
-
-#1879048192
-#echo '5000' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit
-#echo '50000' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_max
-#echo '5000' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_min
-
-echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit
-echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_max
-echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_min
-
-echo '500' > /proc/sys/net/ipv4/tcp_limit_output_bytes
-
-ethtool -A sfp1 autoneg off
-ethtool -A lan1 autoneg off
-ethtool -A lan2 autoneg off
-ethtool -A lan3 autoneg off
-ethtool -A lan4 autoneg off
-
 # Block Google's STUN servers
 iptables -A OUTPUT -p udp --dport 19302 -j DROP
 
