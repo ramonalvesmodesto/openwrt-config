@@ -48,7 +48,6 @@ config interface 'wan'
 	option peerdns '0'
 	option force_link '1'
 	option delegate '0'
-	option ac_mac 'f4:de:af:d8:22:ff'
 
 config interface 'cloud'
 	option proto 'wireguard'
