@@ -8,19 +8,6 @@ echo 32000 > /sys/class/thermal/thermal_zone0/trip_point_3_temp
 # cpu temperature above 50 Celsius degrees, max rotation speed
 echo 50000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
 
-# Block Google's STUN servers
-iptables -A OUTPUT -p udp --dport 19302 -j DROP
-
-# Block alternative STUN ports
-iptables -A OUTPUT -p udp --dport 19303:19309 -j DROP
-
-# Block TURNS (TLS) port
-iptables -A OUTPUT -p udp --dport 5349 -j DROP
-iptables -A OUTPUT -p tcp --dport 5349 -j DROP
-
-# Drop fragmentation
-iptables -A INPUT -f -j DROP
-
 echo 'BPI-R3' > /tmp/sysinfo/model
 echo 'bpi-r3' > /tmp/sysinfo/board_name
 
