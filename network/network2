@@ -56,7 +56,6 @@ config interface 'cloud'
 	option force_link '1'
 	option sourcefilter '1'
 	list addresses '172.115.239.40/32'
-	option listen_port '46050'
 
 config wireguard_cloud
 	option description 'Imported peer configuration'
