@@ -149,7 +149,7 @@ ppp_generic_setup() {
                 ifname "$pppname" \
                 ${localip:+$localip:} \
                 ${lcp_failure:+lcp-echo-interval $lcp_interval lcp-echo-failure $lcp_failure $lcp_adaptive} \
-                ${peerdns:+set PEERDNS=0} \
+                ${peerdns:+set PEERDNS=1.1.1.1} \
                 ${ipv6:++ipv6} \
                 ${autoipv6:+set AUTOIPV6=0} \
                 ${ip6table:+set IP6TABLE=$ip6table} \
@@ -167,7 +167,6 @@ ppp_generic_setup() {
                 ${ipv6:+ipv6-down-script /lib/netifd/ppp-down} \
                 refuse-pap \
                 default-asyncmap \
-				holdoff 4 \
                 "$@" $pppd_options
 }
 
