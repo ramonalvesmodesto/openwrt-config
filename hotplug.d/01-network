@@ -16,6 +16,6 @@ echo '4' > /proc/irq/139/smp_affinity
 echo '2' > /proc/irq/124/smp_affinity
 echo '8' > /proc/irq/125/smp_affinity
 
-echo 256 | tee /sys/class/net/*/queues/rx-0/rps_flow_cnt
+#echo 256 | tee /sys/class/net/*/queues/rx-0/rps_flow_cnt
 echo f | tee /sys/class/net/*/queues/rx-0/rps_cpus
 
