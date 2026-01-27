@@ -15,7 +15,6 @@ if [[ $NUMBER -eq 5 ]] ; then
         uci set system.@system[0].cronloglevel=6
         uci del sqm.eth1.qdisc_really_really_advanced
         uci set sqm.eth1.interface='sfp1'
-        uci set network.wan.ac_mac='f4:de:af:d8:22:ff'
         uci commit
         service sqm restart
         service system restart
@@ -27,7 +26,6 @@ else
         sleep 20
         uci set system.@system[0].cronloglevel=5
         uci set sqm.eth1.interface='cloud'
-        uci set network.wan.ac_mac='f4:de:af:d8:22:ff'
         uci commit
         service sqm restart
         service system restart
