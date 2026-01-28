@@ -22,7 +22,6 @@ config interface 'lan'
 	list ipaddr '192.168.1.1/29'
 	list dns '127.0.0.53'
 	option ip6assign '64'
-	option ip6hint '64'
 
 config device
 	option name 'br-wan'
