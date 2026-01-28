@@ -1,8 +1,6 @@
 ```bash
 #### dnscrypt-proxy ####
 wget https://raw.githubusercontent.com/ramonmodesto18/openwrt-config/main/dnscrypt/dnscrypt-proxy.toml -O /etc/dnscrypt-proxy2/dnscrypt-proxy.toml
-echo 'dns1.turbonetminastelecom.com.br' >> /etc/dnscrypt-proxy2/blocked-names.txt
-echo 'dns2.turbonetminastelecom.com.br' >> /etc/dnscrypt-proxy2/blocked-names.txt
 
 #cp /usr/sbin/dnscrypt-proxy /etc/dnscrypt-proxy2/
 #rm /usr/sbin/dnscrypt-proxy
