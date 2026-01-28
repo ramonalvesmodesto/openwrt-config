@@ -20,7 +20,6 @@ config interface 'lan'
 	option device 'br-lan'
 	option proto 'static'
 	list ipaddr '192.168.1.1/29'
-	option ip6hint '60'
 	list dns '127.0.0.53'
 	option ip6assign '60'
 
