@@ -22,7 +22,7 @@ NUMBERRAMDOMPORT=$(echo $((RANDOM % (5999 - 5000 + 1) + 5000)))
 
 
 IPCGNAT=172.$NUMBERRAMDOMSIXTEEN.$NUMBERRAMDOMOTHER.$NUMBERRAMDOM/32
-uci set network.cloud.addresses="$IPCGNAT"
+uci set network.cloud.addresses="$IPCGNAT 2606:4700:110:8c2e:ab97:d031:8048:fe2d/128"
 #uci set network.cloud.listen_port="$NUMBERRAMDOMPORT"
 #uci set firewall.@nat[0].snat_ip="$IPCGNAT"
 uci commit
