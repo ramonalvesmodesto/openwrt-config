@@ -1,3 +1,5 @@
+Fonte: https://github.com/StevenBlack/hosts?tab=readme-ov-file
+
 ```bash
 wget https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts -O /etc/hosts
 echo '149.112.112.112:8443 ns4.edgeuno.co' >> /etc/hosts
