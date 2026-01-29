@@ -1,0 +1,8 @@
+127.0.0.1 localhost
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+149.112.112.112:8443 ns4.edgeuno.co
+9.9.9.9:8443 ns4.edgeuno.co
+127.0.0.53:53 ns4.edgeuno.co
