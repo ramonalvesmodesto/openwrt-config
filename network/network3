@@ -65,15 +65,6 @@ config interface 'cloud'
 	option awg_h3 '3'
 	option awg_h4 '4'
 
-config wireguard_cloud
-	option description 'Imported peer configuration'
-	option public_key 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
-	option endpoint_host '162.159.192.18'
-	option endpoint_port '4500'
-	option route_allowed_ips '1'
-	list allowed_ips '0.0.0.0/0'
-	list allowed_ips '::/0'
-
 config amneziawg_cloud
 	option description 'Imported peer configuration'
 	option public_key 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
