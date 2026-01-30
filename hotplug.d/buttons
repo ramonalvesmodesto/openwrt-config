@@ -19,8 +19,18 @@ if [[ $NUMBER -eq 5 ]] ; then
         service sqm restart
         service system restart
 
-else
+elif [[ $NUMBER -eq 6 ]] ; then
         bash /etc/script_network_wireguard_cloud_change.sh 2
+        /etc/init.d/wireguard_cloud restart
+
+        sleep 20
+        uci set system.@system[0].cronloglevel=7
+        uci set sqm.eth1.interface='cloud'
+        uci commit
+        service sqm restart
+        service system restart
+else
+        bash /etc/script_network_wireguard_cloud_change.sh 3
         /etc/init.d/wireguard_cloud restart
 
         sleep 20
