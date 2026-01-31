@@ -11,9 +11,4 @@ echo 50000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
 echo 'BPI-R3' > /tmp/sysinfo/model
 echo 'bpi-r3' > /tmp/sysinfo/board_name
 
-sleep 20
-/etc/init.d/podkop start
-/etc/init.d/sing-box enable
-/etc/init.d/sing-box start
-
 exit 0
