@@ -58,3 +58,6 @@ ethtool -A lan1 autoneg off
 ethtool -A lan2 autoneg off
 ethtool -A lan3 autoneg off
 ethtool -A lan4 autoneg off
+
+dns=$(uci get dhcp.@dnsmasq[0].server)
+echo "nameserver $dns" > /etc/ppp/resolv.conf
