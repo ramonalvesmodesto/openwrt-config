@@ -14,26 +14,26 @@ sleep 50
 #ip link set ifb4cloud xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
 #ip link set pppoe-wan xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
 
-ethtool -K sfp1 rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K lan1 rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K lan2 rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K lan3 rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K lan4 rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K phy0-ap0 rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K phy1-ap0 rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K cloud rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K pppoe-wan rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off
-ethtool -K wan rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off
+ethtool -K sfp1 rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off tx-gso-list off
+ethtool -K lan1 rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off tx-gso-list off
+ethtool -K lan2 rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off tx-gso-list off
+ethtool -K lan3 rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off tx-gso-list off
+ethtool -K lan4 rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off tx-gso-list off
+ethtool -K phy0-ap0 rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off tx-gso-list off
+ethtool -K phy1-ap0 rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off tx-gso-list off
+ethtool -K cloud rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off tx-gso-list off
+ethtool -K pppoe-wan rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off tx-gso-list off
+ethtool -K wan rx-udp-gro-forwarding off rx-gro-list off gro off tx-vlan-offload off hw-tc-offload off tx-gso-list off
 
-ethtool --offload sfp1 tso off
-ethtool --offload lan1 tso off
-ethtool --offload lan2 tso off
-ethtool --offload lan3 tso off
-ethtool --offload lan4 tso off
-ethtool --offload phy0-ap0 tso off
-ethtool --offload phy1-ap0 tso off
-ethtool --offload cloud tso off
-ethtool --offload pppoe-wan tso off
+ethtool --offload sfp1 tso on
+ethtool --offload lan1 tso on
+ethtool --offload lan2 tso on
+ethtool --offload lan3 tso on
+ethtool --offload lan4 tso on
+ethtool --offload phy0-ap0 tso on
+ethtool --offload phy1-ap0 tso on
+ethtool --offload cloud tso on
+ethtool --offload pppoe-wan tso on
 
 echo '2000000000' > /proc/sys/kernel/shmall
 echo '2000000000' > /proc/sys/kernel/shmmax
@@ -59,5 +59,5 @@ ethtool -A lan2 autoneg off
 ethtool -A lan3 autoneg off
 ethtool -A lan4 autoneg off
 
-dns=$(uci get dhcp.@dnsmasq[0].server)
+dns=$(uci get dhcp.@dnsmasq[0].server)                                                               
 echo "nameserver $dns" > /etc/ppp/resolv.conf
