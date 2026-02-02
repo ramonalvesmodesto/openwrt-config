@@ -35,23 +35,23 @@ ethtool --offload phy1-ap0 tso on
 ethtool --offload cloud tso on
 ethtool --offload pppoe-wan tso on
 
-echo '2000000000' > /proc/sys/kernel/shmall
-echo '2000000000' > /proc/sys/kernel/shmmax
+#echo '2000000000' > /proc/sys/kernel/shmall
+#echo '2000000000' > /proc/sys/kernel/shmmax
 
-echo 0 > /proc/sys/vm/vfs_cache_pressure
+#echo 0 > /proc/sys/vm/vfs_cache_pressure
 
-alias apk="apk --allow-untrusted"
+#alias apk="apk --allow-untrusted"
 
 #1879048192
 #echo '5000' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit
 #echo '50000' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_max
 #echo '5000' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_min
 
-echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit
-echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_max
-echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_min
+#echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit
+#echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_max
+#echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_min
 
-echo '500' > /proc/sys/net/ipv4/tcp_limit_output_bytes
+#echo '500' > /proc/sys/net/ipv4/tcp_limit_output_bytes
 
 ethtool -A sfp1 autoneg off
 ethtool -A lan1 autoneg off
