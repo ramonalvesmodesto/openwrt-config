@@ -59,5 +59,15 @@ ethtool -A lan2 autoneg off
 ethtool -A lan3 autoneg off
 ethtool -A lan4 autoneg off
 
+ip link set cloud txqueuelen 2000
+ip link set wan txqueuelen 2000
+ip link set br-lan txqueuelen 2000
+ip link set pppoe-wan txqueuelen 2000
+ip link set lan1 txqueuelen 2000
+ip link set lan2 txqueuelen 2000
+ip link set lan3 txqueuelen 2000
+ip link set lan4 txqueuelen 2000
+
+
 dns=$(uci get dhcp.@dnsmasq[0].server)                                                               
 echo "nameserver $dns" > /etc/ppp/resolv.conf
