@@ -68,6 +68,7 @@ ip link set lan2 txqueuelen 2000
 ip link set lan3 txqueuelen 2000
 ip link set lan4 txqueuelen 2000
 
+echo f | tee /proc/irq/*/smp_affinity
 
 dns=$(uci get dhcp.@dnsmasq[0].server)                                                               
 echo "nameserver $dns" > /etc/ppp/resolv.conf
