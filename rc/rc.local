@@ -10,5 +10,7 @@ echo 50000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
 
 echo 'BPI-R3' > /tmp/sysinfo/model
 echo 'bpi-r3' > /tmp/sysinfo/board_name
+/etc/jool/setupjool.sh
+mount -o remount,ro /overlay
 
 exit 0
