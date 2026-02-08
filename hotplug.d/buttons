@@ -22,7 +22,6 @@ if [[ $NUMBER -eq 5 ]] ; then
 
 elif [[ $NUMBER -eq 6 ]] ; then
         bash /etc/script_network_wireguard_cloud_change.sh 2
-        /etc/init.d/wireguard_cloud restart
 
         sleep 20
         uci set system.@system[0].cronloglevel=7
@@ -30,9 +29,9 @@ elif [[ $NUMBER -eq 6 ]] ; then
         uci commit
         service sqm restart
         service system restart
+        /etc/init.d/wireguard_cloud restart
 else
         bash /etc/script_network_wireguard_cloud_change.sh 3
-        /etc/init.d/wireguard_cloud restart
 
         sleep 20
         uci set system.@system[0].cronloglevel=5
@@ -40,4 +39,5 @@ else
         uci commit
         service sqm restart
         service system restart
+        /etc/init.d/wireguard_cloud restart
 fi
