@@ -18,6 +18,7 @@ if [[ $NUMBER -eq 5 ]] ; then
         uci commit
         service sqm restart
         service system restart
+        service network restart
 
 elif [[ $NUMBER -eq 6 ]] ; then
         bash /etc/script_network_wireguard_cloud_change.sh 2
