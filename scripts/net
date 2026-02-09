@@ -10,12 +10,12 @@ for element in "${array[@]}"; do
                 continue
         fi
 
-        ethtool --offload "$element" tso on gro on gso on
-        ethtool -A "$element" autoneg off
-        ethtool -s "$element" speed 1000 duplex full autoneg off
-        #ethtool -K "$element" rx-udp-gro-forwarding off rx-gro-list off tx-vlan-offload off hw-tc-offload off tx-gso-list off
-        #ip link set "$element" xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
-        ip link set "$element" txqueuelen 2000
+        ethtool --offload "$element" tso on gro on gso on 2>/dev/null
+        ethtool -A "$element" autoneg off 2>/dev/null
+        ethtool -s "$element" speed 1000 duplex full autoneg off 2>/dev/null
+        #ethtool -K "$element" rx-udp-gro-forwarding off rx-gro-list off tx-vlan-offload off hw-tc-offload off tx-gso-list off 2>/dev/null
+        #ip link set "$element" xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward 2>/dev/null
+        ip link set "$element" txqueuelen 10000 2>/dev/null
 done
 
 #echo '2000000000' > /proc/sys/kernel/shmall
@@ -36,7 +36,7 @@ done
 
 #echo '500' > /proc/sys/net/ipv4/tcp_limit_output_byte
 
-echo f | tee /proc/irq/*/smp_affinity
+#echo f | tee /proc/irq/*/smp_affinity
 
 dns=$(uci get dhcp.@dnsmasq[0].server)                                                               
 echo "nameserver $dns" > /etc/ppp/resolv.conf
