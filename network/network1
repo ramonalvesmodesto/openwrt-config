@@ -60,17 +60,3 @@ config interface 'wan6'
 	option norelease '1'
 	option peerdns '0'
 	option sourcefilter '0'
-
-config interface 'jool'
-	option proto 'static'
-	option device 'jool'
-	option ipaddr '192.168.164.1'
-	option netmask '255.255.255.0'
-	option ip6assign '64'
-	option ip6hint '64'
-	option ip6ifaceid 'random'
-
-config route6
-	option interface 'jool'
-	option target '64:ff9b::/96'
-	option gateway 'fe80::64'
