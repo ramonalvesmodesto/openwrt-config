@@ -1,3 +1,5 @@
+#!/bin/bash
+
 [ ifup = "$ACTION" ] && {
         uci_toggle_state network "$INTERFACE" up 1
         [ -n "$DEVICE" ] && {
