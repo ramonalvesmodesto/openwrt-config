@@ -5,35 +5,23 @@
         }
 }
 
-
-
 sleep 50
-#ip link set sfp1 xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
-#ip link set wan xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
-#ip link set cloud xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
-#ip link set ifb4cloud xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
-#ip link set pppoe-wan xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
+LIST_INTERFACE=$(ip -o link show | awk -F': ' '{print $2}' | grep -v '^lo$' | cut -d'@' -f1)
+array=($LIST_INTERFACE)
 
-#ethtool -K sfp1 rx-udp-gro-forwarding off rx-gro-list off tx-vlan-offload off hw-tc-offload off tx-gso-list off
-#ethtool -K lan1 rx-udp-gro-forwarding off rx-gro-list off tx-vlan-offload off hw-tc-offload off tx-gso-list off
-#ethtool -K lan2 rx-udp-gro-forwarding off rx-gro-list off tx-vlan-offload off hw-tc-offload off tx-gso-list off
-#ethtool -K lan3 rx-udp-gro-forwarding off rx-gro-list off tx-vlan-offload off hw-tc-offload off tx-gso-list off
-#ethtool -K lan4 rx-udp-gro-forwarding off rx-gro-list off tx-vlan-offload off hw-tc-offload off tx-gso-list off
-#ethtool -K phy0-ap0 rx-udp-gro-forwarding off rx-gro-list off tx-vlan-offload off hw-tc-offload off tx-gso-list off
-#ethtool -K phy1-ap0 rx-udp-gro-forwarding off rx-gro-list off tx-vlan-offload off hw-tc-offload off tx-gso-list off
-#ethtool -K cloud rx-udp-gro-forwarding off rx-gro-list off tx-vlan-offload off hw-tc-offload off tx-gso-list off
-#ethtool -K pppoe-wan rx-udp-gro-forwarding off rx-gro-list off tx-vlan-offload off hw-tc-offload off tx-gso-list off
-#ethtool -K wan rx-udp-gro-forwarding off rx-gro-list off tx-vlan-offload off hw-tc-offload off tx-gso-list off
+for element in "${array[@]}"; do
+        if [[ "$element" == "lo" ]]; then
+                echo "Skipping "$element""
+                continue
+        fi
 
-ethtool --offload sfp1 tso on gro on gso on
-ethtool --offload lan1 tso on gro on gso on
-ethtool --offload lan2 tso on gro on gso on
-ethtool --offload lan3 tso on gro on gso on
-ethtool --offload lan4 tso on gro on gso on
-ethtool --offload phy0-ap0 tso on gro on gso on
-ethtool --offload phy1-ap0 tso on gro on gso on
-ethtool --offload cloud tso on gro on gso on
-ethtool --offload pppoe-wan tso on gro on gso on
+        ethtool --offload "$element" tso on gro on gso on
+        ethtool -A "$element" autoneg off
+        ethtool -s "$element" speed 1000 duplex full autoneg off
+        #ethtool -K "$element" rx-udp-gro-forwarding off rx-gro-list off tx-vlan-offload off hw-tc-offload off tx-gso-list off
+        #ip link set "$element" xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
+        ip link set "$element" txqueuelen 2000
+done
 
 #echo '2000000000' > /proc/sys/kernel/shmall
 #echo '2000000000' > /proc/sys/kernel/shmmax
@@ -51,22 +39,7 @@ ethtool --offload pppoe-wan tso on gro on gso on
 #echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_max
 #echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_min
 
-#echo '500' > /proc/sys/net/ipv4/tcp_limit_output_bytes
-
-ethtool -A sfp1 autoneg off
-ethtool -A lan1 autoneg off
-ethtool -A lan2 autoneg off
-ethtool -A lan3 autoneg off
-ethtool -A lan4 autoneg off
-
-ip link set cloud txqueuelen 2000
-ip link set wan txqueuelen 2000
-ip link set br-lan txqueuelen 2000
-ip link set pppoe-wan txqueuelen 2000
-ip link set lan1 txqueuelen 2000
-ip link set lan2 txqueuelen 2000
-ip link set lan3 txqueuelen 2000
-ip link set lan4 txqueuelen 2000
+#echo '500' > /proc/sys/net/ipv4/tcp_limit_output_byte
 
 echo f | tee /proc/irq/*/smp_affinity
 
