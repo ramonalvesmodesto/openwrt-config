@@ -1,0 +1,42 @@
+#!/bin/bash
+
+sleep 50
+LIST_INTERFACE=$(ip -o link show | awk -F': ' '{print $2}' | grep -v '^lo$' | cut -d'@' -f1)
+array=($LIST_INTERFACE)
+
+for element in "${array[@]}"; do
+        if [[ "$element" == "lo" ]]; then
+                echo "Skipping "$element""
+                continue
+        fi
+
+        ethtool --offload "$element" tso on gro on gso on
+        ethtool -A "$element" autoneg off
+        ethtool -s "$element" speed 1000 duplex full autoneg off
+        #ethtool -K "$element" rx-udp-gro-forwarding off rx-gro-list off tx-vlan-offload off hw-tc-offload off tx-gso-list off
+        #ip link set "$element" xdp obj /etc/ebpf/xdp_le_ipv4_forward.o  sec ipv4_forward
+        ip link set "$element" txqueuelen 2000
+done
+
+#echo '2000000000' > /proc/sys/kernel/shmall
+#echo '2000000000' > /proc/sys/kernel/shmmax
+
+#echo 0 > /proc/sys/vm/vfs_cache_pressure
+
+#alias apk="apk --allow-untrusted"
+
+#1879048192
+#echo '5000' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit
+#echo '50000' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_max
+#echo '5000' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_min
+
+#echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit
+#echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_max
+#echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_min
+
+#echo '500' > /proc/sys/net/ipv4/tcp_limit_output_byte
+
+echo f | tee /proc/irq/*/smp_affinity
+
+dns=$(uci get dhcp.@dnsmasq[0].server)                                                               
+echo "nameserver $dns" > /etc/ppp/resolv.conf
