@@ -40,5 +40,3 @@ done
 
 dns=$(uci get dhcp.@dnsmasq[0].server)                                                               
 echo "nameserver $dns" > /etc/ppp/resolv.conf
-
-mount -o remount,ro /overlay
