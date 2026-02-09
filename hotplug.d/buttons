@@ -9,7 +9,7 @@ if [[ "$ACTION" == "released"  ]] ; then
 fi
 
 if [[ $NUMBER -eq 7 ]] ; then
-        bash /etc/script_network_wireguard_cloud_change.sh 1
+        bash /etc/scripts/script_network_wireguard_cloud_change.sh 1
 
         uci set system.@system[0].cronloglevel=5
         uci del sqm.eth1.qdisc_really_really_advanced
@@ -20,7 +20,7 @@ if [[ $NUMBER -eq 7 ]] ; then
         service network restart
 
 elif [[ $NUMBER -eq 5 ]] ; then
-        bash /etc/script_network_wireguard_cloud_change.sh 2
+        bash /etc/scripts/script_network_wireguard_cloud_change.sh 2
 
         uci set system.@system[0].cronloglevel=6
         uci set sqm.eth1.interface='cloud'
@@ -29,7 +29,7 @@ elif [[ $NUMBER -eq 5 ]] ; then
         service system restart
         /etc/init.d/wireguard_cloud restart
 elif [[ $NUMBER -eq 6 ]] ; then
-        bash /etc/script_network_wireguard_cloud_change.sh 3
+        bash /etc/scripts/script_network_wireguard_cloud_change.sh 3
 
         uci set system.@system[0].cronloglevel=7
         uci set sqm.eth1.interface='cloud'

@@ -4,6 +4,6 @@ START=55
 STOP=41
 start_service() {
     procd_open_instance
-    procd_set_param command /bin/bash /etc/wireguard_cloud.sh
+    procd_set_param command /bin/bash /etc/scripts/wireguard_cloud.sh
     procd_close_instance
 }
