@@ -73,4 +73,4 @@ config amneziawg_cloud
 	option endpoint_host '162.159.192.18'
 	option endpoint_port '4500'
 	option route_allowed_ips '1'
-	option persistent_keepalive '25'
+	option persistent_keepalive '60'
