@@ -1,10 +1,8 @@
 #!/bin/bash
 
 sleep 50
-LIST_INTERFACE=$(ip -o link show | awk -F': ' '{print $2}' | grep -v '^lo$' | cut -d'@' -f1)
+LIST_INTERFACE=$(ip -o link show | awk -F': ' '{print $2}' | grep -v '^lo$' | cut -d'@' -f1 | grep -v '^phy0-ap0$' | grep -v '^phy1-ap0$')
 array=($LIST_INTERFACE)
-array=("${array[@]/phy0-ap0}")
-array=("${array[@]/phy1-ap0}")
 
 for element in "${array[@]}"; do
         ethtool --offload "$element" tso on gro on gso on 2>/dev/null
