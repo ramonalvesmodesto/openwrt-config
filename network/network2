@@ -65,7 +65,7 @@ config wireguard_cloud
 	option public_key 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
 	list allowed_ips '0.0.0.0/0'
 	list allowed_ips '::/0'
-	option endpoint_host '162.159.192.18'
+	option endpoint_host '162.159.192.1'
 	option endpoint_port '4500'
 	option persistent_keepalive '25'
 	option route_allowed_ips '1'
