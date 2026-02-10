@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 50
+sleep 30
 LIST_INTERFACE=$(ip -o link show | awk -F': ' '{print $2}' | grep -v '^lo$' | cut -d'@' -f1 | grep -v '^phy0-ap0$' | grep -v '^phy1-ap0$')
 array=($LIST_INTERFACE)
 
@@ -35,3 +35,5 @@ done
 
 dns=$(uci get dhcp.@dnsmasq[0].server)                                                               
 echo "nameserver $dns" > /etc/ppp/resolv.conf
+
+service dnscrypt-proxy restart
