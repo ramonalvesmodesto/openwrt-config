@@ -39,7 +39,7 @@ config device
 	option macaddr '1C:EF:03:B5:70:CA'
 
 config interface 'wan'
-	option device 'sfp1'
+	option device 'br-wan'
 	option proto 'pppoe'
 	option username 'ramonamodesto96'
 	option password '120426'
