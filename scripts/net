@@ -7,11 +7,6 @@ array=("${array[@]/phy0-ap0}")
 array=("${array[@]/phy1-ap0}")
 
 for element in "${array[@]}"; do
-        if [[ "$element" == "lo" ]]; then
-                echo "Skipping "$element""
-                continue
-        fi
-
         ethtool --offload "$element" tso on gro on gso on 2>/dev/null
         ethtool -A "$element" autoneg off 2>/dev/null
         ethtool -s "$element" speed 1000 duplex full autoneg off 2>/dev/null
