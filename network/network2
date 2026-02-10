@@ -5,7 +5,9 @@ config interface 'loopback'
 	list ipaddr '127.0.0.1/8'
 
 config globals 'globals'
-	option packet_steering '0'
+	option dhcp_default_duid '0004ec00e4abd5bb472b9f56430610ecca5f'
+	option ula_prefix 'fd77:d153:cf63::/48'
+	option packet_steering '1'
 
 config device
 	option name 'br-lan'
@@ -19,9 +21,10 @@ config device
 config interface 'lan'
 	option device 'br-lan'
 	option proto 'static'
-	list ipaddr '10.0.0.1/29'
+	list ipaddr '10.0.0.1/24'
+	option ip6assign '60'
 	list dns '127.0.0.53'
-	option ip6assign '64'
+	list ip6class 'cloud'
 
 config device
 	option name 'br-wan'
@@ -31,45 +34,40 @@ config device
 
 config device
 	option name 'sfp1'
-	option macaddr '1C:EF:03:B5:70:CA'
+	option macaddr '5e:c5:0f:ab:3e:74'
 
 config device
 	option name 'wan'
-	option macaddr '1C:EF:03:B5:70:CA'
+	option macaddr '5e:c5:0f:ab:3e:74'
 
 config interface 'wan'
 	option device 'sfp1'
 	option proto 'pppoe'
 	option username 'ramonamodesto96'
 	option password '120426'
-	option ipv6 '0'
+	option ipv6 '1'
 	option keepalive '0 1'
+	option mtu '1420'
+	option ac_mac 'f4:de:af:d8:22:ff'
 	option peerdns '0'
 	option force_link '1'
-	option delegate '0'
 
 config interface 'cloud'
 	option proto 'wireguard'
 	option private_key 'uKNY+9CwNdZXwulq5caZ5AJho97dbnTd4wyf/0v8J2Q='
-	option force_link '1'
-	option sourcefilter '1'
-	list ip6prefix '2606:4700:110:8c2e:ab97:d031:8048:fe2d/64'
-	option mtu '1280'
-	list addresses '172.30.206.82/32'
+	list addresses '172.16.0.1/32'
 	list addresses '2606:4700:110:8c2e:ab97:d031:8048:fe2d/128'
+	option force_link '1'
+	option listen_port '38508'
+	list ip6prefix '2606:4700:110:8c2e:ab97:d031:8048:fe2d/64'
+	option sourcefilter '1'
 
 config wireguard_cloud
 	option description 'Imported peer configuration'
 	option public_key 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
-	option endpoint_host '162.159.192.18'
-	option endpoint_port '4500'
-	option route_allowed_ips '1'
 	list allowed_ips '0.0.0.0/0'
 	list allowed_ips '::/0'
-	option persistent_keepalive '60'
-
-config device
-        option name 'pppoe-wan'
-        option macaddr '1C:EF:03:B5:70:CA'
-        option mtu '1480'
-        option mtu6 '1480'
+	option endpoint_host '162.159.192.18'
+	option endpoint_port '4500'
+	option persistent_keepalive '25'
+	option route_allowed_ips '1'
