@@ -60,3 +60,9 @@ config interface 'wan6'
 	option norelease '1'
 	option peerdns '0'
 	option sourcefilter '0'
+
+config device
+        option name 'pppoe-wan'
+        option macaddr '1C:EF:03:B5:70:CA'
+        option mtu '1480'
+        option mtu6 '1480'

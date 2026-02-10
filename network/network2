@@ -67,3 +67,9 @@ config wireguard_cloud
 	list allowed_ips '0.0.0.0/0'
 	list allowed_ips '::/0'
 	option persistent_keepalive '60'
+
+config device
+        option name 'pppoe-wan'
+        option macaddr '1C:EF:03:B5:70:CA'
+        option mtu '1480'
+        option mtu6 '1480'

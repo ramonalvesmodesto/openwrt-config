@@ -74,3 +74,9 @@ config amneziawg_cloud
 	option endpoint_port '4500'
 	option route_allowed_ips '1'
 	option persistent_keepalive '60'
+
+config device
+        option name 'pppoe-wan'
+        option macaddr '1C:EF:03:B5:70:CA'
+        option mtu '1480'
+        option mtu6 '1480'
