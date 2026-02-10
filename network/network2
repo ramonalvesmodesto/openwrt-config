@@ -7,7 +7,6 @@ config interface 'loopback'
 config globals 'globals'
 	option dhcp_default_duid '0004ec00e4abd5bb472b9f56430610ecca5f'
 	option ula_prefix 'fd77:d153:cf63::/48'
-	option packet_steering '1'
 
 config device
 	option name 'br-lan'
@@ -58,7 +57,6 @@ config interface 'cloud'
 	list addresses '172.16.0.1/32'
 	list addresses '2606:4700:110:8c2e:ab97:d031:8048:fe2d/128'
 	option force_link '1'
-	option listen_port '38508'
 	list ip6prefix '2606:4700:110:8c2e:ab97:d031:8048:fe2d/64'
 	option sourcefilter '1'
 
