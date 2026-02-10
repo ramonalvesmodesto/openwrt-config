@@ -6,7 +6,7 @@ config interface 'loopback'
 
 config globals 'globals'
 	option dhcp_default_duid '0004ec00e4abd5bb472b9f56430610ecca5f'
-	option ula_prefix ''
+	option ula_prefix 'fd77:d153:cf63::/48'
 
 config device
 	option name 'br-lan'
