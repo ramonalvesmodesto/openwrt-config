@@ -152,12 +152,12 @@ ppp_generic_setup() {
 		${localip:+$localip:} \
 		${lcp_failure:+lcp-echo-interval $lcp_interval lcp-echo-failure $lcp_failure $lcp_adaptive} \
 		${ipv6:++ipv6} \
-		${autoipv6:+set AUTOIPV6=1} \
+		${autoipv6:+set AUTOIPV6=0} \
 		${reqprefix:+set REQPREFIX=$reqprefix} \
-		${norelease:+set NORELEASE=1} \
+		${norelease:+set NORELEASE=0} \
 		${ip6table:+set IP6TABLE=$ip6table} \
 		${peerdns:+set PEERDNS=1.1.1.1} \
-		${sourcefilter:+set NOSOURCEFILTER=1} \
+		${sourcefilter:+set NOSOURCEFILTER=0} \
 		${delegate:+set DELEGATE=0} \
 		nodefaultroute \
 		$demand $persist maxfail $maxfail \
@@ -169,7 +169,6 @@ ppp_generic_setup() {
 		${ipv6:+ipv6-up-script /lib/netifd/ppp6-up} \
 		ip-down-script /lib/netifd/ppp-down \
 		${ipv6:+ipv6-down-script /lib/netifd/ppp-down} \
-		${mtu:+mtu $mtu mru $mtu} \
 		"$@" $pppd_options
 }
 
