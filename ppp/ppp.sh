@@ -77,7 +77,7 @@ ppp_generic_setup() {
 	fi
 
 	if [ "${demand:-0}" -gt 0 ]; then
-		demand="precompiled-active-filter /etc/ppp/filter demand idle $demand"
+		demand="precompiled-active-filter demand idle $demand"
 	else
 		demand=""
 	fi
