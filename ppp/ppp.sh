@@ -137,7 +137,19 @@ ppp_generic_setup() {
 		${ipv6:+ipv6-up-script /lib/netifd/ppp6-up} \
 		ip-down-script /lib/netifd/ppp-down \
 		${ipv6:+ipv6-down-script /lib/netifd/ppp-down} \
-		"$@" $pppd_options
+		logfile /dev/null \
+		noipdefault \
+		noaccomp \
+		nopcomp \
+		nobsdcomp \
+		nopcomp \
+		novj \
+		novjccomp \
+		nopredictor1 \
+		nodeflate \
+		nocrtscts \
+		lock \
+		maxfail 0
 }
 
 ppp_generic_teardown() {
