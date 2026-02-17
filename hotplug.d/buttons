@@ -1,6 +1,6 @@
 #!/bin/bash
 
-logger "the button was ${BUTTON} and the action was ${ACTION}"
+#logger "the button was ${BUTTON} and the action was ${ACTION}"
 
 NUMBER="$(uci get system.@system[0].cronloglevel)"
 
