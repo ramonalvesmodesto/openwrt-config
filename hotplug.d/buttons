@@ -12,10 +12,7 @@ if [[ $NUMBER -eq 7 ]] ; then
         bash /etc/scripts/script_network_wireguard_cloud_change.sh 1
 
         uci set system.@system[0].cronloglevel=5
-        uci del sqm.eth1.qdisc_really_really_advanced
-        uci set sqm.eth1.interface='sfp1'
         uci commit
-        service sqm restart
         service system restart
         service network restart
 
@@ -23,9 +20,7 @@ elif [[ $NUMBER -eq 5 ]] ; then
         bash /etc/scripts/script_network_wireguard_cloud_change.sh 2
 
         uci set system.@system[0].cronloglevel=6
-        uci set sqm.eth1.interface='cloud'
         uci commit
-        service sqm restart
         service system restart
         service network restart
         #/etc/init.d/wireguard_cloud restart
@@ -33,9 +28,6 @@ elif [[ $NUMBER -eq 6 ]] ; then
         bash /etc/scripts/script_network_wireguard_cloud_change.sh 3
 
         uci set system.@system[0].cronloglevel=7
-        uci set sqm.eth1.interface='cloud'
-        uci commit
-        service sqm restart
         service system restart
         service network restart
         #/etc/init.d/wireguard_cloud restart
