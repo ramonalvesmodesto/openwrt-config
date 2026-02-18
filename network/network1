@@ -61,4 +61,4 @@ config device
     list ports 'lan3'
     list ports 'lan4'
     list ports 'sfp2'
-    option policy '802.3ad'
+    option policy 'balance-alb'
