@@ -11,11 +11,6 @@ config device
     option name 'br-lan'
     option type 'bridge'
     list ports 'bond0'
-    list ports 'lan1'
-    list ports 'lan2'
-    list ports 'lan3'
-    list ports 'lan4'
-    list ports 'sfp2'
 
 config interface 'lan'
 	option device 'br-lan'
