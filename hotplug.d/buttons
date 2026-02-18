@@ -4,34 +4,31 @@
 
 NUMBER="$(uci get system.@system[0].cronloglevel)"
 
+commit() {
+        uci commit
+        service firewall restart
+        service system restart
+        service network restart
+}
+
 if [[ "$ACTION" == "released"  ]] ; then
         exit
 fi
 
 if [[ $NUMBER -eq 7 ]] ; then
         bash /etc/scripts/script_network_wireguard_cloud_change.sh 1
-
         uci set system.@system[0].cronloglevel=5
-        uci commit
-        service firewall restart
-        service system restart
-        service network restart
+        commit
 
 elif [[ $NUMBER -eq 5 ]] ; then
         bash /etc/scripts/script_network_wireguard_cloud_change.sh 2
-
         uci set system.@system[0].cronloglevel=6
-        uci commit
-        service firewall restart
-        service system restart
-        service network restart
+        commit
         #/etc/init.d/wireguard_cloud restart
 elif [[ $NUMBER -eq 6 ]] ; then
         bash /etc/scripts/script_network_wireguard_cloud_change.sh 3
 
         uci set system.@system[0].cronloglevel=7
-        service firewall restart
-        service system restart
-        service network restart
+        commit
         #/etc/init.d/wireguard_cloud restart
 fi
