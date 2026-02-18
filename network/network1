@@ -62,7 +62,3 @@ config device
     list ports 'lan4'
     list ports 'sfp2'
     option policy '802.3ad'
-    option xmit_hash_policy 'layer2'
-    option ad_select 'stable'
-    option lacp_rate 'fast'
-    option failover_mac 'active'
