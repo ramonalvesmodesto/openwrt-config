@@ -44,7 +44,6 @@ config interface 'wan'
 	option password '120426'
 	option ipv6 '1'
 	option keepalive '0 1'
-	option mtu '1420'
 	option ac_mac 'f4:de:af:d8:22:ff'
 
 config interface 'wan6'
