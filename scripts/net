@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 sleep 30
 LIST_INTERFACE=$(ip -o link show | awk -F': ' '{print $2}' | grep -v '^lo$' | cut -d'@' -f1 | grep -v '^phy0-ap0$' | grep -v '^phy1-ap0$')
