@@ -1,8 +1,8 @@
 #!/bin/sh
 
 sleep 30
-LIST_INTERFACE=$(ip -o link show | awk -F': ' '{print $2}' | grep -v '^lo$' | cut -d'@' -f1 | grep -v '^phy0-ap0$' | grep -v '^phy1-ap0$')
-array=($LIST_INTERFACE)
+#LIST_INTERFACE=$(ip -o link show | awk -F': ' '{print $2}' | grep -v '^lo$' | cut -d'@' -f1 | grep -v '^phy0-ap0$' | grep -v '^phy1-ap0$')
+#array=($LIST_INTERFACE)
 
 #for element in "${array[@]}"; do
         #ethtool --offload "$element" tso off gro off gso off 2>/dev/null
