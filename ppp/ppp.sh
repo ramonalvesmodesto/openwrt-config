@@ -3,9 +3,9 @@
 [ -x /usr/sbin/pppd ] || exit 0
 
 [ -n "$INCLUDE_ONLY" ] || {
-	. /lib/functions.sh
-	. /lib/functions/network.sh
-	. ../netifd-proto.sh
+	. /tmp/lib/functions.sh
+	. /tmp/lib/functions/network.sh
+	. /tmp/lib/netifd/netifd-proto.sh
 	init_proto "$@"
 }
 
