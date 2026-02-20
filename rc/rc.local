@@ -11,4 +11,7 @@ echo 32000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
 echo 'BPI-R3' > /tmp/sysinfo/model
 echo 'bpi-r3' > /tmp/sysinfo/board_name
 
+cp -r /etc/dnscrypt-proxy2/ /tmp/
+cp -r /lib/netifd/ /tmp/lib/netifd/
+
 exit 0
