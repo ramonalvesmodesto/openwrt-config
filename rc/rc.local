@@ -12,6 +12,6 @@ echo 'BPI-R3' > /tmp/sysinfo/model
 echo 'bpi-r3' > /tmp/sysinfo/board_name
 
 cp -r /etc/dnscrypt-proxy2/ /tmp/
-cp -r /lib/ /tmp/lib/
+cp -r /lib/ /tmp/
 
 exit 0
