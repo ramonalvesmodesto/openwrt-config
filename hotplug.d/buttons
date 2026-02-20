@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #logger "the button was ${BUTTON} and the action was ${ACTION}"
 
@@ -17,15 +17,15 @@ if [[ "$ACTION" == "released"  ]] ; then
 fi
 
 if [[ $NUMBER -eq 7 ]] ; then
-        bash /etc/scripts/script_network_wireguard_cloud_change.sh 1
+        sh /etc/scripts/script_network_wireguard_cloud_change.sh 1
         commit 5
 
 elif [[ $NUMBER -eq 5 ]] ; then
-        bash /etc/scripts/script_network_wireguard_cloud_change.sh 2
+        sh /etc/scripts/script_network_wireguard_cloud_change.sh 2
         commit 6
         #/etc/init.d/wireguard_cloud restart
 elif [[ $NUMBER -eq 6 ]] ; then
-        bash /etc/scripts/script_network_wireguard_cloud_change.sh 3
+        sh /etc/scripts/script_network_wireguard_cloud_change.sh 3
         commit 7
         #/etc/init.d/wireguard_cloud restart
 fi
