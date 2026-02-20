@@ -14,4 +14,15 @@ echo 'bpi-r3' > /tmp/sysinfo/board_name
 cp -r /etc/dnscrypt-proxy2/ /tmp/
 cp -r /lib/ /tmp/
 
+service firewall restart
+service dropbear restart
+service system restart
+service uhttpd restart
+service sysntpd restart
+service sysctl restart
+service dnscrypt-proxy restart
+service dnsmasq enable
+service dnsmasq restart
+service network restart
+
 exit 0
