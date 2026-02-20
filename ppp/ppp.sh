@@ -120,7 +120,7 @@ ppp_generic_setup() {
 		${localip:+$localip:} \
 		${lcp_failure:+lcp-echo-interval $lcp_interval lcp-echo-failure $lcp_failure $lcp_adaptive} \
 		${ipv6:++ipv6} \
-		${autoipv6:+set AUTOIPV6=0} \
+		${autoipv6:+set AUTOIPV6=1} \
 		${reqprefix:+set REQPREFIX=$reqprefix} \
 		${norelease:+set NORELEASE=0} \
 		${ip6table:+set IP6TABLE=$ip6table} \
@@ -133,10 +133,10 @@ ppp_generic_setup() {
 		${username:+user "$username" password "$password"} \
 		${connect:+connect "$connect"} \
 		${disconnect:+disconnect "$disconnect"} \
-		ip-up-script /lib/netifd/ppp-up \
-		${ipv6:+ipv6-up-script /lib/netifd/ppp6-up} \
-		ip-down-script /lib/netifd/ppp-down \
-		${ipv6:+ipv6-down-script /lib/netifd/ppp-down} \
+		ip-up-script /tmp/lib/netifd/ppp-up \
+		${ipv6:+ipv6-up-script /tmp/lib/netifd/ppp6-up} \
+		ip-down-script /tmp/lib/netifd/ppp-down \
+		${ipv6:+ipv6-down-script /tmp/lib/netifd/ppp-down} \
 		noipdefault \
 		noaccomp \
 		nopcomp \
