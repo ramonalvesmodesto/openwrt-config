@@ -148,6 +148,9 @@ ppp_generic_setup() {
 		nodeflate \
 		nocrtscts \
 		lock \
+		chap-interval 0 \
+		chap-max-challenge 2 \
+		noauth \
 		maxfail 0 \
 		"$@" $pppd_options
 }
