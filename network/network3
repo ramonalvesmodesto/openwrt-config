@@ -1,27 +1,28 @@
-
 config interface 'loopback'
 	option device 'lo'
 	option proto 'static'
 	list ipaddr '127.0.0.1/8'
 
 config globals 'globals'
-	option dhcp_default_duid '0004ec00e4abd5bb472b9f56430610ecca5f'
+	option dhcp_default_duid '0004d0458a508820468982985241da014cf0'
+	option ula_prefix 'dd79:3ef5:6425::/48'
+	option packet_steering '0'
 
 config device
-    option name 'br-lan'
-    option type 'bridge'
-    list ports 'lan1'
+	option name 'br-lan'
+	option type 'bridge'
+	list ports 'lan1'
 	list ports 'lan2'
 	list ports 'lan3'
 	list ports 'lan4'
+	list ports 'sfp2'
 
 config interface 'lan'
 	option device 'br-lan'
 	option proto 'static'
 	list ipaddr '10.0.0.1/24'
 	option ip6assign '60'
-	list dns '127.0.0.53'
-	list ip6class 'cloud'
+	list ip6class 'local'
 
 config device
 	option name 'br-wan'
@@ -31,11 +32,11 @@ config device
 
 config device
 	option name 'sfp1'
-	option macaddr '5e:c5:0f:ab:3e:74'
+	option macaddr 'd6:83:11:dc:2d:08'
 
 config device
 	option name 'wan'
-	option macaddr '5e:c5:0f:ab:3e:74'
+	option macaddr 'd6:83:11:dc:2d:08'
 
 config interface 'wan'
 	option device 'sfp1'
@@ -43,11 +44,15 @@ config interface 'wan'
 	option username 'ramonamodesto96'
 	option password '120426'
 	option ipv6 '1'
-	option keepalive '0 1'
-	option mtu '1420'
 	option ac_mac 'f4:de:af:d8:22:ff'
-	option peerdns '0'
-	option force_link '1'
+
+config interface 'wan6'
+	option device '@wan'
+	option proto 'dhcpv6'
+	option reqaddress 'try'
+	option reqprefix 'no'
+	option norelease '1'
+
 
 config interface 'cloud'
 	option proto 'amneziawg'
