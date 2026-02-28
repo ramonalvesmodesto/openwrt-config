@@ -23,8 +23,8 @@ done
 #echo '1879048192' | tee /sys/class/net/*/queues/tx-*/byte_queue_limits/limit_min
 #echo '500' > /proc/sys/net/ipv4/tcp_limit_output_byte
 #echo f | tee /proc/irq/*/smp_affinity
-dns=$(uci get dhcp.@dnsmasq[0].server)
-echo "nameserver $dns" > /etc/ppp/resolv.conf
+echo "nameserver 127.0.0.1" > /etc/ppp/resolv.conf
+echo "nameserver ::1" >> /etc/ppp/resolv.conf
 
 service dnscrypt-proxy restart
 echo 500000 | tee /sys/class/net/*/gro_flush_timeout
