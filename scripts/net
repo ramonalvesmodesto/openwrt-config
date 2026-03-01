@@ -27,4 +27,4 @@ echo "nameserver 127.0.0.1" > /etc/ppp/resolv.conf
 echo "nameserver ::1" >> /etc/ppp/resolv.conf
 
 service dnscrypt-proxy restart
-echo 500000 | tee /sys/class/net/*/gro_flush_timeout
+echo 2000 | tee /sys/class/net/*/gro_flush_timeout
