@@ -71,3 +71,13 @@ config wireguard_guard
 	option endpoint_port '2408'
 	option persistent_keepalive '25'
 	option route_allowed_ips '1'
+
+config wireguard_guard
+        option description 'Imported peer configuration'
+        option public_key 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
+        option endpoint_host '162.159.195.1'
+        option endpoint_port '4177'
+        option persistent_keepalive '25'
+        option route_allowed_ips '1'
+        list allowed_ips '0.0.0.0/0'
+        #list allowed_ips '::/0'
