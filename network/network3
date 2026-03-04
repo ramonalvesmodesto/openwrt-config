@@ -45,7 +45,7 @@ config interface 'wan'
 	option username 'ramonamodesto96'
 	option password '120426'
 	option ipv6 '1'
-	option ac_mac 'f4:de:af:d8:22:ff'
+	option ac_mac 'c4:b8:b4:34:ab:45'
 
 config interface 'wan6'
 	option device '@wan'
