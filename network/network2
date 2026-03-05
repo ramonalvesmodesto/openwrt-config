@@ -51,7 +51,7 @@ config interface 'guard'
 	option sourcefilter '0'
 	list addresses '172.16.0.2/32'
 	#list addresses '2606:4700:110:8019:dcef:a28a:6e1f:54e9/128'
-	option mtu '1280'
+	option mtu '1420'
 	option force_link '1'
 
 config wireguard_guard
@@ -63,6 +63,7 @@ config wireguard_guard
 	option endpoint_port '2408'
 	option persistent_keepalive '0'
 	option route_allowed_ips '1'
+	option disabled '1'
 
 config wireguard_guard
         option description 'Imported peer configuration'
