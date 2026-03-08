@@ -44,7 +44,7 @@ config interface 'wan'
 	option username 'ramonamodesto96'
 	option password '120426'
 	option ipv6 '0'
-	option multipath 'backup'
+	option multipath 'on'
 	option keepalive '5 5'
 
 config interface 'guard'
