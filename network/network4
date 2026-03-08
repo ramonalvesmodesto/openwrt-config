@@ -1,0 +1,79 @@
+
+config interface 'loopback'
+	option device 'lo'
+	option proto 'static'
+	list ipaddr '127.0.0.1/8'
+
+config globals 'globals'
+	option dhcp_default_duid '0004d0458a508820468982985241da014cf0'
+	option ula_prefix 'dd79:3ef5:6425::/48'
+	option packet_steering '0'
+
+config device
+	option name 'br-lan'
+	option type 'bridge'
+	list ports 'lan1'
+	list ports 'lan2'
+	list ports 'lan3'
+	list ports 'lan4'
+	list ports 'sfp2'
+
+config interface 'lan'
+	option device 'br-lan'
+	option proto 'static'
+	list ipaddr '10.0.0.1/24'
+	option delegate '0'
+
+config device
+	option name 'br-wan'
+	option type 'bridge'
+	list ports 'sfp1'
+	list ports 'wan'
+
+config device
+	option name 'sfp1'
+	option macaddr 'd6:83:11:dc:2d:08'
+
+config device
+	option name 'wan'
+	option macaddr 'd6:83:11:dc:2d:08'
+
+config interface 'wan'
+	option device 'sfp1'
+	option proto 'pppoe'
+	option username 'ramonamodesto96'
+	option password '120426'
+	option ipv6 '0'
+	option multipath 'on'
+	option keepalive '5 5'
+
+config interface 'guard'
+	option proto 'amneziawg'
+	option private_key 'uGfkWFzbiIE3S6ewQ8rLEoF+D1JgZLKbNyizhkUk2k4='
+	option sourcefilter '0'
+	option mtu '1420'
+	option force_link '1'
+	list addresses '172.16.0.2/32'
+	option multipath 'off'
+	option awg_h3 '450000'
+	option awg_s3 '8'
+	option awg_jc '2'
+
+config amneziawg_guard
+	option description 'Imported peer configuration'
+	option public_key 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
+	option endpoint_host 'engage.cloudflareclient.com'
+	option endpoint_port '2408'
+	option persistent_keepalive '0'
+	option route_allowed_ips '1'
+	list allowed_ips '0.0.0.0/0'
+	option disabled '1'
+
+config amneziawg_guard
+	option description 'Imported peer configuration'
+	option public_key 'bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo='
+	option endpoint_host '162.159.195.1'
+	option endpoint_port '4177'
+	option persistent_keepalive '0'
+	option route_allowed_ips '1'
+	list allowed_ips '0.0.0.0/0'
