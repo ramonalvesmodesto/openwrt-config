@@ -56,7 +56,7 @@ config interface 'guard'
 	option mtu '1420'
 	option force_link '1'
 	list addresses '172.16.0.2/32'
-	option multipath 'master'
+	option multipath 'on'
 	#list addresses '2606:4700:110:8019:dcef:a28a:6e1f:54e9/128'
 
 config amneziawg_guard
