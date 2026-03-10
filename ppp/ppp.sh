@@ -137,6 +137,8 @@ ppp_generic_setup() {
 		${ipv6:+ipv6-up-script /tmp/lib/netifd/ppp6-up} \
 		ip-down-script /tmp/lib/netifd/ppp-down \
 		${ipv6:+ipv6-down-script /tmp/lib/netifd/ppp-down} \
+		mtu 1952 \
+		mru 1952 \
 		noipdefault \
 		noaccomp \
 		nopcomp \
