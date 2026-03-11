@@ -4,9 +4,9 @@
 # cpu temterature below 25 Celsius degrees, no rotation
 echo 20000 > /sys/class/thermal/thermal_zone0/trip_point_4_temp
 # cpu temperature in [25..32] Celsius degrees, normal rotation speed
-echo 23000 > /sys/class/thermal/thermal_zone0/trip_point_3_temp
+echo 27000 > /sys/class/thermal/thermal_zone0/trip_point_3_temp
 # cpu temperature above 50 Celsius degrees, max rotation speed
-echo 32000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
+echo 49000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
 
 echo 'BPI-R3' > /tmp/sysinfo/model
 echo 'bpi-r3' > /tmp/sysinfo/board_name
