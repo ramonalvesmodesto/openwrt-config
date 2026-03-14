@@ -32,8 +32,12 @@ config device
 
 config device
 	option name 'sfp1'
-	option macaddr 'd6:83:11:dc:2d:08'
+	option macaddr '1C:EF:03:B5:70:CA'
 	option mtu '1504'
+
+config device
+	option name 'pppoe-wan'
+	option macaddr '1C:EF:03:B5:70:CA'
 
 config device
 	option name 'wan'
